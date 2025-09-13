@@ -247,7 +247,7 @@
           <!-- LEFT: full-height image (use your image path) -->
           <div class="md:w-1/2 w-full">
             <img
-              src="/assets/elevators.jpg" <!-- <-- replace with your image path -->
+              src="/assets/elevators.jpg" 
             alt="Elevator digital media"
             class="object-cover w-full h-72 md:h-[420px] lg:h-[520px]"
             />
