@@ -240,17 +240,16 @@
 
   <!-- Core Values Section (unchanged) -->
   <section class="py-12 bg-gray-50">
-    <div class=" mx-auto px-6">
+    <div class="  ">
       <!-- Two-column hero: image left / red panel right -->
       <div class="bg-white rounded-lg overflow-hidden shadow-sm">
         <div class="flex flex-col md:flex-row">
-          <!-- LEFT: full-height image (use your image path) -->
+
           <div class="md:w-1/2 w-full">
             <img
-              src="/assets/elevators.jpg" 
-            alt="Elevator digital media"
-            class="object-cover w-full h-72 md:h-[420px] lg:h-[520px]"
-            />
+              src="/images/banner/schindler-ahead-digital-media-services.jpg"
+              alt="Elevator digital media"
+              class="object-cover w-full h-72 md:h-[420px] lg:h-[520px]" />
           </div>
 
           <!-- RIGHT: red panel -->
