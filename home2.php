@@ -18,6 +18,10 @@
       background-attachment: fixed;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     /* toast */
     #toast {
       position: fixed;
@@ -49,65 +53,253 @@
 <body class="font-sans bg-gray-50">
 
   <!-- Header -->
+  <!-- header + responsive mobile menu -->
   <header id="site-header"
-    class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-10 py-6 transition-all duration-500">
+    class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-10 py-4 md:py-6 bg-white/90 backdrop-blur-sm transition-all duration-500">
     <div id="brand" class="text-xl font-bold">My Brand</div>
-    <nav id="nav-links" class="space-x-6 font-medium">
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Services</a>
-      <a href="#">Work</a>
-      <a href="#">Contact</a>
+
+    <!-- Desktop nav -->
+    <nav id="nav-links" class="hidden md:block">
+      <ul class="flex items-center space-x-10 text-lg font-medium">
+        <li><a href="#" class="hover:text-brandRed">Home</a></li>
+
+        <!-- Desktop Dropdown -->
+        <li class="relative group"> <!-- ADD 'group' here -->
+          <!-- Use absolute path if relative might be wrong: href="/product.php" -->
+          <a href="./product.php" class="inline-flex items-center gap-2 text-lg hover:text-brandRed focus:outline-none" id="productsTrigger" aria-haspopup="true" aria-expanded="false" tabindex="0">
+            Products/Services
+            <svg class="w-5 h-5 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </a>
+
+          <!-- dropdown: show on hover (via group) or keyboard focus-within -->
+          <ul
+            class="absolute left-0  hidden rounded-lg shadow-lg w-56 bg-white text-black z-50
+               group-hover:block group-focus:block"
+            id="productsDropdown" role="menu" aria-label="Products menu">
+            <li><a href="./product.php#product1" class="block px-5 py-3 hover:bg-gray-100" role="menuitem">Product 1</a></li>
+            <li><a href="./product.php#product1" class="block px-5 py-3 hover:bg-gray-100" role="menuitem">Product 2</a></li>
+            <li><a href="./product.php#product1" class="block px-5 py-3 hover:bg-gray-100" role="menuitem">Service 1</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#contact" class="hover:text-brandRed">Contact Us</a></li>
+      </ul>
     </nav>
+
+    <!-- Mobile controls -->
+    <div class="md:hidden flex items-center gap-4">
+      <!-- Hamburger button -->
+      <button id="mobile-menu-btn"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        class="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brandRed">
+        <!-- Icon (3 bars) -->
+        <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+          aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <!-- Close icon (hidden by default) -->
+        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+          aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
   </header>
 
+  <!-- Mobile menu (off-canvas / slide down) -->
+  <nav id="mobile-menu"
+    class="md:hidden fixed inset-x-4 top-[72px] z-40 bg-white rounded-xl shadow-lg transform transition-all duration-300 opacity-0 scale-95 pointer-events-none"
+    aria-hidden="true">
+    <div class="p-4">
+      <ul class="space-y-2">
+        <li><a href="#" class="block px-4 py-3 rounded-md text-lg hover:bg-gray-100">Home</a></li>
+
+        <!-- Mobile dropdown: collapsible -->
+       <li class="relative group">
+  <a href="./product.php"
+     class="inline-flex items-center gap-2 text-lg hover:text-brandRed focus:outline-none"
+     id="productsTrigger"
+     aria-haspopup="true"
+     aria-expanded="false"
+     tabindex="0">
+    Products/Services
+    <svg class="w-5 h-5 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </a>
+
+  <!-- NOTE: use top-full (no big mt-) so there's no gap when moving mouse -->
+  <ul
+    class="absolute left-0 top-full mt-0 hidden rounded-lg shadow-lg w-56 bg-white text-black z-50
+           group-hover:block group-focus-within:block"
+    id="productsDropdown"
+    role="menu"
+    aria-label="Products menu"
+    style="min-width:14rem;">
+    <li><a href="./product.php#product1" class="block px-5 py-3 hover:bg-gray-100" role="menuitem">Product 1</a></li>
+    <li><a href="./product.php#product2" class="block px-5 py-3 hover:bg-gray-100" role="menuitem">Product 2</a></li>
+    <li><a href="./product.php#product3" class="block px-5 py-3 hover:bg-gray-100" role="menuitem">Service 1</a></li>
+  </ul>
+</li>
+
+
+        <li><a href="#contact"  class="block px-4 py-3 text-lg rounded-md hover:bg-gray-100">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- Optional overlay to darken background when mobile menu is open -->
+  <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/30 hidden z-30"></div>
+
+  <!-- JS: toggle mobile menu, products dropdown, handle Escape & outside click -->
+  <script>
+    (function() {
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const overlay = document.getElementById('mobile-menu-overlay');
+      const hamburgerIcon = document.getElementById('hamburger-icon');
+      const closeIcon = document.getElementById('close-icon');
+
+      const prodBtn = document.getElementById('mobile-products-btn');
+      const prodList = document.getElementById('mobile-products-list');
+      const prodIcon = document.getElementById('mobile-products-icon');
+
+      function openMenu() {
+        menuBtn.setAttribute('aria-expanded', 'true');
+        mobileMenu.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+        mobileMenu.classList.add('opacity-100', 'scale-100');
+        mobileMenu.setAttribute('aria-hidden', 'false');
+        overlay.classList.remove('hidden');
+        hamburgerIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      }
+
+      function closeMenu() {
+        menuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+        mobileMenu.classList.remove('opacity-100', 'scale-100');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        overlay.classList.add('hidden');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        // also collapse products list
+        collapseProducts();
+      }
+
+      function toggleMenu() {
+        const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+        if (expanded) closeMenu();
+        else openMenu();
+      }
+
+      function expandProducts() {
+        // Set max-height to a large value to allow CSS transition
+        prodList.style.maxHeight = prodList.scrollHeight + 'px';
+        prodIcon.classList.add('rotate-180');
+      }
+
+      function collapseProducts() {
+        prodList.style.maxHeight = null;
+        prodIcon.classList.remove('rotate-180');
+      }
+
+      function toggleProducts() {
+        if (prodList.style.maxHeight) collapseProducts();
+        else expandProducts();
+      }
+
+      // Events
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
+      });
+      overlay.addEventListener('click', () => closeMenu());
+
+      // products
+      prodBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleProducts();
+      });
+
+      // close on Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+      });
+
+      // close when clicking outside the menu
+      document.addEventListener('click', (e) => {
+        const target = e.target;
+        if (!mobileMenu.contains(target) && !menuBtn.contains(target) && window.getComputedStyle(mobileMenu).visibility !== 'hidden') {
+          // only close if menu is open
+          if (menuBtn.getAttribute('aria-expanded') === 'true') closeMenu();
+        }
+      });
+
+      // ensure menu hides on larger screens (if resized)
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+          closeMenu();
+        }
+      });
+    })();
+  </script>
+
+
   <!-- Banner slider (unique classes) -->
-  <div class="swiper banner-swiper h-screen">
+  <div class="swiper hero-swiper h-screen">
     <div class="swiper-wrapper">
 
       <!-- Slide 1 -->
-      <div class="swiper-slide">
-        <div class="h-screen w-full flex items-center parallax-bg"
-          style="background-image: url('./images/banner/herosection.jpg');">
-          <div class="bg-black/40 p-8 rounded-lg ml-16 text-white max-w-lg">
-            <h1 class="text-5xl font-bold mb-6">Exceptional Home Remodeling &amp; Renovations</h1>
-            <a href="#"
-              class="px-6 py-3 bg-white text-black font-semibold rounded shadow hover:bg-gray-200">Get A Free Estimate</a>
-          </div>
+      <div class="swiper-slide relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
+        <img src="./images/banner/herosection.jpg" class="h-screen w-full object-cover" />
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
+          <h1 class="text-6xl font-extrabold drop-shadow-lg mb-6">Luxury Remodeling Solutions</h1>
+          <!-- <a href="#"
+          class="px-8 py-3 border-2 border-white text-white font-semibold rounded-full transition hover:bg-white hover:text-black">
+          Get Your Quote
+        </a> -->
         </div>
       </div>
 
       <!-- Slide 2 -->
-      <div class="swiper-slide">
-        <div class="h-screen w-full flex items-center parallax-bg"
-          style="background-image: url('./images/banner/herosection2.jpg');">
-          <div class="bg-black/40 p-8 rounded-lg ml-16 text-white max-w-lg">
-            <h1 class="text-5xl font-bold mb-6">Modern Designs &amp; Custom Builds</h1>
-            <a href="#"
-              class="px-6 py-3 bg-white text-black font-semibold rounded shadow hover:bg-gray-200">Get Started</a>
-          </div>
+      <div class="swiper-slide relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent"></div>
+        <img src="./images/banner/herosection2.jpg" class="h-screen w-full object-cover" />
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
+          <h1 class="text-6xl font-extrabold drop-shadow-lg mb-6">Innovative Modern Designs</h1>
+          <!-- <a href="#"
+          class="px-8 py-3 border-2 border-white text-white font-semibold rounded-full transition hover:bg-white hover:text-black">
+          Discover More
+        </a> -->
         </div>
       </div>
 
       <!-- Slide 3 -->
-      <div class="swiper-slide">
-        <div class="h-screen w-full flex items-center parallax-bg"
-          style="background-image: url('./images/banner/herosection3.jpg');">
-          <div class="bg-black/40 p-8 rounded-lg ml-16 text-white max-w-lg">
-            <h1 class="text-5xl font-bold mb-6">Transform Your Living Space</h1>
-            <a href="#"
-              class="px-6 py-3 bg-white text-black font-semibold rounded shadow hover:bg-gray-200">Learn More</a>
-          </div>
+      <div class="swiper-slide relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
+        <img src="./images/banner/herosection3.jpg" class="h-screen w-full object-cover" />
+        <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
+          <h1 class="text-6xl font-extrabold drop-shadow-lg mb-6">Redefine Your Living Space</h1>
+          <!-- <a href="#"
+          class="px-8 py-3 border-2 border-white text-white font-semibold rounded-full transition hover:bg-white hover:text-black">
+          Start Today
+        </a> -->
         </div>
       </div>
 
     </div>
 
-    <!-- Banner-specific controls (unique classes) -->
-    <div class="swiper-pagination banner-pagination"></div>
-    <div class="swiper-button-prev banner-prev"></div>
-    <div class="swiper-button-next banner-next"></div>
+    <!-- Controls -->
+    <div class="swiper-pagination hero-pagination"></div>
+    <div class="swiper-button-prev hero-prev"></div>
+    <div class="swiper-button-next hero-next"></div>
   </div>
+
 
   <!-- About Section -->
   <section class="relative bg-white py-20 px-6 md:px-20">
@@ -123,7 +315,7 @@
       <div>
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Elevating Reliability, Safety &amp; Innovation</h2>
         <p class="text-lg text-gray-700 leading-relaxed mb-4">
-          With <span class="font-semibold text-indigo-600">Vertivo Elevators</span>, elevating is made reliable, safe and
+          With <span class="font-semibold text-[#DC0000]">Vertivo Elevators</span>, elevating is made reliable, safe and
           exciting. Serving as an integrated vertical transportation solutions provider, we stand in the forefront of
           innovative engineering and pledge our complete adherence to globally valued elevator safety standards.
         </p>
@@ -132,8 +324,7 @@
           in safety, durability and hassle-free travel experience.
         </p>
         <a href="#"
-          class="inline-block px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg shadow hover:bg-indigo-700 transition">More
-          About Us</a>
+          class="inline-block px-6 py-3 bg-[#DC0000] text-white font-semibold rounded-lg shadow  transition">View Products</a>
       </div>
 
     </div>
@@ -225,7 +416,7 @@
         <div id="formStatus" class="text-sm text-gray-600 mb-2" aria-live="polite"></div>
 
         <button id="submitBtn" type="submit"
-          class="px-8 py-3 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700 transition inline-flex items-center">
+          class="px-8 py-3 bg-[#DC0000] text-white rounded-lg shadow hover:bg-indigo-700 transition inline-flex items-center">
           <svg id="btnSpinner" class="w-5 h-5 mr-3 animate-spin hidden" xmlns="http://www.w3.org/2000/svg" fill="none"
             viewBox="0 0 24 24">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -255,14 +446,13 @@
           <!-- RIGHT: red panel -->
           <div class="md:w-1/2 w-full bg-red-700 text-white flex items-center">
             <div class="p-8 md:p-12 lg:p-16 max-w-2xl">
-              <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4">Digital Media Services</h2>
+              <!-- <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4">Digital Media Services</h2> -->
               <p class="text-base md:text-lg text-red-100 mb-6 leading-relaxed">
-                Share spectacular entertainment and important information with passengers quickly and easily with Schindler Digital Media Services.
-              </p>
-              <a href="#"
+                Customer obsession and business integrity remains the focal point of our management policies. We aim to develop and deliver products engineered to the highest quality; keeping user appreciation and comfort at the core of our design </p>
+              <!-- <a href="#"
                 class="inline-block bg-white text-red-700 font-semibold px-5 py-3 rounded shadow hover:opacity-95 transition">
                 Know more
-              </a>
+              </a> -->
             </div>
           </div>
         </div>
@@ -272,19 +462,19 @@
       <div class="mt-10"></div>
 
       <!-- Existing 'Our Core Values' content (adapted to match look/spacing) -->
-      <div class="text-center mb-12">
+      <!-- <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Core Values</h2>
         <div class="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
           The fundamental principles that guide our organization and define our commitment to excellence in every aspect of our business.
         </p>
-      </div>
+      </div> -->
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-        <!-- Example card -->
+      <!-- <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+  
         <div class="bg-white rounded-lg border border-gray-200 p-8 text-center hover:shadow-lg transition-shadow duration-300">
           <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <!-- svg icon -->
+       
             <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -292,36 +482,50 @@
           </div>
           <h3 class="text-xl font-semibold text-gray-900 mb-4">Customer Obsession</h3>
           <p class="text-gray-600 text-sm leading-relaxed">Customer needs and satisfaction drive every decision we make across our organization.</p>
+
         </div>
+        <div class="bg-white rounded-lg border border-gray-200 p-8 text-center hover:shadow-lg transition-shadow duration-300">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+      
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">Customer Obsession</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Customer needs and satisfaction drive every decision we make across our organization.</p>
 
-        <!-- duplicate other cards as required -->
-      </div>
+        </div>
+  
+      </div> -->
 
-      <div class="bg-white border border-gray-200 rounded-lg p-12">
+      <!-- <div class="bg-white border border-gray-200 rounded-lg p-12">
         <div class="max-w-4xl mx-auto text-center">
           <h3 class="text-2xl font-semibold text-gray-900 mb-6">Our Commitment</h3>
           <blockquote class="text-lg text-gray-700 leading-relaxed font-medium">
             "Customer obsession and business integrity remain the focal point of our management policies. We aim to develop and deliver products engineered to the highest quality; keeping user appreciation and comfort at the core of our design."
           </blockquote>
         </div>
-      </div>
+
+      </div> -->
     </div>
   </section>
 
 
   <!-- Products Slider Section (unique classes and nav) -->
   <div class="swiper products-swiper my-12 max-w-7xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center p-5">Products</h2>
     <div class="swiper-wrapper">
       <!-- Product 1 -->
       <div class="swiper-slide">
         <a href="/products/premium-headphones" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
           <div class="relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=600&fit=crop&crop=center"
+            <img src="./images/banner/5581945_3650.jpg"
               alt="Premium Headphones"
               class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute bottom-6 left-6">
               <div class="bg-red-600 text-white px-4 py-3 rounded text-base font-semibold">
-                Premium Headphones
+                Product 1
               </div>
             </div>
           </div>
@@ -332,12 +536,12 @@
       <div class="swiper-slide">
         <a href="/products/smart-laptop" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
           <div class="relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=600&fit=crop&crop=center"
+            <img src="./images/banner/25.jpg"
               alt="Smart Laptop"
               class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute bottom-6 left-6">
               <div class="bg-red-600 text-white px-4 py-3 rounded text-base font-semibold">
-                Smart Laptop
+                Product 2
               </div>
             </div>
           </div>
@@ -348,12 +552,11 @@
       <div class="swiper-slide">
         <a href="/products/smartwatch-pro" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
           <div class="relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=600&fit=crop&crop=center"
-              alt="Smartwatch Pro"
+            <img src="./images/banner/6610172_3993.jpg" alt="Smartwatch Pro"
               class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute bottom-6 left-6">
               <div class="bg-red-600 text-white px-4 py-3 rounded text-base font-semibold">
-                Smartwatch Pro
+                product 3
               </div>
             </div>
           </div>
@@ -364,12 +567,11 @@
       <div class="swiper-slide">
         <a href="/products/wireless-speaker" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
           <div class="relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=600&h=600&fit=crop&crop=center"
-              alt="Wireless Speaker"
+            <img src="./images/banner/8548770_2474.jpg" alt="Wireless Speaker"
               class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute bottom-6 left-6">
               <div class="bg-red-600 text-white px-4 py-3 rounded text-base font-semibold">
-                Wireless Speaker
+                product 4
               </div>
             </div>
           </div>
@@ -380,12 +582,11 @@
       <div class="swiper-slide">
         <a href="/products/gaming-console" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
           <div class="relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=600&h=600&fit=crop&crop=center"
-              alt="Gaming Console"
+            <img src="./images/banner/8548770_2474.jpg" alt="Gaming Console"
               class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute bottom-6 left-6">
               <div class="bg-red-600 text-white px-4 py-3 rounded text-base font-semibold">
-                Gaming Console
+                product 5
               </div>
             </div>
           </div>
@@ -393,7 +594,7 @@
       </div>
 
       <!-- Product 6 - Extra for better carousel effect -->
-      <div class="swiper-slide">
+      <!-- <div class="swiper-slide">
         <a href="/products/tablet-pro" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
           <div class="relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&h=600&fit=crop&crop=center"
@@ -406,7 +607,7 @@
             </div>
           </div>
         </a>
-      </div>
+      </div> -->
     </div>
 
     <!-- Product-specific controls -->
@@ -414,6 +615,96 @@
     <div class="swiper-button-next products-next"></div>
     <div class="swiper-button-prev products-prev"></div>
   </div>
+
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Section Header -->
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Core Competencies</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          We specialize in providing end-to-end elevator solutions with a strong focus on quality, safety, and innovation.
+        </p>
+      </div>
+
+      <!-- Grid Items -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Item -->
+        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+          <div class="text-blue-600 text-4xl mb-4">⚙️</div>
+          <h3 class="text-xl font-semibold mb-2">Production & Installation</h3>
+          <p class="text-gray-600">Complete solutions for production, supply, installation, testing, and commissioning of homelifts and passenger elevators.</p>
+        </div>
+
+        <!-- Item -->
+        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+          <div class="text-blue-600 text-4xl mb-4">📐</div>
+          <h3 class="text-xl font-semibold mb-2">Consultancy & Site Planning</h3>
+          <p class="text-gray-600">Expert consultancy services and site planning for efficient and safe elevator installations.</p>
+        </div>
+
+        <!-- Item -->
+        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+          <div class="text-blue-600 text-4xl mb-4">📊</div>
+          <h3 class="text-xl font-semibold mb-2">Project Management</h3>
+          <p class="text-gray-600">Comprehensive engineering project management ensuring on-time and cost-effective delivery.</p>
+        </div>
+
+        <!-- Item -->
+        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+          <div class="text-blue-600 text-4xl mb-4">🔬</div>
+          <h3 class="text-xl font-semibold mb-2">Research & Development</h3>
+          <p class="text-gray-600">Innovating elevator technologies for enhanced performance, safety, and user experience.</p>
+        </div>
+
+        <!-- Item -->
+        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+          <div class="text-blue-600 text-4xl mb-4">🛠️</div>
+          <h3 class="text-xl font-semibold mb-2">Maintenance & AMCs</h3>
+          <p class="text-gray-600">Reliable elevator maintenance and Annual Maintenance Contracts (AMCs) for uninterrupted service.</p>
+        </div>
+
+        <!-- Item -->
+        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
+          <div class="text-blue-600 text-4xl mb-4">♻️</div>
+          <h3 class="text-xl font-semibold mb-2">Modernisation</h3>
+          <p class="text-gray-600">Upgrading old elevators with modern features, ensuring safety, comfort, and efficiency.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+  
+        <div class="bg-white rounded-lg border border-gray-200 p-8 text-center hover:shadow-lg transition-shadow duration-300">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+       
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">Customer Obsession</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Customer needs and satisfaction drive every decision we make across our organization.</p>
+
+        </div>
+        <div class="bg-white rounded-lg border border-gray-200 p-8 text-center hover:shadow-lg transition-shadow duration-300">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+      
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">Customer Obsession</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Customer needs and satisfaction drive every decision we make across our organization.</p>
+
+        </div>
+  
+      </div> -->
 
   <!-- toast element -->
   <div id="toast" role="status" aria-live="polite">
@@ -426,12 +717,13 @@
   <!-- Init Swipers -->
   <script>
     // Banner swiper
-    const bannerSwiper = new Swiper('.banner-swiper', {
+    const bannerSwiper = new Swiper('.hero-swiper', {
       loop: true,
       effect: 'fade',
+      freeMode: true,
       autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
+        delay: 3000,
+        disableOnInteraction: true,
       },
       pagination: {
         el: '.banner-pagination',
@@ -450,6 +742,13 @@
     const productsSwiper = new Swiper('.products-swiper', {
       slidesPerView: 3,
       spaceBetween: 20,
+      freeMode: true,
+      effect: "coverflow",
+      autoplay: {
+        delay: 2000,
+
+      },
+
       loop: true,
       pagination: {
         el: '.products-pagination',
@@ -568,7 +867,7 @@
           // Simulated send (replace in production)
           await new Promise(r => setTimeout(r, 900));
 
-          showToast('Thank you — we received your request. We will contact you soon.', true);
+          showToast('Thank you — we received your request. Our elevator consultant will get in touch with you for further assistance.', true);
           status.textContent = '';
           form.reset();
         } catch (err) {

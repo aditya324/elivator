@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Schindler 9300 — product hero (Tailwind)</title>
+  <title>Product 1</title>
 
   <!-- Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -28,6 +28,9 @@
 
   <style>
     /* keep image crisp and avoid stretching on very tall screens */
+
+
+
     .hero-left img {
       object-fit: cover;
       object-position: center;
@@ -38,147 +41,280 @@
       transition: background-color .25s ease, box-shadow .25s ease;
     }
   </style>
+  <style>
+    /* small niceties */
+    .parallax-bg {
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    /* toast */
+    #toast {
+      position: fixed;
+      right: 20px;
+      bottom: 30px;
+      z-index: 60;
+      border-left-width: 4px;
+      background: white;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      padding: 12px 16px;
+      border-radius: 8px;
+      display: none;
+      min-width: 220px;
+    }
+
+    #toast.show {
+      display: block;
+    }
+
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #111827;
+
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
 </head>
 
 <body class="bg-white text-gray-800 font-sans">
 
-  <!-- HEADER (bigger) -->
-  <header class="absolute top-0 left-0 w-full z-30 bg-transparent header-bg-transition">
-    <nav class="flex items-center justify-between px-6 md:px-12 py-6 md:py-8 text-white">
-      <!-- Logo -->
-      <div class="text-3xl md:text-4xl font-bold leading-none text-brandRed">LOGO</div>
 
-      <!-- Desktop menu -->
-      <ul class="hidden md:flex items-center space-x-10 text-lg">
+
+  <header id="site-header"
+    class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-10 py-4 bg-white/70 backdrop-blur-sm">
+    <div id="brand" class="text-xl font-bold">My Brand</div>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:block">
+      <ul class="flex items-center space-x-10 text-lg font-medium">
         <li><a href="#" class="hover:text-brandRed">Home</a></li>
-
-        <!-- Dropdown -->
         <li class="relative group">
-          <button class="hover:text-brandRed flex items-center gap-2 text-lg">
-            <span>Products</span>
-            <svg class="w-5 h-5 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <button class="inline-flex items-center gap-2 hover:text-brandRed focus:outline-none">
+            Products
+            <svg class="w-5 h-5 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
-          <ul class="absolute hidden group-hover:block bg-white text-black mt-3 rounded-lg shadow-lg w-56">
-            <li><a href="#" class="block px-5 py-3 hover:bg-gray-100">Product 1</a></li>
-            <li><a href="#" class="block px-5 py-3 hover:bg-gray-100">Product 2</a></li>
-            <li><a href="#" class="block px-5 py-3 hover:bg-gray-100">Product 3</a></li>
+          <ul class="absolute left-0 hidden group-hover:block bg-white shadow-lg rounded-lg mt-2 w-56">
+            <li><a href="#product1" class="block px-5 py-3 hover:bg-gray-100">Product 1</a></li>
+            <li><a href="#product2" class="block px-5 py-3 hover:bg-gray-100">Product 2</a></li>
+            <li><a href="#product3" class="block px-5 py-3 hover:bg-gray-100">Product 3</a></li>
           </ul>
         </li>
-
         <li><a href="#contact" class="hover:text-brandRed">Contact Us</a></li>
       </ul>
-
-      <!-- Mobile hamburger -->
-      <div class="md:hidden">
-        <button id="navToggle" aria-controls="mobileMenu" aria-expanded="false" class="p-3 rounded-md focus:outline-none focus:ring">
-          <!-- hamburger -->
-          <svg id="hamburgerIcon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-          <!-- close (hidden) -->
-          <svg id="closeIcon" class="w-8 h-8 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-            <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-      </div>
-
-      <!-- Mobile menu (slides up) -->
-      <div id="mobileMenu" class="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm hidden">
-        <div class="absolute top-0 right-0 w-3/4 max-w-xs h-full bg-white text-black p-6 shadow-lg">
-          <nav class="flex flex-col gap-4">
-            <a href="#" class="py-3 text-lg" onclick="closeMobileMenu()">Home</a>
-            <details class="py-2">
-              <summary class="cursor-pointer py-3 text-lg">Products</summary>
-              <div class="pl-4">
-                <a href="#" class="block py-2">Product 1</a>
-                <a href="#" class="block py-2">Product 2</a>
-              </div>
-            </details>
-            <a href="#contact" class="py-3 text-lg" onclick="closeMobileMenu()">Contact Us</a>
-          </nav>
-        </div>
-      </div>
     </nav>
+
+    <!-- Mobile button -->
+    <div class="md:hidden">
+      <button id="mobile-menu-btn">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
   </header>
 
-  <!-- Breadcrumbs strip (pushed down to avoid header overlap) -->
-  <div class="w-full border-b mt-28">
-    <div class="max-w-screen-2xl mx-auto px-6">
-      <nav class="text-sm text-gray-500" aria-label="Breadcrumb">
-        <ol class="flex items-center gap-2">
-          <li><a href="#" class="hover:underline">Home</a></li>
-          <li>&gt;</li>
-          <li><a href="#" class="hover:underline">Escalators &amp; Moving walks</a></li>
-          <li>&gt;</li>
-          <li><a href="#" class="hover:underline">Escalators</a></li>
-          <li>&gt;</li>
-          <li class="text-brandRed font-medium">Schindler 9300</li>
-        </ol>
-      </nav>
-    </div>
-  </div>
+  <!-- FULLSCREEN HERO SWIPER -->
+  <section class="relative w-full">
+    <div class="swiper hero-swiper w-full h-screen">
+      <div class="swiper-wrapper">
 
-  <!-- Hero -->
-  <section class="max-w-full bg-[#F7F7F7] ">
-    <div class="max-w-screen-2xl mx-auto px-6">
-      <!-- left fixed column (420px) + right flexible content -->
-      <div class="grid grid-cols-1 lg:grid-cols-[420px_1fr] items-stretch">
-
-        <!-- LEFT: fixed image column on lg+, stacked image on mobile -->
-        <div class="hero-left">
-          <!-- desktop: fixed narrow column -->
-          <div class="hidden lg:block h-[86vh] w-full overflow-hidden">
-            <img src="./images/banner/herosection.jpg" alt="Schindler 9300" class="h-full w-full">
-          </div>
-          <!-- mobile: stacked image at top -->
-          <div class="lg:hidden">
-            <img src="./images/banner/herosection.jpg" alt="Schindler 9300" class="w-full h-[44vh] object-cover">
-          </div>
-        </div>
-
-        <!-- RIGHT: pale panel with centered content -->
-        <div class="flex items-center">
-          <div class="py-16 lg:py-24 px-6 sm:px-10 md:px-16 lg:px-28 max-w-3xl mx-auto">
-
-            <!-- Big red title -->
-            <h1 class="text-[48px] lg:text-[56px] leading-tight font-semibold text-brandRed">
-              Schindler 9300
-            </h1>
-
-            <!-- Large grey subtitle -->
-            <p class="mt-3 text-[28px] lg:text-[36px] font-light text-gray-500">
-              The escalator for commercial &amp; public spaces
-            </p>
-
-            <!-- Description -->
-            <p class="mt-6 text-base md:text-lg text-gray-700 leading-relaxed max-w-prose">
-              With enhanced safety features, energy efficiency, and space savings, the Schindler 9300 escalator defines state-of-the-art mobility for commercial buildings and public spaces.
-            </p>
-
-            <!-- Buttons -->
-            <div class="mt-8 flex items-center gap-4">
-              <a href="#" class="inline-flex items-center justify-center px-6 py-3 rounded-md text-white font-semibold shadow-sm bg-brandRed hover:bg-red-700">
-                Configure
-              </a>
-              <a href="#" class="inline-flex items-center justify-center px-6 py-3 rounded-md text-brandRed font-semibold border-2 border-brandRed bg-white hover:bg-red-50">
-                Get in touch
-              </a>
+        <!-- Slide 1 -->
+        <div class="swiper-slide relative h-screen">
+          <img src="./images/banner/herosection.jpg" class="absolute inset-0 w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-black/40"></div>
+          <div class="absolute inset-0 flex items-center">
+            <div class="max-w-5xl mx-auto px-6 text-white">
+              <h1 class="text-4xl md:text-6xl font-bold">Product 1</h1>
+              <p class="mt-4 text-lg md:text-2xl text-white/90">Escalator for commercial & public spaces</p>
+              <a href="#product1" class="mt-6 inline-block bg-brandRed px-6 py-3 rounded-md font-semibold">View Product</a>
             </div>
-
           </div>
         </div>
+
+        <!-- Slide 2 -->
+        <div class="swiper-slide relative h-screen">
+          <img src="./images/banner/25.jpg" class="absolute inset-0 w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-black/40"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <h2 class="text-white text-4xl md:text-5xl font-bold">Maintenance & Service</h2>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="swiper-slide relative h-screen">
+          <img src="./images/banner/5581945_3650.jpg" class="absolute inset-0 w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-black/30"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <h2 class="text-white text-4xl md:text-5xl font-bold">Digital Media Services</h2>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Arrows -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+      <!-- Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+
+
+
+
+
+  <section class="flex items-center justify-center px-6">
+    <form id="elevatorForm"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl w-full bg-white rounded-2xl p-8"
+      novalidate>
+
+      <!-- First Name -->
+      <div class="flex flex-col">
+        <label for="firstName" class="mb-2 text-sm font-medium text-gray-700">First name <span
+            class="text-red-500">*</span></label>
+        <input id="firstName" name="firstName" type="text" required
+          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          placeholder="John" />
+        <p id="err-firstName" class="text-red-500 text-sm mt-1 hidden">Please enter your first name.</p>
+      </div>
+
+      <!-- Last Name -->
+      <div class="flex flex-col">
+        <label for="lastName" class="mb-2 text-sm font-medium text-gray-700">Last name</label>
+        <input id="lastName" name="lastName" type="text"
+          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          placeholder="Doe" />
+      </div>
+
+      <!-- Contact Number -->
+      <div class="flex flex-col">
+        <label for="contactNumber" class="mb-2 text-sm font-medium text-gray-700">Contact number <span
+            class="text-red-500">*</span></label>
+        <input id="contactNumber" name="contactNumber" inputmode="tel" required
+          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          placeholder="98765 43210" />
+        <p id="err-contact" class="text-red-500 text-sm mt-1 hidden">Enter a valid phone number (7–15 digits).</p>
+      </div>
+
+      <!-- Email -->
+      <div class="flex flex-col md:col-span-2 lg:col-span-1">
+        <label for="email" class="mb-2 text-sm font-medium text-gray-700">Email ID <span
+            class="text-red-500">*</span></label>
+        <input id="email" name="email" type="email" required
+          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          placeholder="you@example.com" />
+        <p id="err-email" class="text-red-500 text-sm mt-1 hidden">Enter a valid email address.</p>
+      </div>
+
+      <!-- Elevator For -->
+      <div class="flex flex-col">
+        <label for="elevatorFor" class="mb-2 text-sm font-medium text-gray-700">Elevator required for</label>
+        <select id="elevatorFor" name="elevatorFor"
+          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <option value="" disabled selected>Select one</option>
+          <option value="individual-house">Individual House</option>
+          <option value="apartment">Apartment Building</option>
+          <option value="commercial-building">Commercial Building</option>
+          <option value="factory">Factory / Warehouse</option>
+          <option value="others">Others</option>
+        </select>
+      </div>
+
+      <!-- Floors -->
+      <div class="flex flex-col">
+        <label for="floors" class="mb-2 text-sm font-medium text-gray-700">Floors (stops)</label>
+        <select id="floors" name="floors"
+          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <option value="" disabled selected>Select floors</option>
+          <option>G+1 (2 stops)</option>
+          <option>G+2 (3 stops)</option>
+          <option>G+3 (4 stops)</option>
+          <option>G+4 (5 stops)</option>
+          <option>G+5 (6 stops)</option>
+          <option>G+6 (7 stops) and above</option>
+        </select>
+      </div>
+
+      <!-- Message (full width) -->
+      <div class="flex flex-col md:col-span-2 lg:col-span-3">
+        <label for="message" class="mb-2 text-sm font-medium text-gray-700">Additional details</label>
+        <textarea id="message" name="message" rows="3"
+          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          placeholder="Any special requirements..."></textarea>
+      </div>
+
+      <!-- Submit (full width center) -->
+      <div class="md:col-span-2 lg:col-span-3 flex flex-col items-center">
+        <div id="formStatus" class="text-sm text-gray-600 mb-2" aria-live="polite"></div>
+
+        <button id="submitBtn" type="submit"
+          class="px-8 py-3 bg-[#DC0000] text-white rounded-lg shadow  transition inline-flex items-center">
+          <svg id="btnSpinner" class="w-5 h-5 mr-3 animate-spin hidden" xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor"
+              d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+          </svg>
+          <span id="btnText">Submit Request</span>
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <section class="py-16 bg-white" id="product1">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Section Header -->
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+        Features
+      </h2>
+
+      <!-- Grid -->
+      <div class=" grid grid-cols-1 md:grid-cols-3 gap-12">
+
+        <!-- Item 1 -->
+        <div>
+          <img src="./images/banner/25.jpg" alt="Elevator Dummy" class="rounded-lg shadow-md mb-6 w-full h-64 object-cover">
+          <h3 class="text-xl font-semibold mb-2">Heading One</h3>
+          <p class="text-gray-600">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+          </p>
+        </div>
+
+        <!-- Item 2 -->
+        <div id="product2">
+          <img src="./images/banner/5581945_3650.jpg" alt="Elevator Dummy" class="rounded-lg shadow-md mb-6 w-full h-64 object-cover">
+          <h3 class="text-xl font-semibold mb-2">Heading Two</h3>
+          <p class="text-gray-600">
+            Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper.
+          </p>
+        </div>
+
+        <!-- Item 3 -->
+        <div id="product3">
+          <img src="./images/banner/6610172_3993.jpg" alt="Elevator Dummy" class="rounded-lg shadow-md mb-6 w-full h-64 object-cover">
+          <h3 class="text-xl font-semibold mb-2">Heading Three</h3>
+          <p class="text-gray-600">
+            Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit.
+          </p>
+        </div>
+
+        <!-- Item 4 -->
+      
 
       </div>
     </div>
   </section>
 
-  <!-- Tabs section (TailwindCSS required) -->
-  <section class="py-12 bg-white">
+  <!-- <section class="py-12 bg-white">
     <div class="max-w-screen-2xl mx-auto px-6">
 
-      <!-- Tabs nav -->
+     
       <div class="border-b border-gray-200">
         <div role="tablist" aria-label="Product tabs" class="flex gap-6 overflow-x-auto">
           <button class="tab-btn pb-4 text-red-600 font-medium relative focus:outline-none"
@@ -207,11 +343,11 @@
         </div>
       </div>
 
-      <!-- Content panels -->
+  
       <div class="pt-10">
-        <!-- FEATURES (default visible) -->
+       
         <div id="features" role="tabpanel" data-panel class="space-y-8">
-          <!-- Heading / intro -->
+       
           <div>
             <h2 class="text-3xl font-semibold text-red-600 mb-4">Engineered to Swiss standards</h2>
             <p class="text-gray-600 max-w-3xl">
@@ -220,9 +356,9 @@
             </p>
           </div>
 
-          <!-- 4-column features row -->
+   
           <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
-            <!-- Card 1 -->
+  
             <div class="text-left">
               <div class="mb-6 flex items-center justify-start">
                 <svg class="w-20 h-20 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -237,7 +373,7 @@
               </p>
             </div>
 
-            <!-- Card 2 -->
+   
             <div class="text-left">
               <div class="mb-6 flex items-center justify-start">
                 <svg class="w-20 h-20 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -253,7 +389,7 @@
               </p>
             </div>
 
-            <!-- Card 3 -->
+       
             <div class="text-left">
               <div class="mb-6 flex items-center justify-start">
                 <svg class="w-20 h-20 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -268,7 +404,7 @@
               </p>
             </div>
 
-            <!-- Card 4 -->
+  
             <div class="text-left">
               <div class="mb-6 flex items-center justify-start">
                 <svg class="w-20 h-20 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -285,15 +421,15 @@
           </div>
         </div>
 
-        <!-- Technical specifications -->
+ 
         <div id="tech" role="tabpanel" data-panel hidden>
-          <!-- Technical specifications — Key figures -->
+         
           <div class="max-w-full mx-auto px-6">
             <h3 class="text-3xl font-semibold text-red-600 mb-8">Key figures</h3>
 
-            <!-- definition list for semantically correct label/value pairs -->
+           
             <dl class="divide-y divide-gray-200 border-t border-gray-200">
-              <!-- row -->
+         
               <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-y-4 py-6 items-start">
                 <dt class="font-semibold text-sm text-gray-900">Capacity</dt>
                 <dd class="text-sm text-gray-700">340 - 1360 kg</dd>
@@ -339,10 +475,10 @@
               </div>
             </dl>
           </div>
-          <!-- Feature trio: tall left image + 2 text columns -->
+       
           <section class="w-full bg-white py-16">
             <div class="mx-auto px-6 lg:px-8 max-w-screen-2xl">
-              <!-- Intro heading + lead -->
+            
               <div class="max-w-3xl">
                 <h2 class="text-3xl lg:text-4xl font-semibold text-brandRed mb-4">Less space, more capacity</h2>
                 <p class="text-gray-600 mb-10">
@@ -351,16 +487,16 @@
                 </p>
               </div>
 
-              <!-- Grid: image | main content | sidebar -->
+   
               <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr_360px] gap-10 items-start">
-                <!-- Left: tall visual -->
+           
                 <div class="order-1 lg:order-none">
                   <div class="w-full h-[520px] lg:h-[640px] overflow-hidden rounded-sm">
                     <img src="./images/banner/schindler-elevators-shaft.jpg" alt="Elevator cutaway" class="w-full h-full object-cover object-top">
                   </div>
                 </div>
 
-                <!-- Middle: primary text column -->
+
                 <div class="order-2 lg:order-none">
                   <div class="space-y-8">
                     <div>
@@ -387,7 +523,6 @@
                       </p>
                     </div>
 
-                    <!-- optional extra paragraph(s) -->
                     <p class="text-gray-600 leading-relaxed">
                       Doors can be sized and positioned with millimeter accuracy. The door width is adjustable in 100 mm increments
                       for heights from 2000 mm to 2400 mm, with a choice of telescopic (T2) or center-opening doors (C2).
@@ -395,7 +530,7 @@
                   </div>
                 </div>
 
-                <!-- Right: smaller sidebar column -->
+         
                 <aside class="order-3 lg:order-none">
                   <div class="space-y-8">
                     <div>
@@ -430,16 +565,16 @@
 
         </div>
 
-        <!-- Design -->
+ 
         <div id="design" role="tabpanel" data-panel hidden>
-          <!-- Design — Interior design lines -->
+          
           <div class="max-w-full mx-auto px-6 py-12">
-            <!-- Heading -->
+
             <h3 class="text-3xl lg:text-4xl font-semibold text-brandRed mb-8">Interior design lines</h3>
 
-            <!-- 3-column grid -->
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-              <!-- Column 1 -->
+
               <article class="space-y-4">
                 <h4 class="text-base font-semibold text-gray-900">Navona - Functional and durable</h4>
                 <p class="text-gray-600 leading-relaxed">
@@ -449,7 +584,7 @@
                 </p>
               </article>
 
-              <!-- Column 2 -->
+
               <article class="space-y-4">
                 <h4 class="text-base font-semibold text-gray-900">Times Square - Modern and versatile</h4>
                 <p class="text-gray-600 leading-relaxed">
@@ -458,7 +593,7 @@
                 </p>
               </article>
 
-              <!-- Column 3 -->
+
               <article class="space-y-4">
                 <h4 class="text-base font-semibold text-gray-900">Park Avenue - Sophisticated and elegant</h4>
                 <p class="text-gray-600 leading-relaxed">
@@ -469,19 +604,19 @@
             </div>
           </div>
 
-          <!-- Panels, handrails, mirrors and other accessories -->
+
           <section class="w-full bg-white py-16">
             <div class="max-w-full mx-auto px-6">
-              <!-- Heading -->
+
               <h2 class="text-3xl lg:text-4xl font-semibold text-brandRed mb-10">
                 Panels, handrails, mirrors and other accessories
               </h2>
 
-              <!-- Layout: text (2 columns on md+) | image (right) -->
+
               <div class="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-10 items-start">
-                <!-- Left: two text columns (becomes 1 column on small screens) -->
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <!-- Col A -->
+            
                   <div class="space-y-6">
                     <article>
                       <h4 class="font-semibold text-gray-900 mb-2">Linea 100</h4>
@@ -502,7 +637,7 @@
                     </article>
                   </div>
 
-                  <!-- Col B -->
+
                   <div class="space-y-6">
                     <article>
                       <h4 class="font-semibold text-gray-900 mb-2">Linea 300</h4>
@@ -513,7 +648,7 @@
                       </p>
                     </article>
 
-                    <!-- optional extra item -->
+      
                     <article>
                       <h4 class="font-semibold text-gray-900 mb-2">Other accessories</h4>
                       <p class="text-gray-600 leading-relaxed">
@@ -524,7 +659,7 @@
                   </div>
                 </div>
 
-                <!-- Right: image -->
+        
                 <div class="flex items-start justify-center lg:justify-end">
                   <div class="w-48 sm:w-56 lg:w-72 xl:w-80">
                     <img src="./images/banner/schindler-linea-300-cop-black.jpg" alt="Control panel vertical" class="w-full h-auto object-contain">
@@ -533,11 +668,11 @@
               </div>
             </div>
           </section>
-          <!-- Mirrors / landing doors / handrails / bumper rails -->
+
           <section class="w-full bg-white py-16">
             <div class="mx-auto px-6 lg:px-8 max-w-screen-2xl">
               <div class="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-10 items-start">
-                <!-- Left: tall image -->
+
                 <figure class="w-full">
                   <div class="w-full h-[520px] lg:h-[640px] overflow-hidden rounded-sm shadow-sm">
                     <img src="./images/banner/image-352x528.jpg"
@@ -546,10 +681,10 @@
                   </div>
                 </figure>
 
-                <!-- Right: 2x2 features grid -->
+ 
                 <div>
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Mirrors -->
+           
                     <article>
                       <h4 class="font-semibold text-gray-900 mb-3">Mirrors</h4>
                       <p class="text-gray-600 leading-relaxed">
@@ -558,7 +693,7 @@
                       </p>
                     </article>
 
-                    <!-- Landing doors -->
+     
                     <article>
                       <h4 class="font-semibold text-gray-900 mb-3">Landing doors</h4>
                       <p class="text-gray-600 leading-relaxed">
@@ -567,7 +702,6 @@
                       </p>
                     </article>
 
-                    <!-- Handrails -->
                     <article>
                       <h4 class="font-semibold text-gray-900 mb-3">Handrails</h4>
                       <p class="text-gray-600 leading-relaxed">
@@ -576,7 +710,7 @@
                       </p>
                     </article>
 
-                    <!-- Bumper rails -->
+         
                     <article>
                       <h4 class="font-semibold text-gray-900 mb-3">Bumper rails</h4>
                       <p class="text-gray-600 leading-relaxed">
@@ -593,12 +727,12 @@
 
         </div>
 
-        <!-- Connectivity -->
+
         <div id="connectivity" role="tabpanel" data-panel hidden>
-          <!-- Next section: left tall image + right content -->
+       
           <section class="w-full bg-white py-16">
             <div class="mx-auto px-6 max-w-full">
-              <!-- Section heading -->
+         
               <h2 class="text-3xl lg:text-4xl font-semibold text-brandRed mb-6">
                 Schindler elevators designed for next-generation technologies
               </h2>
@@ -608,7 +742,7 @@
               </p>
 
               <div class="grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-10 items-start">
-                <!-- LEFT: tall image -->
+       
                 <figure class="w-full">
                   <div class="w-full h-[520px] lg:h-[640px] overflow-hidden rounded-sm shadow-sm">
                     <img src="./images/banner/schindler-mediascreen-exterior-image.jpg" alt="Elevator open door"
@@ -616,7 +750,7 @@
                   </div>
                 </figure>
 
-                <!-- RIGHT: content column -->
+       
                 <div class="w-full">
                   <div class="space-y-8">
                     <div>
@@ -644,7 +778,7 @@
                         With Schindler Ahead, we make sure our customers can step confidently into the digital era.
                       </p>
 
-                      <!-- italic callouts -->
+           
                       <ul class="mt-4 space-y-3 list-none">
                         <li class="text-gray-700 italic">
                           – <span class="font-medium">Maximize uptime with Ahead Remote Monitoring</span><br />
@@ -676,16 +810,14 @@
 
         </div>
       </div>
-    </div>
 
-    <!-- Inline JavaScript for tabs -->
     <script>
       (function() {
         const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
         const panels = Array.from(document.querySelectorAll('[data-panel]'));
 
         function activateTab(btn) {
-          // deactivate all
+  
           tabButtons.forEach(b => {
             b.classList.remove('text-red-600', 'font-medium');
             b.classList.add('text-gray-600');
@@ -695,7 +827,7 @@
           });
           panels.forEach(p => p.hidden = true);
 
-          // activate clicked
+
           btn.classList.remove('text-gray-600');
           btn.classList.add('text-red-600', 'font-medium');
           btn.setAttribute('aria-selected', 'true');
@@ -708,10 +840,10 @@
         }
 
         tabButtons.forEach((btn, idx) => {
-          // click handler
+
           btn.addEventListener('click', () => activateTab(btn));
 
-          // keyboard navigation (Left/Right + Home/End)
+
           btn.addEventListener('keydown', (e) => {
             let nextIndex;
             if (e.key === 'ArrowRight') nextIndex = (idx + 1) % tabButtons.length;
@@ -726,40 +858,95 @@
           });
         });
 
-        // Initialize first tab active (ensures underline visible)
+
         const initiallyActive = tabButtons.find(b => b.getAttribute('aria-selected') === 'true') || tabButtons[0];
         if (initiallyActive) activateTab(initiallyActive);
       })();
     </script>
-  </section>
+  </section> -->
   <section class="py-12 bg-gray-50">
     <div class="  ">
-      <!-- Two-column hero: image left / red panel right -->
-      <div class="bg-white rounded-lg overflow-hidden shadow-sm">
-        <div class="flex flex-col md:flex-row">
 
-          <div class="md:w-1/2 w-full">
-            <img
-              src="/images/banner/schindler-ahead-digital-media-services.jpg"
-              alt="Elevator digital media"
-              class="object-cover w-full h-72 md:h-[420px] lg:h-[520px]" />
-          </div>
+      <section class="py-12 bg-gray-50">
+        <div class="  ">
+          <!-- Two-column hero: image left / red panel right -->
+          <div class="bg-white rounded-lg overflow-hidden shadow-sm">
+            <div class="flex flex-col md:flex-row">
 
-          <!-- RIGHT: red panel -->
-          <div class="md:w-1/2 w-full bg-red-700 text-white flex items-center">
-            <div class="p-8 md:p-12 lg:p-16 max-w-2xl">
-              <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4">Digital Media Services</h2>
-              <p class="text-base md:text-lg text-red-100 mb-6 leading-relaxed">
-                Share spectacular entertainment and important information with passengers quickly and easily with Schindler Digital Media Services.
-              </p>
-              <a href="#"
-                class="inline-block bg-white text-red-700 font-semibold px-5 py-3 rounded shadow hover:opacity-95 transition">
-                Know more
-              </a>
+              <div class="md:w-1/2 w-full">
+                <img
+                  src="/images/banner/schindler-ahead-digital-media-services.jpg"
+                  alt="Elevator digital media"
+                  class="object-cover w-full h-72 md:h-[420px] lg:h-[520px]" />
+              </div>
+
+              <!-- RIGHT: red panel -->
+              <div class="md:w-1/2 w-full bg-red-700 text-white flex items-center">
+                <div class="p-8 md:p-12 lg:p-16 max-w-2xl">
+                  <!-- <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4">Digital Media Services</h2> -->
+                  <p class="text-base md:text-lg text-red-100 mb-6 leading-relaxed">
+                    Customer obsession and business integrity remains the focal point of our management policies. We aim to develop and deliver products engineered to the highest quality; keeping user appreciation and comfort at the core of our design </p>
+                  <!-- <a href="#"
+                    class="inline-block bg-white text-red-700 font-semibold px-5 py-3 rounded shadow hover:opacity-95 transition">
+                    Know more
+                  </a> -->
+                </div>
+              </div>
             </div>
           </div>
+
+          <!-- Spacer -->
+          <div class="mt-10"></div>
+
+          <!-- Existing 'Our Core Values' content (adapted to match look/spacing) -->
+          <!-- <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Core Values</h2>
+        <div class="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          The fundamental principles that guide our organization and define our commitment to excellence in every aspect of our business.
+        </p>
+      </div> -->
+
+          <!-- <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+  
+        <div class="bg-white rounded-lg border border-gray-200 p-8 text-center hover:shadow-lg transition-shadow duration-300">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+       
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">Customer Obsession</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Customer needs and satisfaction drive every decision we make across our organization.</p>
+
         </div>
-      </div>
+        <div class="bg-white rounded-lg border border-gray-200 p-8 text-center hover:shadow-lg transition-shadow duration-300">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+      
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">Customer Obsession</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Customer needs and satisfaction drive every decision we make across our organization.</p>
+
+        </div>
+  
+      </div> -->
+
+          <!-- <div class="bg-white border border-gray-200 rounded-lg p-12">
+        <div class="max-w-4xl mx-auto text-center">
+          <h3 class="text-2xl font-semibold text-gray-900 mb-6">Our Commitment</h3>
+          <blockquote class="text-lg text-gray-700 leading-relaxed font-medium">
+            "Customer obsession and business integrity remain the focal point of our management policies. We aim to develop and deliver products engineered to the highest quality; keeping user appreciation and comfort at the core of our design."
+          </blockquote>
+        </div>
+
+      </div> -->
+        </div>
+      </section>
 
       <!-- Spacer -->
       <div class="mt-10"></div>
@@ -812,7 +999,68 @@
       </section>
     </div>
   </section>
+
+
+  <div id="toast" role="status" aria-live="polite">
+    <div id="toastMsg" class="text-sm"></div>
+  </div>
   <div class="h-20"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script>
+    new Swiper('.hero-swiper', {
+      loop: true,
+      effect: 'fade',
+      autoplay: {
+        delay: 4000
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+    });
+  </script>
+
+  <script>
+    (function() {
+      const trigger = document.getElementById('productsTrigger');
+
+      // If some script intercepts navigation, this ensures clicks still navigate.
+      trigger.addEventListener('click', function(e) {
+        // If the default was prevented earlier, force navigation
+        if (e.defaultPrevented) {
+          window.location.href = this.getAttribute('href');
+          return;
+        }
+        // Otherwise, let the browser handle the anchor naturally
+      });
+
+      // Keyboard: Enter should behave like click
+      trigger.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          // allow default but also ensure navigation as fallback
+          e.preventDefault();
+          const href = this.getAttribute('href');
+          if (href) window.location.href = href;
+        }
+      });
+
+      // Optional: close dropdown when clicking outside (accessibility nicety)
+      document.addEventListener('click', (ev) => {
+        const dropdown = document.getElementById('productsDropdown');
+        if (!trigger.contains(ev.target) && (!dropdown || !dropdown.contains(ev.target))) {
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // When focused inside the li (keyboard tabbing), set aria-expanded true
+      trigger.addEventListener('focus', () => trigger.setAttribute('aria-expanded', 'true'));
+    })();
+  </script>
 
   <script>
     const navToggle = document.getElementById('navToggle');
@@ -835,6 +1083,110 @@
       if (hamburgerIcon) hamburgerIcon.classList.remove('hidden');
       if (closeIcon) closeIcon.classList.add('hidden');
     }
+  </script>
+
+  <script>
+    (function() {
+      const form = document.getElementById('elevatorForm');
+      const status = document.getElementById('formStatus');
+      const submitBtn = document.getElementById('submitBtn');
+      const btnSpinner = document.getElementById('btnSpinner');
+      const btnText = document.getElementById('btnText');
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+
+      function showToast(message, success = true) {
+        toastMsg.textContent = message;
+        toast.style.borderColor = success ? '#10B981' : '#F87171';
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 4200);
+      }
+
+      function setLoading(isLoading) {
+        if (isLoading) {
+          submitBtn.setAttribute('disabled', 'true');
+          btnSpinner.classList.remove('hidden');
+          btnText.textContent = 'Sending...';
+        } else {
+          submitBtn.removeAttribute('disabled');
+          btnSpinner.classList.add('hidden');
+          btnText.textContent = 'Submit Request';
+        }
+      }
+
+      function validateEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      function validatePhone(num) {
+        return /^\d{7,15}$/.test(num.replace(/\s+/g, ''));
+      }
+
+      // phone autoformat
+      const phoneInput = document.getElementById('contactNumber');
+      phoneInput.addEventListener('input', (e) => {
+        const raw = e.target.value.replace(/[^\d]/g, '').slice(0, 15);
+        e.target.value = raw.length > 5 ? raw.slice(0, 5) + ' ' + raw.slice(5) : raw;
+      });
+
+      form.addEventListener('submit', async (ev) => {
+        ev.preventDefault();
+        // hide errors
+        document.querySelectorAll('[id^="err-"]').forEach(el => el.classList.add('hidden'));
+
+        // gather values (no countryCode field present -> keep simple)
+        const data = {
+          firstName: form.firstName.value.trim(),
+          lastName: form.lastName.value.trim(),
+          contactNumber: form.contactNumber.value.replace(/\s+/g, ''),
+          email: form.email.value.trim(),
+          elevatorFor: form.elevatorFor.value,
+          floors: form.floors.value,
+          message: form.message.value.trim(),
+        };
+
+        // Basic validation
+        if (!data.firstName) {
+          document.getElementById('err-firstName').classList.remove('hidden');
+          document.getElementById('firstName').focus();
+          return;
+        }
+        if (!validatePhone(data.contactNumber)) {
+          document.getElementById('err-contact').classList.remove('hidden');
+          document.getElementById('contactNumber').focus();
+          return;
+        }
+        if (!validateEmail(data.email)) {
+          document.getElementById('err-email').classList.remove('hidden');
+          document.getElementById('email').focus();
+          return;
+        }
+
+        setLoading(true);
+        status.textContent = 'Sending your request...';
+
+        try {
+          // TODO: replace with your backend endpoint
+          // const res = await fetch('/api/lead', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) });
+          // const result = await res.json();
+          // if (!res.ok) throw new Error(result.message || 'Network error');
+
+          // Simulated send (replace in production)
+          await new Promise(r => setTimeout(r, 900));
+
+          showToast('Thank you — we received your request. Our elevator consultant will get in touch with you for further assistance.', true);
+          status.textContent = '';
+          form.reset();
+        } catch (err) {
+          showToast('Something went wrong. Please try again later.', false);
+          status.textContent = 'There was a problem — please try again.';
+        } finally {
+          setLoading(false);
+        }
+      });
+    })();
   </script>
 
 </body>
