@@ -84,73 +84,323 @@
 
 
   <header id="site-header"
-    class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-10 py-4 bg-white/70 backdrop-blur-sm">
+    class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-10 py-4 md:py-6 bg-white/90 backdrop-blur-sm transition-all duration-500">
     <div id="brand" class="text-xl font-bold">My Brand</div>
 
     <!-- Desktop nav -->
-    <nav class="hidden md:block">
+    <nav id="nav-links" class="hidden md:block">
       <ul class="flex items-center space-x-10 text-lg font-medium">
-        <li><a href="#" class="hover:text-brandRed">Home</a></li>
-        <li class="relative group">
-          <button class="inline-flex items-center gap-2 hover:text-brandRed focus:outline-none">
-            Products
-            <svg class="w-5 h-5 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <li><a href="./index.php" class="hover:text-brandRed">Home</a></li>
+
+        <!-- Desktop Dropdown -->
+        <li class="relative group"> <!-- ADD 'group' here -->
+          <!-- Use absolute path if relative might be wrong: href="/product.php" -->
+          <a href="./product.php" class="inline-flex items-center gap-2 text-lg hover:text-brandRed focus:outline-none" id="productsTrigger" aria-haspopup="true" aria-expanded="false" tabindex="0">
+            Products/Services
+            <svg class="w-5 h-5 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M19 9l-7 7-7-7"></path>
             </svg>
-          </button>
-          <ul class="absolute left-0 hidden group-hover:block bg-white shadow-lg rounded-lg mt-2 w-56">
-            <li><a href="#product1" class="block px-5 py-3 hover:bg-gray-100">Product 1</a></li>
-            <li><a href="#product2" class="block px-5 py-3 hover:bg-gray-100">Product 2</a></li>
-            <li><a href="#product3" class="block px-5 py-3 hover:bg-gray-100">Product 3</a></li>
+          </a>
+
+          <!-- dropdown: show on hover (via group) or keyboard focus-within -->
+          <ul
+            class="absolute left-0  hidden rounded-lg shadow-lg w-56 bg-white text-black z-50
+               group-hover:block group-focus:block"
+            id="productsDropdown" role="menu" aria-label="Products menu">
+            <li><a href="./product.php#VERTICASA" class="block px-5 py-3 hover:bg-gray-100" role="menuitem">VertiCASA</a></li>
+            <li><a href="./product.php#VERTIPAX" class="block px-5 py-3 hover:bg-gray-100" role="menuitem">VertiPAX</a></li>
+            <li><a href="./product.php#VERTICARE" class="block px-5 py-3 hover:bg-gray-100" role="menuitem">VertiCare</a></li>
           </ul>
         </li>
-        <li><a href="#contact" class="hover:text-brandRed">Contact Us</a></li>
+
+        <li><a href="./contact-us.php" class="hover:text-brandRed">Contact Us</a></li>
       </ul>
     </nav>
 
-    <!-- Mobile button -->
-    <div class="md:hidden">
-      <button id="mobile-menu-btn">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <!-- Mobile controls -->
+    <div class="md:hidden flex items-center gap-4">
+      <!-- Hamburger button -->
+      <button id="mobile-menu-btn"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        class="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brandRed">
+        <!-- Icon (3 bars) -->
+        <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+          aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <!-- Close icon (hidden by default) -->
+        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+          aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
     </div>
   </header>
+
+  <!-- Mobile menu (off-canvas / slide down) -->
+  <nav id="mobile-menu"
+    class="md:hidden fixed inset-x-4 top-[72px] z-40 bg-white rounded-xl shadow-lg transform transition-all duration-300 opacity-0 scale-95 pointer-events-none"
+    aria-hidden="true">
+    <div class="p-4">
+      <ul class="space-y-2">
+        <li><a href="#" class="block px-4 py-3 rounded-md text-lg hover:bg-gray-100">Home</a></li>
+
+        <!-- Mobile dropdown: collapsible -->
+        <li class="relative group">
+          <a href="./product.php"
+            class="inline-flex items-center gap-2 text-lg hover:text-brandRed focus:outline-none"
+            id="productsTrigger"
+            aria-haspopup="true"
+            aria-expanded="false"
+            tabindex="0">
+            Products/Services
+            <svg class="w-5 h-5 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </a>
+
+          <!-- NOTE: use top-full (no big mt-) so there's no gap when moving mouse -->
+          <ul
+            class="absolute left-0 top-full mt-0 hidden rounded-lg shadow-lg w-56 bg-white text-black z-50
+           group-hover:block group-focus-within:block"
+            id="productsDropdown"
+            role="menu"
+            aria-label="Products menu"
+            style="min-width:14rem;">
+            <li><a href="./product.php#vertiCASA" class="block px-5 py-3 hover:bg-gray-100" role="menuitem">VertiCASA</a></li>
+            <li><a href="./product.php#VertiPAX" class="block px-5 py-3 hover:bg-gray-100" role="menuitem">VertiPAX</a></li>
+            <li><a href="./product.php#VertiCare" class="block px-5 py-3 hover:bg-gray-100" role="menuitem">VertiCare</a></li>
+          </ul>
+        </li>
+
+
+        <li><a href="./contact-us.php" class="block px-4 py-3 text-lg rounded-md hover:bg-gray-100">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <!-- FULLSCREEN HERO SWIPER -->
   <section class="relative w-full">
     <div class="swiper hero-swiper w-full h-screen">
       <div class="swiper-wrapper">
 
-        <!-- Slide 1 -->
+        <!-- Slide 1: VertiCASA -->
         <div class="swiper-slide relative h-screen">
           <img src="./images/banner/herosection.jpg" class="absolute inset-0 w-full h-full object-cover" />
-          <div class="absolute inset-0 bg-black/40"></div>
-          <div class="absolute inset-0 flex items-center">
+          <div class="absolute inset-0 bg-black/45"></div>
+
+          <div class="absolute inset-0 flex items-center" id="vertiCASA">
             <div class="max-w-5xl mx-auto px-6 text-white">
-              <h1 class="text-4xl md:text-6xl font-bold">Product 1</h1>
-              <p class="mt-4 text-lg md:text-2xl text-white/90">Escalator for commercial & public spaces</p>
-              <a href="#product1" class="mt-6 inline-block bg-brandRed px-6 py-3 rounded-md font-semibold">View Product</a>
+              <h1 class="text-4xl md:text-6xl font-bold">VertiCASA by Vertivo</h1>
+              <p class="mt-4 text-lg md:text-2xl text-white/90">
+                A premium homelift that is uniquely yours
+              </p>
+
+              <div class="mt-6 flex gap-4 items-center">
+                <button class="cta-get-quote bg-brandRed px-6 py-3 rounded-md font-semibold"
+                  data-slide="1">Get Quotation</button>
+
+                <!-- Inline form container (hidden by default) -->
+                <div id="form-container-1" class="contact-panel mt-6 bg-white/95 text-black p-6 rounded-lg shadow-lg hidden">
+                  <h3 class="text-xl font-semibold mb-3">Request a Quotation</h3>
+                  <form class="space-y-3" data-form="1" onsubmit="submitForm(event, 1)">
+                    <div class="flex gap-3">
+                      <div>
+                        <label class="text-sm block mb-1">First name*</label>
+                        <input name="firstName" required class="w-[371px] border px-3 py-2 rounded" />
+                      </div>
+                      <div>
+                        <label class="text-sm block mb-1">Last name*</label>
+                        <input name="lastName" required class="w-[371px] border px-3 py-2 rounded" />
+                      </div>
+                    </div>
+
+                    <div class="flex gap-3">
+                      <div>
+                        <label class="text-sm block mb-1">Contact number*</label>
+                        <input name="phone" required type="tel" class="w-[371px] border px-3 py-2 rounded" />
+                      </div>
+                      <div>
+                        <label class="text-sm block mb-1">Email ID*</label>
+                        <input name="email" required type="email" class="w-[371px] border px-3 py-2 rounded" />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label class="text-sm block mb-1">City*</label>
+                      <select name="city" required class="w-[371px] border px-3 py-2 rounded">
+                        <option value="">Select city</option>
+                        <option>Bengaluru</option>
+                        <option>Mysuru</option>
+                        <option>Mangalore</option>
+                        <option>Hubballi-Dharwad</option>
+                        <option>Belagavi</option>
+                        <option>Davangere</option>
+                        <option>Ballari</option>
+                        <option>Shivamogga</option>
+                        <option>Udupi</option>
+                        <option>Kalaburagi</option>
+                        <option>Other</option>
+                      </select>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                      <button type="submit" class="bg-brandRed text-white px-5 py-2 rounded font-medium">Send</button>
+                      <button type="button" onclick="toggleForm(1)" class="underline text-sm">Cancel</button>
+                    </div>
+
+                    <div class="mt-2 text-sm text-green-700 hidden" data-success="1">Thanks! We'll contact you soon.</div>
+                    <div class="mt-2 text-sm text-red-700 hidden" data-error="1">Failed to submit. Try again.</div>
+                  </form>
+                </div>
+                <!-- end inline form container -->
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Slide 2 -->
+        <!-- Slide 2: VertiPAX -->
         <div class="swiper-slide relative h-screen">
           <img src="./images/banner/25.jpg" class="absolute inset-0 w-full h-full object-cover" />
-          <div class="absolute inset-0 bg-black/40"></div>
-          <div class="absolute inset-0 flex items-center justify-center">
-            <h2 class="text-white text-4xl md:text-5xl font-bold">Maintenance & Service</h2>
+          <div class="absolute inset-0 bg-black/45"></div>
+
+          <div class="absolute inset-0 flex items-center">
+            <div class="max-w-4xl mx-auto px-6 text-white text-center">
+              <h2 class="text-4xl md:text-5xl font-bold">VertiPAX by Vertivo</h2>
+              <p class="mt-3 text-lg md:text-xl text-white/90">
+                High performance passenger elevators for low rise, mid rise and high rise apartments and commercial usage
+              </p>
+
+              <div class="mt-6">
+                <button class="cta-get-quote bg-brandRed px-6 py-3 rounded-md font-semibold" data-slide="2">Get Quotation</button>
+
+                <div id="form-container-2" class="contact-panel mt-6 bg-white/95 text-black p-6 rounded-lg shadow-lg hidden mx-auto">
+                  <h3 class="text-xl font-semibold mb-3">Request a Quotation</h3>
+                  <form class="space-y-3" data-form="2" onsubmit="submitForm(event, 2)">
+                    <div class="flex gap-3">
+                      <div>
+                        <label class="text-sm block mb-1">First name*</label>
+                        <input name="firstName" required class="w-[371px] border px-3 py-2 rounded" />
+                      </div>
+                      <div>
+                        <label class="text-sm block mb-1">Last name*</label>
+                        <input name="lastName" required class="w-[371px] border px-3 py-2 rounded" />
+                      </div>
+                    </div>
+
+                    <div class="flex gap-3">
+                      <div>
+                        <label class="text-sm block mb-1">Contact number*</label>
+                        <input name="phone" required type="tel" class="w-[371px] border px-3 py-2 rounded" />
+                      </div>
+                      <div>
+                        <label class="text-sm block mb-1">Email ID*</label>
+                        <input name="email" required type="email" class="w-[371px] border px-3 py-2 rounded" />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label class="text-sm block mb-1">City*</label>
+                      <select name="city" required class="w-[371px] border px-3 py-2 rounded">
+                        <option value="">Select city</option>
+                        <option>Bengaluru</option>
+                        <option>Mysuru</option>
+                        <option>Mangalore</option>
+                        <option>Hubballi-Dharwad</option>
+                        <option>Belagavi</option>
+                        <option>Davangere</option>
+                        <option>Ballari</option>
+                        <option>Shivamogga</option>
+                        <option>Udupi</option>
+                        <option>Kalaburagi</option>
+                        <option>Other</option>
+                      </select>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                      <button type="submit" class="bg-brandRed text-white px-5 py-2 rounded font-medium">Send</button>
+                      <button type="button" onclick="toggleForm(2)" class="underline text-sm">Cancel</button>
+                    </div>
+
+                    <div class="mt-2 text-sm text-green-700 hidden" data-success="2">Thanks! We'll contact you soon.</div>
+                    <div class="mt-2 text-sm text-red-700 hidden" data-error="2">Failed to submit. Try again.</div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Slide 3 -->
+        <!-- Slide 3: VertiCare -->
         <div class="swiper-slide relative h-screen">
           <img src="./images/banner/5581945_3650.jpg" class="absolute inset-0 w-full h-full object-cover" />
           <div class="absolute inset-0 bg-black/30"></div>
-          <div class="absolute inset-0 flex items-center justify-center">
-            <h2 class="text-white text-4xl md:text-5xl font-bold">Digital Media Services</h2>
+
+          <div class="absolute inset-0 flex items-center">
+            <div class="max-w-4xl mx-auto px-6 text-white text-center">
+              <h2 class="text-4xl md:text-5xl font-bold">VertiCare by Vertivo</h2>
+              <p class="mt-3 text-lg md:text-xl text-white/90">
+                Your elevator health checkup, simplified
+              </p>
+
+              <div class="mt-6">
+                <button class="cta-get-quote bg-brandRed px-6 py-3 rounded-md font-semibold" data-slide="3">Book your free service checkup</button>
+
+                <div id="form-container-3" class="contact-panel mt-6 bg-white/95 text-black p-6 rounded-lg shadow-lg hidden mx-auto">
+                  <h3 class="text-xl font-semibold mb-3">Book Free Service Checkup</h3>
+                  <form class="space-y-3" data-form="3" onsubmit="submitForm(event, 3)">
+                    <div class="flex gap-3">
+                      <div>
+                        <label class="text-sm block mb-1">First name*</label>
+                        <input name="firstName" required class="w-[371px] border px-3 py-2 rounded" />
+                      </div>
+                      <div>
+                        <label class="text-sm block mb-1">Last name*</label>
+                        <input name="lastName" required class="w-[371px] border px-3 py-2 rounded" />
+                      </div>
+                    </div>
+
+                    <div class="flex gap-3">
+                      <div>
+                        <label class="text-sm block mb-1">Contact number*</label>
+                        <input name="phone" required type="tel" class="w-[371px] border px-3 py-2 rounded" />
+                      </div>
+                      <div>
+                        <label class="text-sm block mb-1">Email ID*</label>
+                        <input name="email" required type="email" class="w-[371px] border px-3 py-2 rounded" />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label class="text-sm block mb-1">City*</label>
+                      <select name="city" required class="w-[371px] border px-3 py-2 rounded">
+                        <option value="">Select city</option>
+                        <option>Bengaluru</option>
+                        <option>Mysuru</option>
+                        <option>Mangalore</option>
+                        <option>Hubballi-Dharwad</option>
+                        <option>Belagavi</option>
+                        <option>Davangere</option>
+                        <option>Ballari</option>
+                        <option>Shivamogga</option>
+                        <option>Udupi</option>
+                        <option>Kalaburagi</option>
+                        <option>Other</option>
+                      </select>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                      <button type="submit" class="bg-brandRed text-white px-5 py-2 rounded font-medium">Send</button>
+                      <button type="button" onclick="toggleForm(3)" class="underline text-sm">Cancel</button>
+                    </div>
+
+                    <div class="mt-2 text-sm text-green-700 hidden" data-success="3">Thanks! We'll contact you soon.</div>
+                    <div class="mt-2 text-sm text-red-700 hidden" data-error="3">Failed to submit. Try again.</div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -169,12 +419,13 @@
 
 
 
-  <section class="flex items-center justify-center px-6">
+
+  <!-- <section class="flex items-center justify-center px-6">
     <form id="elevatorForm"
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl w-full bg-white rounded-2xl p-8"
       novalidate>
 
-      <!-- First Name -->
+
       <div class="flex flex-col">
         <label for="firstName" class="mb-2 text-sm font-medium text-gray-700">First name <span
             class="text-red-500">*</span></label>
@@ -184,7 +435,7 @@
         <p id="err-firstName" class="text-red-500 text-sm mt-1 hidden">Please enter your first name.</p>
       </div>
 
-      <!-- Last Name -->
+
       <div class="flex flex-col">
         <label for="lastName" class="mb-2 text-sm font-medium text-gray-700">Last name</label>
         <input id="lastName" name="lastName" type="text"
@@ -192,7 +443,7 @@
           placeholder="Doe" />
       </div>
 
-      <!-- Contact Number -->
+     
       <div class="flex flex-col">
         <label for="contactNumber" class="mb-2 text-sm font-medium text-gray-700">Contact number <span
             class="text-red-500">*</span></label>
@@ -202,7 +453,7 @@
         <p id="err-contact" class="text-red-500 text-sm mt-1 hidden">Enter a valid phone number (7–15 digits).</p>
       </div>
 
-      <!-- Email -->
+
       <div class="flex flex-col md:col-span-2 lg:col-span-1">
         <label for="email" class="mb-2 text-sm font-medium text-gray-700">Email ID <span
             class="text-red-500">*</span></label>
@@ -212,7 +463,7 @@
         <p id="err-email" class="text-red-500 text-sm mt-1 hidden">Enter a valid email address.</p>
       </div>
 
-      <!-- Elevator For -->
+
       <div class="flex flex-col">
         <label for="elevatorFor" class="mb-2 text-sm font-medium text-gray-700">Elevator required for</label>
         <select id="elevatorFor" name="elevatorFor"
@@ -226,7 +477,7 @@
         </select>
       </div>
 
-      <!-- Floors -->
+
       <div class="flex flex-col">
         <label for="floors" class="mb-2 text-sm font-medium text-gray-700">Floors (stops)</label>
         <select id="floors" name="floors"
@@ -241,7 +492,7 @@
         </select>
       </div>
 
-      <!-- Message (full width) -->
+ 
       <div class="flex flex-col md:col-span-2 lg:col-span-3">
         <label for="message" class="mb-2 text-sm font-medium text-gray-700">Additional details</label>
         <textarea id="message" name="message" rows="3"
@@ -249,7 +500,7 @@
           placeholder="Any special requirements..."></textarea>
       </div>
 
-      <!-- Submit (full width center) -->
+ 
       <div class="md:col-span-2 lg:col-span-3 flex flex-col items-center">
         <div id="formStatus" class="text-sm text-gray-600 mb-2" aria-live="polite"></div>
 
@@ -265,51 +516,585 @@
         </button>
       </div>
     </form>
-  </section>
+  </section> -->
 
-  <section class="py-16 bg-white" id="product1">
+  <section class="py-16 bg-white" id="VERTICASA">
     <div class="max-w-7xl mx-auto px-6">
-      <!-- Section Header -->
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
-        Features
-      </h2>
+      <!-- Section Heading -->
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center">VertiCASA</h2>
 
-      <!-- Grid -->
-      <div class=" grid grid-cols-1 md:grid-cols-3 gap-12">
+      <!-- Intro text -->
+      <p class="text-center max-w-3xl mx-auto text-gray-600 mb-12 leading-relaxed">
+        The very essence of VertiCASA is something you feel each time you take a ride on one of our home elevators.
+        Our models blend iconic design, exceptional engineering and unrivalled craftsmanship to create an irresistible,
+        emotional experience.
+      </p>
 
-        <!-- Item 1 -->
-        <div>
-          <img src="./images/banner/25.jpg" alt="Elevator Dummy" class="rounded-lg shadow-md mb-6 w-full h-64 object-cover">
-          <h3 class="text-xl font-semibold mb-2">Heading One</h3>
-          <p class="text-gray-600">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
-          </p>
+      <!-- Layout: left card | center specs | right card -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+
+        <!-- LEFT CARD -->
+        <div class="border rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition p-6">
+          <img src="./images/banner/25.jpg" alt="VertiCASA B-TRAC" class="w-full h-56 md:h-64 object-cover rounded-lg mb-4">
+          <h3 class="text-xl font-semibold mb-1">VertiCASA B-TRAC Series</h3>
+          <p class="text-gray-600 mb-2 text-sm">Belt driven homelift</p>
+          <a href="#" class="text-brandRed text-sm font-medium hover:underline block mb-3">Data sheet</a>
+          <p class="text-gray-500 mb-4 italic text-sm">Paradise in motion</p>
+
+          <button onclick="openForm('btrac')"
+            class="bg-brandRed text-white px-4 py-2 rounded-lg font-medium text-sm shadow-sm hover:brightness-105 transition">
+            Get pricelists & catalogues
+          </button>
+
+          <!-- form (hidden) -->
+          <div id="form-btrac" class="hidden mt-5">
+            <div class="bg-white border rounded-xl p-5 shadow-sm">
+              <div class="flex items-start justify-between">
+                <h4 class="text-lg font-medium">Request pricelist</h4>
+                <button class="text-sm text-gray-500 hover:text-gray-700" onclick="closeForm('btrac')" aria-label="Close form">✕</button>
+              </div>
+
+              <form class="mt-4 space-y-3" onsubmit="submitProductForm(event,'btrac')">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <label class="block">
+                    <span class="text-xs text-gray-600">First name*</span>
+                    <input name="firstName" required
+                      class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandRed transition" />
+                  </label>
+                  <label class="block">
+                    <span class="text-xs text-gray-600">Last name*</span>
+                    <input name="lastName" required
+                      class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandRed transition" />
+                  </label>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <label class="block">
+                    <span class="text-xs text-gray-600">Contact number*</span>
+                    <input name="phone" type="tel" required placeholder="e.g. 98XXXXXXXX" pattern="[0-9+() -]{6,}"
+                      class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandRed transition" />
+                  </label>
+
+                  <label class="block">
+                    <span class="text-xs text-gray-600">Email ID*</span>
+                    <input name="email" type="email" required placeholder="you@company.com"
+                      class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandRed transition" />
+                  </label>
+                </div>
+
+                <label class="block">
+                  <span class="text-xs text-gray-600">City*</span>
+                  <select name="city" required
+                    class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brandRed transition">
+                    <option value="">Select city</option>
+                    <option>Bengaluru</option>
+                    <option>Mysuru</option>
+                    <option>Mangalore</option>
+                    <option>Hubballi-Dharwad</option>
+                    <option>Belagavi</option>
+                    <option>Davangere</option>
+                    <option>Ballari</option>
+                    <option>Shivamogga</option>
+                    <option>Udupi</option>
+                    <option>Kalaburagi</option>
+                    <option>Other</option>
+                  </select>
+                </label>
+
+                <div class="flex items-center gap-3 mt-2">
+                  <button type="submit" class="bg-brandRed text-white px-4 py-2 rounded-lg font-medium shadow-sm">Send</button>
+                  <button type="button" class="text-sm text-gray-600 underline" onclick="closeForm('btrac')">Cancel</button>
+                  <div class="ml-auto text-sm" aria-live="polite">
+                    <span class="text-green-600 hidden" data-success>Thanks — we’ll contact you soon.</span>
+                    <span class="text-red-600 hidden" data-fail>Submission failed. Try again.</span>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- end form -->
         </div>
 
-        <!-- Item 2 -->
-        <div id="product2">
-          <img src="./images/banner/5581945_3650.jpg" alt="Elevator Dummy" class="rounded-lg shadow-md mb-6 w-full h-64 object-cover">
-          <h3 class="text-xl font-semibold mb-2">Heading Two</h3>
-          <p class="text-gray-600">
-            Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper.
-          </p>
+        <!-- CENTER: exact specs from your image -->
+        <div class="px-4 md:px-8">
+          <ul class="list-disc list-inside space-y-2 text-sm md:text-base text-gray-700">
+            <li><strong>Drive:</strong> MRL Gearless Belt Drive</li>
+            <li><strong>Stops:</strong> Upto 6 Stops</li>
+            <li><strong>Capacity:</strong> 260-450 kg</li>
+            <li><strong>Rated speed:</strong> 0.30-0.50 m/s</li>
+            <li><strong>Connection:</strong> 1-phase, 230V, 50/60 Hz</li>
+            <li><strong>Power:</strong> 0.9-1.5 kW</li>
+            <li><strong>Pit:</strong> min 500mm</li>
+            <li><strong>Headroom:</strong> min 3000mm</li>
+            <li><strong>Doors:</strong> Telescopic Sliding Auto-Doors</li>
+          </ul>
         </div>
 
-        <!-- Item 3 -->
-        <div id="product3">
-          <img src="./images/banner/6610172_3993.jpg" alt="Elevator Dummy" class="rounded-lg shadow-md mb-6 w-full h-64 object-cover">
-          <h3 class="text-xl font-semibold mb-2">Heading Three</h3>
-          <p class="text-gray-600">
-            Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit.
-          </p>
-        </div>
+        <!-- RIGHT CARD -->
+        <div class="border rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition p-6">
+          <img src="./images/banner/5581945_3650.jpg" alt="VertiCASA HYDRA" class="w-full h-56 md:h-64 object-cover rounded-lg mb-4">
+          <h3 class="text-xl font-semibold mb-1">VertiCASA HYDRA Series</h3>
+          <p class="text-gray-600 mb-2 text-sm">Advanced hydraulic homelift</p>
+          <a href="#" class="text-brandRed text-sm font-medium hover:underline block mb-3">Data sheet</a>
+          <p class="text-gray-500 mb-4 italic text-sm">Safety beyond measure</p>
 
-        <!-- Item 4 -->
-      
+          <button onclick="openForm('hydra')"
+            class="bg-brandRed text-white px-4 py-2 rounded-lg font-medium text-sm shadow-sm hover:brightness-105 transition">
+            Get pricelists & catalogues
+          </button>
+
+          <!-- form -->
+          <div id="form-hydra" class="hidden mt-5">
+            <div class="bg-white border rounded-xl p-5 shadow-sm">
+              <div class="flex items-start justify-between">
+                <h4 class="text-lg font-medium">Request pricelist</h4>
+                <button class="text-sm text-gray-500 hover:text-gray-700" onclick="closeForm('hydra')" aria-label="Close form">✕</button>
+              </div>
+
+              <form class="mt-4 space-y-3" onsubmit="submitProductForm(event,'hydra')">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <label class="block">
+                    <span class="text-xs text-gray-600">First name*</span>
+                    <input name="firstName" required
+                      class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandRed transition" />
+                  </label>
+                  <label class="block">
+                    <span class="text-xs text-gray-600">Last name*</span>
+                    <input name="lastName" required
+                      class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandRed transition" />
+                  </label>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <label class="block">
+                    <span class="text-xs text-gray-600">Contact number*</span>
+                    <input name="phone" type="tel" required placeholder="e.g. 98XXXXXXXX" pattern="[0-9+() -]{6,}"
+                      class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandRed transition" />
+                  </label>
+
+                  <label class="block">
+                    <span class="text-xs text-gray-600">Email ID*</span>
+                    <input name="email" type="email" required placeholder="you@company.com"
+                      class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandRed transition" />
+                  </label>
+                </div>
+
+                <label class="block">
+                  <span class="text-xs text-gray-600">City*</span>
+                  <select name="city" required
+                    class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brandRed transition">
+                    <option value="">Select city</option>
+                    <option>Bengaluru</option>
+                    <option>Mysuru</option>
+                    <option>Mangalore</option>
+                    <option>Hubballi-Dharwad</option>
+                    <option>Belagavi</option>
+                    <option>Davangere</option>
+                    <option>Ballari</option>
+                    <option>Shivamogga</option>
+                    <option>Udupi</option>
+                    <option>Kalaburagi</option>
+                    <option>Other</option>
+                  </select>
+                </label>
+
+                <div class="flex items-center gap-3 mt-2">
+                  <button type="submit" class="bg-brandRed text-white px-4 py-2 rounded-lg font-medium shadow-sm">Send</button>
+                  <button type="button" class="text-sm text-gray-600 underline" onclick="closeForm('hydra')">Cancel</button>
+                  <div class="ml-auto text-sm" aria-live="polite">
+                    <span class="text-green-600 hidden" data-success>Thanks — we’ll contact you soon.</span>
+                    <span class="text-red-600 hidden" data-fail>Submission failed. Try again.</span>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- end form -->
+        </div>
 
       </div>
     </div>
   </section>
+
+
+
+  <section class="py-16 bg-white" id="VERTIPAX">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Section Heading -->
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center">VertiPAX</h2>
+
+      <!-- Intro text -->
+      <p class="text-center max-w-3xl mx-auto text-gray-600 mb-12 leading-relaxed">
+        Engineered to inspire — the VertiPAX series focuses on precision and the perfection of high-speed vertical flow.
+        Solving heavy-duty, high-frequency vertical mobility, VertiPAX is the ideal passenger elevator for low, mid and
+        high-rise properties.
+      </p>
+
+      <!-- Layout: left card | center bullets | right card -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        <!-- LEFT CARD: GeoMet -->
+        <div class="border rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition p-6">
+          <img src="./images/banner/5581945_3650.jpg" alt="VertiPAX GeoMet" class="w-full h-56 md:h-64 object-cover rounded-lg mb-4">
+          <h3 class="text-xl font-semibold mb-1">VertiPAX GeoMet Series</h3>
+          <p class="text-gray-600 mb-2 text-sm">MRL passenger elevators</p>
+          <a href="#" class="text-brandRed text-sm font-medium hover:underline block mb-3">Data sheet</a>
+          <p class="text-gray-500 mb-4 italic text-sm">Refined performance delivered</p>
+
+          <button onclick="openForm('geomet')"
+            class="bg-brandRed text-white px-4 py-2 rounded-lg font-medium text-sm shadow-sm hover:brightness-105 transition">
+            Get pricelists & catalogues
+          </button>
+
+          <!-- form (hidden) -->
+          <div id="form-geomet" class="hidden mt-5">
+            <div class="bg-white border rounded-xl p-5 shadow-sm">
+              <div class="flex items-start justify-between">
+                <h4 class="text-lg font-medium">Request pricelist</h4>
+                <button class="text-sm text-gray-500 hover:text-gray-700" onclick="closeForm('geomet')" aria-label="Close form">✕</button>
+              </div>
+
+              <form class="mt-4 space-y-3" onsubmit="submitProductForm(event,'geomet')">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <label class="block">
+                    <span class="text-xs text-gray-600">First name*</span>
+                    <input name="firstName" required
+                      class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandRed transition" />
+                  </label>
+                  <label class="block">
+                    <span class="text-xs text-gray-600">Last name*</span>
+                    <input name="lastName" required
+                      class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandRed transition" />
+                  </label>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <label class="block">
+                    <span class="text-xs text-gray-600">Contact number*</span>
+                    <input name="phone" type="tel" required placeholder="e.g. 98XXXXXXXX" pattern="[0-9+() -]{6,}"
+                      class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandRed transition" />
+                  </label>
+
+                  <label class="block">
+                    <span class="text-xs text-gray-600">Email ID*</span>
+                    <input name="email" type="email" required placeholder="you@company.com"
+                      class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandRed transition" />
+                  </label>
+                </div>
+
+                <label class="block">
+                  <span class="text-xs text-gray-600">City*</span>
+                  <select name="city" required
+                    class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brandRed transition">
+                    <option value="">Select city</option>
+                    <option>Bengaluru</option>
+                    <option>Mysuru</option>
+                    <option>Mangalore</option>
+                    <option>Hubballi-Dharwad</option>
+                    <option>Belagavi</option>
+                    <option>Davangere</option>
+                    <option>Ballari</option>
+                    <option>Shivamogga</option>
+                    <option>Udupi</option>
+                    <option>Kalaburagi</option>
+                    <option>Other</option>
+                  </select>
+                </label>
+
+                <div class="flex items-center gap-3 mt-2">
+                  <button type="submit" class="bg-brandRed text-white px-4 py-2 rounded-lg font-medium shadow-sm">Send</button>
+                  <button type="button" class="text-sm text-gray-600 underline" onclick="closeForm('geomet')">Cancel</button>
+                  <div class="ml-auto text-sm" aria-live="polite">
+                    <span class="text-green-600 hidden" data-success>Thanks — we’ll contact you soon.</span>
+                    <span class="text-red-600 hidden" data-fail>Submission failed. Try again.</span>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- end form -->
+        </div>
+
+        <!-- CENTER: Compact bullets (small) -->
+        <div class="px-4 md:px-8">
+          <ul class="list-disc list-inside space-y-2 text-sm md:text-sm text-gray-700">
+            <li><strong>Series:</strong> GeoMet (MRL passenger elevators) &amp; Commer (custom built)</li>
+            <li><strong>Use cases:</strong> Passenger — low/mid/high-rise; Goods/Cargo; Hospital lifts; High-speed apps</li>
+            <li><strong>Performance:</strong> High-speed vertical flow, heavy-duty &amp; high-frequency operation</li>
+            <li><strong>Design:</strong> Precision engineering for smooth rides and refined performance</li>
+            <li><strong>Downloads:</strong> Data sheets available on each card</li>
+            <li><strong>CTAs:</strong> GeoMet — Get pricelists &amp; catalogues; Commer — Enquire now</li>
+          </ul>
+        </div>
+
+        <!-- RIGHT CARD: Commer -->
+        <div class="border rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition p-6">
+          <img src="./images/banner/5581945_3650.jpg" alt="VertiPAX Commer" class="w-full h-56 md:h-64 object-cover rounded-lg mb-4">
+          <h3 class="text-xl font-semibold mb-1">VertiPAX Commer Series</h3>
+          <p class="text-gray-600 mb-2 text-sm">Custom built elevators for specialised applications</p>
+          <a href="#" class="text-brandRed text-sm font-medium hover:underline block mb-3">Data sheet</a>
+          <p class="text-gray-500 mb-4 italic text-sm">For Goods/Cargo, Hospital lifts, High-speed applications and more</p>
+
+          <button onclick="openForm('commer')"
+            class="bg-brandRed text-white px-4 py-2 rounded-lg font-medium text-sm shadow-sm hover:brightness-105 transition">
+            Enquire now
+          </button>
+
+          <!-- form (hidden) -->
+          <div id="form-commer" class="hidden mt-5">
+            <div class="bg-white border rounded-xl p-5 shadow-sm">
+              <div class="flex items-start justify-between">
+                <h4 class="text-lg font-medium">Enquiry</h4>
+                <button class="text-sm text-gray-500 hover:text-gray-700" onclick="closeForm('commer')" aria-label="Close form">✕</button>
+              </div>
+
+              <form class="mt-4 space-y-3" onsubmit="submitProductForm(event,'commer')">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <label class="block">
+                    <span class="text-xs text-gray-600">First name*</span>
+                    <input name="firstName" required
+                      class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandRed transition" />
+                  </label>
+                  <label class="block">
+                    <span class="text-xs text-gray-600">Last name*</span>
+                    <input name="lastName" required
+                      class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandRed transition" />
+                  </label>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <label class="block">
+                    <span class="text-xs text-gray-600">Contact number*</span>
+                    <input name="phone" type="tel" required placeholder="e.g. 98XXXXXXXX" pattern="[0-9+() -]{6,}"
+                      class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandRed transition" />
+                  </label>
+
+                  <label class="block">
+                    <span class="text-xs text-gray-600">Email ID*</span>
+                    <input name="email" type="email" required placeholder="you@company.com"
+                      class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandRed transition" />
+                  </label>
+                </div>
+
+                <label class="block">
+                  <span class="text-xs text-gray-600">City*</span>
+                  <select name="city" required
+                    class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brandRed transition">
+                    <option value="">Select city</option>
+                    <option>Bengaluru</option>
+                    <option>Mysuru</option>
+                    <option>Mangalore</option>
+                    <option>Hubballi-Dharwad</option>
+                    <option>Belagavi</option>
+                    <option>Davangere</option>
+                    <option>Ballari</option>
+                    <option>Shivamogga</option>
+                    <option>Udupi</option>
+                    <option>Kalaburagi</option>
+                    <option>Other</option>
+                  </select>
+                </label>
+
+                <div class="flex items-center gap-3 mt-2">
+                  <button type="submit" class="bg-brandRed text-white px-4 py-2 rounded-lg font-medium shadow-sm">Send</button>
+                  <button type="button" class="text-sm text-gray-600 underline" onclick="closeForm('commer')">Cancel</button>
+                  <div class="ml-auto text-sm" aria-live="polite">
+                    <span class="text-green-600 hidden" data-success>Thanks — we’ll contact you soon.</span>
+                    <span class="text-red-600 hidden" data-fail>Submission failed. Try again.</span>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- end form -->
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50" id="VERTICARE">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Heading -->
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center">VertiCare</h2>
+      <p class="text-center max-w-3xl mx-auto text-gray-600 mb-12 leading-relaxed">
+        Elevate your peace of mind with VertiCare AMCs. Expert elevator maintenance services and genuine spare parts by Vertivo —
+        because it's always better safe than sorry.
+      </p>
+
+      <!-- 2-column layout -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+        <!-- Left: Image -->
+        <div>
+          <img src="./images/banner/5581945_3650.jpg" alt="VertiCare Service"
+            class="w-full h-72 md:h-96 object-cover rounded-2xl shadow-sm">
+        </div>
+
+        <!-- Right: Content + CTA + Form -->
+        <div>
+          <h3 class="text-xl font-semibold mb-3 text-gray-900">Complete Elevator Care</h3>
+          <p class="text-gray-600 mb-4 leading-relaxed text-sm">
+            Elevator health checkup, service maintenance, parts replacement, calibration, and complete elevator modernisation —
+            all under one roof and safe hands.
+          </p>
+
+          <!-- CTA -->
+          <button onclick="openForm('verticare')"
+            class="bg-brandRed text-white px-5 py-2 rounded-lg font-medium text-sm shadow-sm hover:brightness-105 transition">
+            Book Free Consultation
+          </button>
+
+          <!-- Form (hidden initially) -->
+          <div id="form-verticare" class="hidden mt-6">
+            <div class="bg-white border rounded-xl p-5 shadow-sm">
+              <div class="flex items-start justify-between">
+                <h4 class="text-lg font-medium">Book a free consultation</h4>
+                <button class="text-sm text-gray-500 hover:text-gray-700" onclick="closeForm('verticare')" aria-label="Close form">✕</button>
+              </div>
+
+              <form class="mt-4 space-y-3" onsubmit="submitProductForm(event,'verticare')">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <label class="block">
+                    <span class="text-xs text-gray-600">First name*</span>
+                    <input name="firstName" required
+                      class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brandRed transition" />
+                  </label>
+                  <label class="block">
+                    <span class="text-xs text-gray-600">Last name*</span>
+                    <input name="lastName" required
+                      class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brandRed transition" />
+                  </label>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <label class="block">
+                    <span class="text-xs text-gray-600">Contact number*</span>
+                    <input name="phone" type="tel" required placeholder="e.g. 98XXXXXXXX" pattern="[0-9+() -]{6,}"
+                      class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brandRed transition" />
+                  </label>
+                  <label class="block">
+                    <span class="text-xs text-gray-600">Email ID*</span>
+                    <input name="email" type="email" required placeholder="you@company.com"
+                      class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brandRed transition" />
+                  </label>
+                </div>
+
+                <label class="block">
+                  <span class="text-xs text-gray-600">City*</span>
+                  <select name="city" required
+                    class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brandRed transition">
+                    <option value="">Select city</option>
+                    <option>Bengaluru</option>
+                    <option>Mysuru</option>
+                    <option>Mangalore</option>
+                    <option>Hubballi-Dharwad</option>
+                    <option>Belagavi</option>
+                    <option>Davangere</option>
+                    <option>Ballari</option>
+                    <option>Shivamogga</option>
+                    <option>Udupi</option>
+                    <option>Kalaburagi</option>
+                    <option>Other</option>
+                  </select>
+                </label>
+
+                <div class="flex items-center gap-3 mt-2">
+                  <button type="submit" class="bg-brandRed text-white px-4 py-2 rounded-lg font-medium shadow-sm">Send</button>
+                  <button type="button" class="text-sm text-gray-600 underline" onclick="closeForm('verticare')">Cancel</button>
+                  <div class="ml-auto text-sm" aria-live="polite">
+                    <span class="text-green-600 hidden" data-success>Thanks — we’ll contact you soon.</span>
+                    <span class="text-red-600 hidden" data-fail>Submission failed. Try again.</span>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- end form -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // open & close helpers
+    function openForm(id) {
+      const wrap = document.getElementById('form-' + id);
+      if (!wrap) return;
+      wrap.classList.remove('hidden');
+      const form = wrap.querySelector('form');
+      if (form) setTimeout(() => form.querySelector('input[name="firstName"]')?.focus(), 120);
+    }
+
+    function closeForm(id) {
+      const wrap = document.getElementById('form-' + id);
+      if (!wrap) return;
+      wrap.querySelectorAll('[data-success],[data-fail]').forEach(n => n.classList.add('hidden'));
+      wrap.querySelectorAll('[data-err]').forEach(n => n.classList.add('hidden'));
+      wrap.querySelectorAll('input,select').forEach(i => i.classList.remove('ring', 'ring-2'));
+      wrap.classList.add('hidden');
+    }
+
+    // generic submit handler for all product forms
+    async function submitProductForm(e, id) {
+      e.preventDefault();
+      const form = e.target;
+      const wrap = document.getElementById('form-' + id);
+      if (!wrap) return; // safety
+      const successEl = wrap.querySelector('[data-success]');
+      const failEl = wrap.querySelector('[data-fail]');
+      const submitBtn = form.querySelector('[data-submit]') || form.querySelector('button[type="submit"]');
+
+      // simple front-end validation & show errors
+      let ok = true;
+      ['firstName', 'lastName', 'phone', 'email', 'city'].forEach(name => {
+        const el = form.elements[name];
+        if (!el) return;
+        const err = wrap.querySelector(`[data-err="${name}"]`);
+        if (!el.value || (el.type === 'email' && !/\S+@\S+\.\S+/.test(el.value))) {
+          ok = false;
+          if (err) err.classList.remove('hidden');
+          el.classList.add('ring', 'ring-2');
+        } else {
+          if (err) err.classList.add('hidden');
+          el.classList.remove('ring', 'ring-2');
+        }
+      });
+      if (!ok) return;
+
+      // disable + loading
+      const original = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Sending...';
+
+      const payload = Object.fromEntries(new FormData(form).entries());
+      payload.product = id;
+
+      try {
+        // TODO: Replace simulated delay with your actual API call:
+        // const res = await fetch('/api/leads', {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify(payload)
+        // });
+        // if (!res.ok) throw new Error('Network error');
+        await new Promise(r => setTimeout(r, 600)); // simulate network
+
+        successEl.classList.remove('hidden');
+        failEl.classList.add('hidden');
+        form.reset();
+
+        setTimeout(() => closeForm(id), 1200);
+      } catch (err) {
+        failEl.classList.remove('hidden');
+        successEl.classList.add('hidden');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = original;
+      }
+    }
+  </script>
+
+
 
   <!-- <section class="py-12 bg-white">
     <div class="max-w-screen-2xl mx-auto px-6">
@@ -1004,16 +1789,98 @@
   <div id="toast" role="status" aria-live="polite">
     <div id="toastMsg" class="text-sm"></div>
   </div>
-  <div class="h-20"></div>
+
+
+  <footer class="bg-gray-900 text-gray-300 mt-16">
+    <!-- top -->
+    <div class="max-w-7xl mx-auto px-6 py-14">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <!-- Brand / blurb -->
+        <div>
+          <a href="./index.php" class="inline-flex items-center gap-2">
+            <span class="text-xl font-extrabold tracking-tight text-white">Vertivo Elevators</span>
+          </a>
+          <p class="mt-4 text-sm leading-relaxed text-gray-400">
+            Reliable, safe and innovative vertical transportation solutions for homes, apartments and commercial spaces.
+          </p>
+          <!-- social -->
+          <div class="mt-5 flex items-center gap-4">
+            <a href="#" class="hover:text-white focus:outline-none" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current">
+                <path d="M.057 24l1.687-6.163A11.867 11.867 0 0112.02 0C18.627 0 24 5.373 24 11.98c0 6.607-5.373 11.98-11.98 11.98A11.94 11.94 0 015.9 21.86L.057 24zM6.6 19.214l.39.232a9.93 9.93 0 004.992 1.356h.004c5.488 0 9.962-4.474 9.962-9.962 0-5.486-4.474-9.96-9.962-9.96-5.487 0-9.96 4.474-9.96 9.96a9.93 9.93 0 001.356 4.992l.232.39-.996 3.642 3.642-.99zm11.387-5.48c-.062-.103-.23-.165-.48-.29-.25-.124-1.476-.727-1.705-.81-.228-.083-.394-.124-.56.125-.166.248-.644.81-.79.977-.145.165-.29.186-.54.062-.25-.125-1.056-.39-2.01-1.24-.742-.662-1.243-1.48-1.388-1.73-.145-.248-.016-.382.109-.507.112-.112.248-.29.373-.435.124-.145.165-.248.248-.414.083-.165.042-.31-.02-.435-.063-.124-.56-1.35-.767-1.857-.2-.48-.404-.414-.56-.414l-.477-.01c-.166 0-.435.062-.664.31-.228.248-.87.85-.87 2.072s.892 2.404 1.016 2.57c.124.165 1.755 2.68 4.253 3.757.595.256 1.058.41 1.418.525.595.19 1.137.163 1.566.099.478-.071 1.476-.603 1.686-1.186.207-.583.207-1.082.145-1.186z" />
+              </svg>
+            </a>
+            <a href="#" class="hover:text-white focus:outline-none" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current">
+                <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2.2A2.8 2.8 0 1112 16.8 2.8 2.8 0 0112 9.2zM18 6.5a1 1 0 11-2-.002 1 1 0 012 .002z" />
+              </svg>
+            </a>
+            <a href="#" class="hover:text-white focus:outline-none" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current">
+                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v16H0zM8 8h4.8v2.2h.07c.67-1.2 2.3-2.47 4.73-2.47C21.6 7.73 24 10 24 14.14V24h-5v-8.6c0-2.05-.73-3.45-2.55-3.45-1.39 0-2.22.94-2.58 1.85-.13.32-.16.76-.16 1.2V24H8z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick links -->
+        <div>
+          <h3 class="text-white font-semibold tracking-wide">Quick Links</h3>
+          <ul class="mt-4 space-y-3 text-sm">
+            <li><a href="./index.php" class="hover:text-white">Home</a></li>
+            <li><a href="./product.php" class="hover:text-white">Products / Services</a></li>
+            <li><a href="./contact-us.php" class="hover:text-white">Contact Us</a></li>
+            <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <!-- Products anchors -->
+        <div>
+          <h3 class="text-white font-semibold tracking-wide">Product Lines</h3>
+          <ul class="mt-4 space-y-3 text-sm">
+            <li><a href="./product.php#VERTICASA" class="hover:text-white">VertiCASA Series</a></li>
+            <li><a href="./product.php#VERTIPAX" class="hover:text-white">VertiPAX Series</a></li>
+            <li><a href="./product.php#VERTICARE" class="hover:text-white">VertiCare (Service)</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h3 class="text-white font-semibold tracking-wide">Contact</h3>
+          <ul class="mt-4 space-y-3 text-sm">
+            <li><span class="text-gray-400">Phone:</span> <a href="tel:+910000000000" class="hover:text-white">+91 00000 00000</a></li>
+            <li><span class="text-gray-400">Email:</span> <a href="mailto:hello@vertivo.in" class="hover:text-white">hello@vertivo.in</a></li>
+            <li><span class="text-gray-400">Address:</span> JP Nagar, Bengaluru, Karnataka</li>
+          </ul>
+
+          <!-- Tiny newsletter (optional) -->
+          <form class="mt-5 flex gap-2" onsubmit="event.preventDefault(); alert('Subscribed!');">
+            <input type="email" required placeholder="Your email"
+              class="w-full px-3 py-2 rounded-lg bg-gray-800 text-gray-200 placeholder-gray-500 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
+            <button class="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- bottom -->
+    <div class="border-t border-gray-800">
+      <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-gray-400">
+          © <span id="year"></span> Vertivo Elevators. All rights reserved.
+        </p>
+
+      </div>
+    </div>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
   <script>
-    new Swiper('.hero-swiper', {
+    // Initialize Swiper
+    const swiper = new Swiper('.hero-swiper', {
       loop: true,
-      effect: 'fade',
-      autoplay: {
-        delay: 4000
-      },
+      effect: "fade",
       pagination: {
         el: '.swiper-pagination',
         clickable: true
@@ -1022,7 +1889,72 @@
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev'
       },
+      autoplay: {
+        delay: 7000,
+        disableOnInteraction: false
+      }
     });
+
+    // Toggle form visibility
+    function toggleForm(n) {
+      const el = document.getElementById('form-container-' + n);
+      if (!el) return;
+      el.classList.toggle('hidden');
+      // scroll form into view if opened
+      if (!el.classList.contains('hidden')) {
+        el.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }
+    }
+
+    // Hook CTA buttons to open their respective forms
+    document.querySelectorAll('.cta-get-quote').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const slide = btn.getAttribute('data-slide');
+        toggleForm(slide);
+      });
+    });
+
+    // Basic front-end form submit (replace with real API)
+    async function submitForm(e, id) {
+      e.preventDefault();
+      const formEl = document.querySelector(`[data-form="${id}"]`);
+      const successEl = document.querySelector(`[data-success="${id}"]`);
+      const errorEl = document.querySelector(`[data-error="${id}"]`);
+
+      // Simple validation (HTML required attributes do most)
+      const formData = new FormData(formEl);
+      const payload = Object.fromEntries(formData.entries());
+
+      // Show a basic loading state on the submit button
+      const submitBtn = formEl.querySelector('button[type="submit"]');
+      const origText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        // TODO: replace the following simulated request with your actual POST to the server
+        await new Promise(r => setTimeout(r, 800)); // simulate network
+
+        successEl.classList.remove('hidden');
+        errorEl.classList.add('hidden');
+
+        formEl.reset();
+
+        setTimeout(() => {
+          toggleForm(id);
+          successEl.classList.add('hidden');
+        }, 1600);
+      } catch (err) {
+        successEl.classList.add('hidden');
+        errorEl.classList.remove('hidden');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = origText;
+      }
+    }
   </script>
 
   <script>
