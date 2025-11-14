@@ -12,7 +12,7 @@ $pdo = db();
 $q       = trim($_GET['q'] ?? '');
 $page    = max(1, (int)($_GET['page'] ?? 1));
 $perPage = (int)($_GET['per'] ?? 20);
-$perPage = max(1, min(100, $perPage)); // clamp 1..100
+$perPage = max(1, min(100, $perPage));
 $offset  = ($page - 1) * $perPage;
 
 $where  = '';
@@ -53,38 +53,41 @@ $st->execute();
 $rows = $st->fetchAll() ?: [];
 
 // Helper for building pagination URLs while preserving filters
-function url_with(array $extra): string {
+function url_with(array $extra): string
+{
   $qs = array_merge($_GET, $extra);
   return '?' . http_build_query($qs);
 }
 ?>
 <!doctype html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <title>Leads — Admin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-50">
   <div class="max-w-7xl mx-auto px-6 py-8">
     <div class="flex items-center justify-between gap-4 flex-wrap">
       <h1 class="text-2xl font-bold">Leads</h1>
       <div class="flex items-center gap-3">
-        <!-- Point this to your actual export endpoint -->
-        <a href="/admin/export-csv.php<?= $q!=='' ? ('?'.http_build_query(['q'=>$q])) : '' ?>"
-           class="px-4 py-2 rounded-lg bg-green-600 text-white">Export CSV</a>
+
+        <a href="/admin/export.php<?= $q !== '' ? ('?' . http_build_query(['q' => $q])) : '' ?>"
+          class="px-4 py-2 rounded-lg bg-green-600 text-white">Export CSV</a>
         <a href="/admin/logout.php" class="px-4 py-2 rounded-lg bg-gray-900 text-white">Logout</a>
       </div>
     </div>
 
     <form method="get" class="mt-5 flex items-center gap-2 flex-wrap">
-      <input type="text" name="q" value="<?=htmlspecialchars($q)?>"
-             placeholder="Search name, email, phone, source, product…"
-             class="w-full md:w-96 px-3 py-2 border rounded-lg">
+      <input type="text" name="q" value="<?= htmlspecialchars($q) ?>"
+        placeholder="Search name, email, phone, source, product…"
+        class="w-full md:w-96 px-3 py-2 border rounded-lg">
       <select name="per" class="px-3 py-2 border rounded-lg">
-        <?php foreach ([20,50,100] as $opt): ?>
-          <option value="<?=$opt?>" <?= $perPage===$opt ? 'selected':'' ?>><?=$opt?> / page</option>
+        <?php foreach ([20, 50, 100] as $opt): ?>
+          <option value="<?= $opt ?>" <?= $perPage === $opt ? 'selected' : '' ?>><?= $opt ?> / page</option>
         <?php endforeach; ?>
       </select>
       <button class="px-3 py-2 border rounded-lg bg-white">Apply</button>
@@ -98,6 +101,7 @@ function url_with(array $extra): string {
             <th class="text-left p-3">Name</th>
             <th class="text-left p-3">Phone</th>
             <th class="text-left p-3">Email</th>
+            <th class="text-left p-3">City</th>
             <th class="text-left p-3">Source</th>
             <th class="text-left p-3">Application</th>
             <th class="text-left p-3">Floors</th>
@@ -114,6 +118,7 @@ function url_with(array $extra): string {
                 <td class="p-3"><?= htmlspecialchars(trim(($r['first_name'] ?? '') . ' ' . ($r['last_name'] ?? ''))) ?></td>
                 <td class="p-3"><?= htmlspecialchars($r['phone'] ?? '') ?></td>
                 <td class="p-3"><?= htmlspecialchars($r['email'] ?? '') ?></td>
+                <td class="p-3"><?= htmlspecialchars($r['city'] ?? '') ?></td>
                 <td class="p-3"><?= htmlspecialchars($r['source_page'] ?? '—') ?></td>
                 <td class="p-3"><?= htmlspecialchars($r['application'] ?? '') ?></td>
                 <td class="p-3"><?= htmlspecialchars($r['floors'] ?? '') ?></td>
@@ -123,7 +128,9 @@ function url_with(array $extra): string {
               </tr>
             <?php endforeach; ?>
           <?php else: ?>
-            <tr><td colspan="10" class="p-6 text-center text-gray-500">No leads found.</td></tr>
+            <tr>
+              <td colspan="10" class="p-6 text-center text-gray-500">No leads found.</td>
+            </tr>
           <?php endif; ?>
         </tbody>
       </table>
@@ -132,13 +139,14 @@ function url_with(array $extra): string {
     <!-- Pagination -->
     <div class="mt-6 flex items-center gap-2 flex-wrap">
       <?php if ($page > 1): ?>
-        <a class="px-3 py-1 border rounded" href="<?= url_with(['page'=>$page-1]) ?>">Prev</a>
+        <a class="px-3 py-1 border rounded" href="<?= url_with(['page' => $page - 1]) ?>">Prev</a>
       <?php endif; ?>
       <span class="text-sm text-gray-600">Page <?= $page ?> / <?= $pages ?> (<?= $total ?>)</span>
       <?php if ($page < $pages): ?>
-        <a class="px-3 py-1 border rounded" href="<?= url_with(['page'=>$page+1]) ?>">Next</a>
+        <a class="px-3 py-1 border rounded" href="<?= url_with(['page' => $page + 1]) ?>">Next</a>
       <?php endif; ?>
     </div>
   </div>
 </body>
+
 </html>

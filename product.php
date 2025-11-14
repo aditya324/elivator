@@ -202,7 +202,7 @@
                   data-slide="1">Get Quotation</button>
 
                 <!-- Inline form container (hidden by default) -->
-                <div id="form-container-1" class="contact-panel mt-6 bg-white/95 text-black p-6 rounded-lg shadow-lg hidden">
+                <div id="form-container-1" data-product="VertiCASA" class="contact-panel mt-6 bg-white/95 text-black p-6 rounded-lg shadow-lg hidden">
                   <h3 class="text-xl font-semibold mb-3">Request a Quotation</h3>
                   <form class="space-y-3" data-form="1" onsubmit="submitForm(event, 1)">
                     <div class="flex gap-3">
@@ -275,7 +275,7 @@
               <div class="mt-6">
                 <button class="cta-get-quote bg-brandRed px-6 py-3 rounded-md font-semibold" data-slide="2">Get Quotation</button>
 
-                <div id="form-container-2" class="contact-panel mt-6 bg-white/95 text-black p-6 rounded-lg shadow-lg hidden mx-auto">
+                <div id="form-container-2" data-product="VertiPAX" class="contact-panel mt-6 bg-white/95 text-black p-6 rounded-lg shadow-lg hidden mx-auto">
                   <h3 class="text-xl font-semibold mb-3">Request a Quotation</h3>
                   <form class="space-y-3" data-form="2" onsubmit="submitForm(event, 2)">
                     <div class="flex gap-3">
@@ -347,7 +347,7 @@
               <div class="mt-6">
                 <button class="cta-get-quote bg-brandRed px-6 py-3 rounded-md font-semibold" data-slide="3">Book your free service checkup</button>
 
-                <div id="form-container-3" class="contact-panel mt-6 bg-white/95 text-black p-6 rounded-lg shadow-lg hidden mx-auto">
+                <div id="form-container-3" data-product="VertiCARE" class="contact-panel mt-6 bg-white/95 text-black p-6 rounded-lg shadow-lg hidden mx-auto">
                   <h3 class="text-xl font-semibold mb-3">Book Free Service Checkup</h3>
                   <form class="space-y-3" data-form="3" onsubmit="submitForm(event, 3)">
                     <div class="flex gap-3">
@@ -1920,35 +1920,76 @@
     // Basic front-end form submit (replace with real API)
     async function submitForm(e, id) {
       e.preventDefault();
+
       const formEl = document.querySelector(`[data-form="${id}"]`);
       const successEl = document.querySelector(`[data-success="${id}"]`);
       const errorEl = document.querySelector(`[data-error="${id}"]`);
+      const submitBtn = formEl.querySelector('button[type="submit"]');
 
-      // Simple validation (HTML required attributes do most)
+      // Clear old messages
+      successEl.classList.add('hidden');
+      errorEl.classList.add('hidden');
+
+      // Gather all input values
       const formData = new FormData(formEl);
       const payload = Object.fromEntries(formData.entries());
 
-      // Show a basic loading state on the submit button
-      const submitBtn = formEl.querySelector('button[type="submit"]');
+      // 🔹 Add standard metadata
+      // Auto-detect the page or section that triggered this form
+      payload.sourcePage = payload.sourcePage ||
+        document.title // e.g. "VertiPAX – Vertivo Elevators"
+        ||
+        location.pathname.split('/').pop() // fallback like "product.php"
+        ||
+        'unknown';
+      payload.sourceUrl = location.href; // full URL for tracking
+      payload.submittedAt = new Date().toISOString();
+
+      // 🔹 If this form sits inside a product section, grab it
+      const container = document.getElementById(`form-container-${id}`);
+      const inferredProduct = container?.getAttribute('data-product');
+      if (inferredProduct && !payload.product) payload.product = inferredProduct;
+
+      // Button loading UX
       const origText = submitBtn.textContent;
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending...';
 
       try {
-        // TODO: replace the following simulated request with your actual POST to the server
-        await new Promise(r => setTimeout(r, 800)); // simulate network
+        // Send to your PHP API
+        const res = await fetch('/api/send-lead.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
 
+        let json = {};
+        try {
+          json = await res.json();
+        } catch (_) {}
+
+        if (!res.ok || !json.ok) {
+          const msg = json?.errors ?
+            'Please check your details and try again.' :
+            'Failed to submit. Try again.';
+          errorEl.textContent = msg;
+          errorEl.classList.remove('hidden');
+          return;
+        }
+
+        // Success flow (same as before)
         successEl.classList.remove('hidden');
-        errorEl.classList.add('hidden');
-
         formEl.reset();
 
         setTimeout(() => {
-          toggleForm(id);
+          if (typeof toggleForm === 'function') toggleForm(id);
           successEl.classList.add('hidden');
         }, 1600);
+
       } catch (err) {
-        successEl.classList.add('hidden');
+        errorEl.textContent = 'Network error. Please retry.';
         errorEl.classList.remove('hidden');
       } finally {
         submitBtn.disabled = false;
@@ -2100,6 +2141,9 @@
         status.textContent = 'Sending your request...';
 
         try {
+
+
+          console.log(data)
           // TODO: replace with your backend endpoint
           // const res = await fetch('/api/lead', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) });
           // const result = await res.json();

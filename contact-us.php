@@ -304,7 +304,6 @@
                   <div class="mt-1">WhatsApp: <a class="underline" href="https://wa.me/9198xxxxxxxx" target="_blank" rel="noopener">Chat with us</a></div>
                 </div>
               </section>
-
               <section class="pt-4 border-t">
                 <h3 class="text-sm font-semibold text-gray-700 mb-1">Working Hours</h3>
                 <ul class="text-sm text-gray-700">
@@ -489,7 +488,7 @@
 
       const payload = Object.fromEntries(new FormData(form).entries());
       payload.submittedAt = new Date().toISOString();
-console.log(payload, "payload")
+      console.log(payload, "payload")
       submitBtn.disabled = true;
       const orig = submitBtn.innerText;
       submitBtn.innerText = 'Sending...';

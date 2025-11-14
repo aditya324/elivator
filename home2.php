@@ -449,7 +449,7 @@
               <!-- <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4">Digital Media Services</h2> -->
               <p class="text-base md:text-lg text-red-100 mb-6 leading-relaxed">
                 Customer obsession and business integrity remains the focal point of our management policies. We aim to develop and deliver products engineered to the highest quality; keeping user appreciation and comfort at the core of our design </p>
-            
+
             </div>
           </div>
         </div>
@@ -538,7 +538,7 @@
               class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute bottom-6 left-6">
               <div class="bg-red-600 text-white px-4 py-3 rounded text-base font-semibold">
-               VertiCASA HYDRA Series
+                VertiCASA HYDRA Series
               </div>
             </div>
           </div>
@@ -672,109 +672,120 @@
     </div>
   </section>
 
-<!-- ======== Footer ======== -->
-<footer class="bg-gray-900 text-gray-300 mt-16">
-  <!-- top -->
-  <div class="max-w-7xl mx-auto px-6 py-14">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-      <!-- Brand / blurb -->
-      <div>
-        <a href="./index.php" class="inline-flex items-center gap-2">
-          <span class="text-xl font-extrabold tracking-tight text-white">Vertivo Elevators</span>
-        </a>
-        <p class="mt-4 text-sm leading-relaxed text-gray-400">
-          Reliable, safe and innovative vertical transportation solutions for homes, apartments and commercial spaces.
-        </p>
-        <!-- social -->
-        <div class="mt-5 flex items-center gap-4">
-          <a href="#" class="hover:text-white focus:outline-none" aria-label="WhatsApp">
-            <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path d="M.057 24l1.687-6.163A11.867 11.867 0 0112.02 0C18.627 0 24 5.373 24 11.98c0 6.607-5.373 11.98-11.98 11.98A11.94 11.94 0 015.9 21.86L.057 24zM6.6 19.214l.39.232a9.93 9.93 0 004.992 1.356h.004c5.488 0 9.962-4.474 9.962-9.962 0-5.486-4.474-9.96-9.962-9.96-5.487 0-9.96 4.474-9.96 9.96a9.93 9.93 0 001.356 4.992l.232.39-.996 3.642 3.642-.99zm11.387-5.48c-.062-.103-.23-.165-.48-.29-.25-.124-1.476-.727-1.705-.81-.228-.083-.394-.124-.56.125-.166.248-.644.81-.79.977-.145.165-.29.186-.54.062-.25-.125-1.056-.39-2.01-1.24-.742-.662-1.243-1.48-1.388-1.73-.145-.248-.016-.382.109-.507.112-.112.248-.29.373-.435.124-.145.165-.248.248-.414.083-.165.042-.31-.02-.435-.063-.124-.56-1.35-.767-1.857-.2-.48-.404-.414-.56-.414l-.477-.01c-.166 0-.435.062-.664.31-.228.248-.87.85-.87 2.072s.892 2.404 1.016 2.57c.124.165 1.755 2.68 4.253 3.757.595.256 1.058.41 1.418.525.595.19 1.137.163 1.566.099.478-.071 1.476-.603 1.686-1.186.207-.583.207-1.082.145-1.186z"/></svg>
+  <!-- ======== Footer ======== -->
+  <footer class="bg-gray-900 text-gray-300 mt-16">
+    <!-- top -->
+    <div class="max-w-7xl mx-auto px-6 py-14">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <!-- Brand / blurb -->
+        <div>
+          <a href="./index.php" class="inline-flex items-center gap-2">
+            <span class="text-xl font-extrabold tracking-tight text-white">Vertivo Elevators</span>
           </a>
-          <a href="#" class="hover:text-white focus:outline-none" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2.2A2.8 2.8 0 1112 16.8 2.8 2.8 0 0112 9.2zM18 6.5a1 1 0 11-2-.002 1 1 0 012 .002z"/></svg>
-          </a>
-          <a href="#" class="hover:text-white focus:outline-none" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v16H0zM8 8h4.8v2.2h.07c.67-1.2 2.3-2.47 4.73-2.47C21.6 7.73 24 10 24 14.14V24h-5v-8.6c0-2.05-.73-3.45-2.55-3.45-1.39 0-2.22.94-2.58 1.85-.13.32-.16.76-.16 1.2V24H8z"/></svg>
-          </a>
+          <p class="mt-4 text-sm leading-relaxed text-gray-400">
+            Reliable, safe and innovative vertical transportation solutions for homes, apartments and commercial spaces.
+          </p>
+          <!-- social -->
+          <div class="mt-5 flex items-center gap-4">
+            <a href="#" class="hover:text-white focus:outline-none" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current">
+                <path d="M.057 24l1.687-6.163A11.867 11.867 0 0112.02 0C18.627 0 24 5.373 24 11.98c0 6.607-5.373 11.98-11.98 11.98A11.94 11.94 0 015.9 21.86L.057 24zM6.6 19.214l.39.232a9.93 9.93 0 004.992 1.356h.004c5.488 0 9.962-4.474 9.962-9.962 0-5.486-4.474-9.96-9.962-9.96-5.487 0-9.96 4.474-9.96 9.96a9.93 9.93 0 001.356 4.992l.232.39-.996 3.642 3.642-.99zm11.387-5.48c-.062-.103-.23-.165-.48-.29-.25-.124-1.476-.727-1.705-.81-.228-.083-.394-.124-.56.125-.166.248-.644.81-.79.977-.145.165-.29.186-.54.062-.25-.125-1.056-.39-2.01-1.24-.742-.662-1.243-1.48-1.388-1.73-.145-.248-.016-.382.109-.507.112-.112.248-.29.373-.435.124-.145.165-.248.248-.414.083-.165.042-.31-.02-.435-.063-.124-.56-1.35-.767-1.857-.2-.48-.404-.414-.56-.414l-.477-.01c-.166 0-.435.062-.664.31-.228.248-.87.85-.87 2.072s.892 2.404 1.016 2.57c.124.165 1.755 2.68 4.253 3.757.595.256 1.058.41 1.418.525.595.19 1.137.163 1.566.099.478-.071 1.476-.603 1.686-1.186.207-.583.207-1.082.145-1.186z" />
+              </svg>
+            </a>
+            <a href="#" class="hover:text-white focus:outline-none" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current">
+                <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2.2A2.8 2.8 0 1112 16.8 2.8 2.8 0 0112 9.2zM18 6.5a1 1 0 11-2-.002 1 1 0 012 .002z" />
+              </svg>
+            </a>
+            <a href="#" class="hover:text-white focus:outline-none" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current">
+                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v16H0zM8 8h4.8v2.2h.07c.67-1.2 2.3-2.47 4.73-2.47C21.6 7.73 24 10 24 14.14V24h-5v-8.6c0-2.05-.73-3.45-2.55-3.45-1.39 0-2.22.94-2.58 1.85-.13.32-.16.76-.16 1.2V24H8z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick links -->
+        <div>
+          <h3 class="text-white font-semibold tracking-wide">Quick Links</h3>
+          <ul class="mt-4 space-y-3 text-sm">
+            <li><a href="./index.php" class="hover:text-white">Home</a></li>
+            <li><a href="./product.php" class="hover:text-white">Products / Services</a></li>
+            <li><a href="./contact-us.php" class="hover:text-white">Contact Us</a></li>
+            <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <!-- Products anchors -->
+        <div>
+          <h3 class="text-white font-semibold tracking-wide">Product Lines</h3>
+          <ul class="mt-4 space-y-3 text-sm">
+            <li><a href="./product.php#VERTICASA" class="hover:text-white">VertiCASA Series</a></li>
+            <li><a href="./product.php#VERTIPAX" class="hover:text-white">VertiPAX Series</a></li>
+            <li><a href="./product.php#VERTICARE" class="hover:text-white">VertiCare (Service)</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h3 class="text-white font-semibold tracking-wide">Contact</h3>
+          <ul class="mt-4 space-y-3 text-sm">
+            <li><span class="text-gray-400">Phone:</span> <a href="tel:+910000000000" class="hover:text-white">+91 00000 00000</a></li>
+            <li><span class="text-gray-400">Email:</span> <a href="mailto:hello@vertivo.in" class="hover:text-white">hello@vertivo.in</a></li>
+            <li><span class="text-gray-400">Address:</span> JP Nagar, Bengaluru, Karnataka</li>
+          </ul>
+
+          <!-- Tiny newsletter (optional) -->
+          <form class="mt-5 flex gap-2" onsubmit="event.preventDefault(); alert('Subscribed!');">
+            <input type="email" required placeholder="Your email"
+              class="w-full px-3 py-2 rounded-lg bg-gray-800 text-gray-200 placeholder-gray-500 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
+            <button class="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700">Subscribe</button>
+          </form>
         </div>
       </div>
+    </div>
 
-      <!-- Quick links -->
-      <div>
-        <h3 class="text-white font-semibold tracking-wide">Quick Links</h3>
-        <ul class="mt-4 space-y-3 text-sm">
-          <li><a href="./index.php" class="hover:text-white">Home</a></li>
-          <li><a href="./product.php" class="hover:text-white">Products / Services</a></li>
-          <li><a href="./contact-us.php" class="hover:text-white">Contact Us</a></li>
-          <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
-          <li><a href="#" class="hover:text-white">Terms of Service</a></li>
-        </ul>
-      </div>
+    <!-- bottom -->
+    <div class="border-t border-gray-800">
+      <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-gray-400">
+          © <span id="year"></span> Vertivo Elevators. All rights reserved.
+        </p>
 
-      <!-- Products anchors -->
-      <div>
-        <h3 class="text-white font-semibold tracking-wide">Product Lines</h3>
-        <ul class="mt-4 space-y-3 text-sm">
-          <li><a href="./product.php#VERTICASA" class="hover:text-white">VertiCASA Series</a></li>
-          <li><a href="./product.php#VERTIPAX" class="hover:text-white">VertiPAX Series</a></li>
-          <li><a href="./product.php#VERTICARE" class="hover:text-white">VertiCare (Service)</a></li>
-        </ul>
-      </div>
-
-      <!-- Contact -->
-      <div>
-        <h3 class="text-white font-semibold tracking-wide">Contact</h3>
-        <ul class="mt-4 space-y-3 text-sm">
-          <li><span class="text-gray-400">Phone:</span> <a href="tel:+910000000000" class="hover:text-white">+91 00000 00000</a></li>
-          <li><span class="text-gray-400">Email:</span> <a href="mailto:hello@vertivo.in" class="hover:text-white">hello@vertivo.in</a></li>
-          <li><span class="text-gray-400">Address:</span> JP Nagar, Bengaluru, Karnataka</li>
-        </ul>
-
-        <!-- Tiny newsletter (optional) -->
-        <form class="mt-5 flex gap-2" onsubmit="event.preventDefault(); alert('Subscribed!');">
-          <input type="email" required placeholder="Your email"
-                 class="w-full px-3 py-2 rounded-lg bg-gray-800 text-gray-200 placeholder-gray-500 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
-          <button class="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700">Subscribe</button>
-        </form>
       </div>
     </div>
-  </div>
+  </footer>
 
-  <!-- bottom -->
-  <div class="border-t border-gray-800">
-    <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-sm text-gray-400">
-        © <span id="year"></span> Vertivo Elevators. All rights reserved.
-      </p>
-     
-    </div>
-  </div>
-</footer>
+  <!-- Back-to-top button -->
+  <button id="toTop"
+    class="fixed bottom-6 right-6 hidden items-center justify-center w-10 h-10 rounded-full bg-red-600 text-white shadow-lg hover:bg-red-700"
+    aria-label="Scroll to top">
+    ↑
+  </button>
 
-<!-- Back-to-top button -->
-<button id="toTop"
-  class="fixed bottom-6 right-6 hidden items-center justify-center w-10 h-10 rounded-full bg-red-600 text-white shadow-lg hover:bg-red-700"
-  aria-label="Scroll to top">
-  ↑
-</button>
+  <script>
+    // year + back-to-top
+    (function() {
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
 
-<script>
-  // year + back-to-top
-  (function () {
-    const y = document.getElementById('year');
-    if (y) y.textContent = new Date().getFullYear();
-
-    const btn = document.getElementById('toTop');
-    const showAt = 300;
-    const onScroll = () => {
-      if (window.scrollY > showAt) btn.classList.remove('hidden');
-      else btn.classList.add('hidden');
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    onScroll();
-  })();
-</script>
+      const btn = document.getElementById('toTop');
+      const showAt = 300;
+      const onScroll = () => {
+        if (window.scrollY > showAt) btn.classList.remove('hidden');
+        else btn.classList.add('hidden');
+      };
+      window.addEventListener('scroll', onScroll, {
+        passive: true
+      });
+      btn.addEventListener('click', () => window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      }));
+      onScroll();
+    })();
+  </script>
 
 
   <!-- <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
