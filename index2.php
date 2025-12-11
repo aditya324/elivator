@@ -19,7 +19,7 @@
             sans: ["Poppins", "sans-serif"],
           },
           colors: {
-            brandRed: "#E33333",
+            brandRed: "#1B6F5D",
           },
         },
       },

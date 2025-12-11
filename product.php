@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Product 1</title>
+  <title>Vertivo Elivators</title>
 
   <!-- Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -19,7 +19,7 @@
             sans: ['Poppins', 'ui-sans-serif', 'system-ui']
           },
           colors: {
-            brandRed: '#d61a1a'
+            brandRed: '#1B6F5D'
           }
         }
       }
@@ -79,13 +79,26 @@
 
 </head>
 
-<body class="bg-white text-gray-800 font-sans">
+<body class=" text-gray-800 font-sans">
 
 
 
   <header id="site-header"
     class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-10 py-4 md:py-6 bg-white/90 backdrop-blur-sm transition-all duration-500">
-    <div id="brand" class="text-xl font-bold">My Brand</div>
+    <div id="brand" class="flex items-center">
+      <!-- Default Logo -->
+      <img
+        src="./images/logo/Logo Source color.png"
+        alt="Brand Logo"
+        class="h-24 w-auto transition-all duration-300 default-logo">
+
+      <!-- Scroll Logo -->
+      <img
+        src="./images/logo/vertivo-logo-small.png"
+        alt="Brand Logo Small"
+        class="h-12 w-auto transition-all duration-300 scroll-logo hidden">
+    </div>
+
 
     <!-- Desktop nav -->
     <nav id="nav-links" class="hidden md:block">
@@ -926,7 +939,7 @@
 
         <!-- Left: Image -->
         <div>
-          <img src="./images/banner/5581945_3650.jpg" alt="VertiCare Service"
+          <img src="./images/banner/Complete-Elevator-Care.png" alt="VertiCare Service"
             class="w-full h-72 md:h-96 object-cover rounded-2xl shadow-sm">
         </div>
 
@@ -1660,16 +1673,16 @@
 
               <div class="md:w-1/2 w-full">
                 <img
-                  src="/images/banner/schindler-ahead-digital-media-services.jpg"
+                  src="/images/banner/customer-obsession.webp"
                   alt="Elevator digital media"
                   class="object-cover w-full h-72 md:h-[420px] lg:h-[520px]" />
               </div>
 
               <!-- RIGHT: red panel -->
-              <div class="md:w-1/2 w-full bg-red-700 text-white flex items-center">
+              <div class="md:w-1/2 w-full bg-[#1B6F5D] text-white flex items-center">
                 <div class="p-8 md:p-12 lg:p-16 max-w-2xl">
                   <!-- <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4">Digital Media Services</h2> -->
-                  <p class="text-base md:text-lg text-red-100 mb-6 leading-relaxed">
+                  <p class="text-base md:text-xl text-red-100 mb-6 leading-relaxed">
                     Customer obsession and business integrity remains the focal point of our management policies. We aim to develop and deliver products engineered to the highest quality; keeping user appreciation and comfort at the core of our design </p>
                   <!-- <a href="#"
                     class="inline-block bg-white text-red-700 font-semibold px-5 py-3 rounded shadow hover:opacity-95 transition">
@@ -1737,7 +1750,7 @@
       <div class="mt-10"></div>
 
       <!-- Existing 'Our Core Values' content (adapted to match look/spacing) -->
-      <section class="py-12 bg-gray-50">
+      <!-- <section class="py-12 bg-gray-50">
         <div class="max-w-screen-2xl mx-auto px-6">
           <h2 class="text-3xl font-semibold text-red-600 mb-4">Enhance your elevator</h2>
 
@@ -1781,7 +1794,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
     </div>
   </section>
 
@@ -1855,11 +1868,11 @@
           </ul>
 
           <!-- Tiny newsletter (optional) -->
-          <form class="mt-5 flex gap-2" onsubmit="event.preventDefault(); alert('Subscribed!');">
+          <!-- <form class="mt-5 flex gap-2" onsubmit="event.preventDefault(); alert('Subscribed!');">
             <input type="email" required placeholder="Your email"
               class="w-full px-3 py-2 rounded-lg bg-gray-800 text-gray-200 placeholder-gray-500 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
             <button class="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700">Subscribe</button>
-          </form>
+          </form> -->
         </div>
       </div>
     </div>

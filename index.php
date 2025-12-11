@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Parallax Slider Homepage</title>
+  <link rel="icon" type="image/x-icon" href="/images/logo/vertivo-logo.png">
+  <title>Vertivo Elivators</title>
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Swiper CSS (only once) -->
@@ -56,21 +57,19 @@
   <!-- header + responsive mobile menu -->
   <header id="site-header"
     class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-10 py-4 md:py-6 bg-white/90 backdrop-blur-sm transition-all duration-500">
-<div id="brand" class="flex items-center">
-  <!-- Default Logo -->
-  <img 
-    src="./images/logo/vertivo-logo.png"
-    alt="Brand Logo"
-    class="h-20 w-auto transition-all duration-300 default-logo"
-  >
+    <div id="brand" class="flex items-center">
+      <!-- Default Logo -->
+      <img
+        src="./images/logo/Logo Source color.png"
+        alt="Brand Logo"
+        class="h-24 w-auto transition-all duration-300 default-logo">
 
-  <!-- Scroll Logo -->
-  <img 
-    src="./images/logo/vertivo-logo-small.png"
-    alt="Brand Logo Small"
-    class="h-12 w-auto transition-all duration-300 scroll-logo hidden"
-  >
-</div>
+      <!-- Scroll Logo -->
+      <img
+        src="./images/logo/vertivo-logo-small.png"
+        alt="Brand Logo Small"
+        class="h-12 w-auto transition-all duration-300 scroll-logo hidden">
+    </div>
 
 
     <!-- Desktop nav -->
@@ -284,7 +283,7 @@
       <!-- Slide 2 -->
       <div class="swiper-slide relative">
         <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent"></div>
-        <img src="./images/banner/herosection2.jpg" class="h-screen w-full object-cover" />
+        <img src="./images/banner/banner2.webp" class="h-screen w-full object-cover" />
         <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
           <h1 class="text-6xl font-extrabold drop-shadow-lg mb-6">Innovative Modern Designs</h1>
           <!-- <a href="#"
@@ -297,7 +296,7 @@
       <!-- Slide 3 -->
       <div class="swiper-slide relative">
         <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
-        <img src="./images/banner/herosection3.jpg" class="h-screen w-full object-cover" />
+        <img src="./images/banner/banner.webp" class="h-screen w-full object-cover" />
         <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
           <h1 class="text-6xl font-extrabold drop-shadow-lg mb-6">Redefine Your Living Space</h1>
           <!-- <a href="#"
@@ -321,8 +320,8 @@
     <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
 
       <!-- Left Side (Image with parallax) -->
-      <div class="relative rounded-2xl shadow-lg overflow-hidden h-[680px]">
-        <img src="./images/banner/herosection3.jpg" alt="Vertivo Elevators"
+      <div class="relative rounded-2xl shadow-lg overflow-hidden h-[550px]">
+        <img src="./images/banner/elivating-reality.webp" alt="Vertivo Elevators"
           class="parallax-img absolute inset-0 w-full h-full object-cover md:object-center will-change-transform" />
       </div>
 
@@ -330,7 +329,7 @@
       <div>
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Elevating Reliability, Safety &amp; Innovation</h2>
         <p class="text-lg text-gray-700 leading-relaxed mb-4">
-          With <span class="font-semibold text-[#DC0000]">Vertivo Elevators</span>, elevating is made reliable, safe and
+          With <span class="font-semibold text-[#1B6F5D]">Vertivo Elevators</span>, elevating is made reliable, safe and
           exciting. Serving as an integrated vertical transportation solutions provider, we stand in the forefront of
           innovative engineering and pledge our complete adherence to globally valued elevator safety standards.
         </p>
@@ -339,7 +338,7 @@
           in safety, durability and hassle-free travel experience.
         </p>
         <a href="#"
-          class="inline-block px-6 py-3 bg-[#DC0000] text-white font-semibold rounded-lg shadow  transition">View Products</a>
+          class="inline-block px-6 py-3 bg-[#1B6F5D] text-white font-semibold rounded-lg shadow  transition">View Products</a>
       </div>
 
     </div>
@@ -354,46 +353,46 @@
       <!-- First Name -->
       <div class="flex flex-col">
         <label for="firstName" class="mb-2 text-sm font-medium text-gray-700">First name <span
-            class="text-red-500">*</span></label>
+            class="text-[#1B6F5D]">*</span></label>
         <input id="firstName" name="firstName" type="text" required
-          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#23957c]"
           placeholder="John" />
-        <p id="err-firstName" class="text-red-500 text-sm mt-1 hidden">Please enter your first name.</p>
+        <p id="err-firstName" class="text-[#1B6F5D] text-sm mt-1 hidden">Please enter your first name.</p>
       </div>
 
       <!-- Last Name -->
       <div class="flex flex-col">
         <label for="lastName" class="mb-2 text-sm font-medium text-gray-700">Last name</label>
         <input id="lastName" name="lastName" type="text"
-          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#23957c]"
           placeholder="Doe" />
       </div>
 
       <!-- Contact Number -->
       <div class="flex flex-col">
         <label for="contactNumber" class="mb-2 text-sm font-medium text-gray-700">Contact number <span
-            class="text-red-500">*</span></label>
+            class="text-[#1B6F5D]">*</span></label>
         <input id="contactNumber" name="contactNumber" inputmode="tel" required
-          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#23957c]"
           placeholder="98765 43210" />
-        <p id="err-contact" class="text-red-500 text-sm mt-1 hidden">Enter a valid phone number (7–15 digits).</p>
+        <p id="err-contact" class="text-[#1B6F5D] text-sm mt-1 hidden">Enter a valid phone number (7–15 digits).</p>
       </div>
 
       <!-- Email -->
       <div class="flex flex-col md:col-span-2 lg:col-span-1">
         <label for="email" class="mb-2 text-sm font-medium text-gray-700">Email ID <span
-            class="text-red-500">*</span></label>
+            class="text-[#1B6F5D]">*</span></label>
         <input id="email" name="email" type="email" required
-          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#23957c]"
           placeholder="you@example.com" />
-        <p id="err-email" class="text-red-500 text-sm mt-1 hidden">Enter a valid email address.</p>
+        <p id="err-email" class="text-[#1B6F5D] text-sm mt-1 hidden">Enter a valid email address.</p>
       </div>
 
       <!-- Elevator For -->
       <div class="flex flex-col">
         <label for="elevatorFor" class="mb-2 text-sm font-medium text-gray-700">Elevator required for</label>
         <select id="elevatorFor" name="elevatorFor"
-          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#23957c]">
           <option value="" disabled selected>Select one</option>
           <option value="individual-house">Individual House</option>
           <option value="apartment">Apartment Building</option>
@@ -407,7 +406,7 @@
       <div class="flex flex-col">
         <label for="floors" class="mb-2 text-sm font-medium text-gray-700">Floors (stops)</label>
         <select id="floors" name="floors"
-          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#23957c]">
           <option value="" disabled selected>Select floors</option>
           <option>G+1 (2 stops)</option>
           <option>G+2 (3 stops)</option>
@@ -422,7 +421,7 @@
       <div class="flex flex-col md:col-span-2 lg:col-span-3">
         <label for="message" class="mb-2 text-sm font-medium text-gray-700">Additional details</label>
         <textarea id="message" name="message" rows="3"
-          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#23957c]"
           placeholder="Any special requirements..."></textarea>
       </div>
 
@@ -431,7 +430,7 @@
         <div id="formStatus" class="text-sm text-gray-600 mb-2" aria-live="polite"></div>
 
         <button id="submitBtn" type="submit"
-          class="px-8 py-3 bg-[#DC0000] text-white rounded-lg shadow hover:bg-indigo-700 transition inline-flex items-center">
+          class="px-8 py-3 bg-[#1B6F5D] text-white rounded-lg shadow hover:bg-[#23957c] transition inline-flex items-center">
           <svg id="btnSpinner" class="w-5 h-5 mr-3 animate-spin hidden" xmlns="http://www.w3.org/2000/svg" fill="none"
             viewBox="0 0 24 24">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -453,16 +452,16 @@
 
           <div class="md:w-1/2 w-full">
             <img
-              src="/images/banner/schindler-ahead-digital-media-services.jpg"
+              src="/images/banner/customer-obsession.webp"
               alt="Elevator digital media"
               class="object-cover w-full h-72 md:h-[420px] lg:h-[520px]" />
           </div>
 
           <!-- RIGHT: red panel -->
-          <div class="md:w-1/2 w-full bg-red-700 text-white flex items-center">
+          <div class="md:w-1/2 w-full bg-[#1B6F5D] text-white flex items-center">
             <div class="p-8 md:p-12 lg:p-16 max-w-2xl">
               <!-- <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4">Digital Media Services</h2> -->
-              <p class="text-base md:text-lg text-red-100 mb-6 leading-relaxed">
+              <p class="text-base md:text-2xl text-red-100 mb-6 leading-relaxed">
                 Customer obsession and business integrity remains the focal point of our management policies. We aim to develop and deliver products engineered to the highest quality; keeping user appreciation and comfort at the core of our design </p>
 
             </div>
@@ -536,7 +535,7 @@
               alt="Premium Headphones"
               class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute bottom-6 left-6">
-              <div class="bg-red-600 text-white px-4 py-3 rounded text-base font-semibold">
+              <div class="bg-[#1B6F5D] text-white px-4 py-3 rounded text-base font-semibold">
                 VertiCASA B-TRAC Series
               </div>
             </div>
@@ -552,7 +551,7 @@
               alt="Smart Laptop"
               class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute bottom-6 left-6">
-              <div class="bg-red-600 text-white px-4 py-3 rounded text-base font-semibold">
+              <div class="bg-[#1B6F5D] text-white px-4 py-3 rounded text-base font-semibold">
                 VertiCASA HYDRA Series
               </div>
             </div>
@@ -567,7 +566,7 @@
             <img src="./images/banner/6610172_3993.jpg" alt="Smartwatch Pro"
               class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute bottom-6 left-6">
-              <div class="bg-red-600 text-white px-4 py-3 rounded text-base font-semibold">
+              <div class="bg-[#1B6F5D] text-white px-4 py-3 rounded text-base font-semibold">
                 VertiPAX GeoMet Series
               </div>
             </div>
@@ -582,7 +581,7 @@
             <img src="./images/banner/8548770_2474.jpg" alt="Wireless Speaker"
               class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute bottom-6 left-6">
-              <div class="bg-red-600 text-white px-4 py-3 rounded text-base font-semibold">
+              <div class="bg-[#1B6F5D] text-white px-4 py-3 rounded text-base font-semibold">
                 VertiPAX Commer Series
               </div>
             </div>
@@ -597,7 +596,7 @@
             <img src="./images/banner/8548770_2474.jpg" alt="Gaming Console"
               class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute bottom-6 left-6">
-              <div class="bg-red-600 text-white px-4 py-3 rounded text-base font-semibold">
+              <div class="bg-[#1B6F5D] text-white px-4 py-3 rounded text-base font-semibold">
                 VertiCare
               </div>
             </div>
@@ -613,7 +612,7 @@
               alt="Tablet Pro"
               class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute bottom-6 left-6">
-              <div class="bg-red-600 text-white px-4 py-3 rounded text-base font-semibold">
+              <div class="bg-[#1B6F5D] text-white px-4 py-3 rounded text-base font-semibold">
                 Tablet Pro
               </div>
             </div>
@@ -752,11 +751,11 @@
           </ul>
 
           <!-- Tiny newsletter (optional) -->
-          <form class="mt-5 flex gap-2" onsubmit="event.preventDefault(); alert('Subscribed!');">
+          <!-- <form class="mt-5 flex gap-2" onsubmit="event.preventDefault(); alert('Subscribed!');">
             <input type="email" required placeholder="Your email"
               class="w-full px-3 py-2 rounded-lg bg-gray-800 text-gray-200 placeholder-gray-500 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
-            <button class="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700">Subscribe</button>
-          </form>
+            <button class="px-4 py-2 rounded-lg bg-[#1B6F5D] text-white hover:bg-red-700">Subscribe</button>
+          </form> -->
         </div>
       </div>
     </div>
@@ -774,7 +773,7 @@
 
   <!-- Back-to-top button -->
   <button id="toTop"
-    class="fixed bottom-6 right-6 hidden items-center justify-center w-10 h-10 rounded-full bg-red-600 text-white shadow-lg hover:bg-red-700"
+    class="fixed bottom-6 right-6 hidden items-center justify-center w-10 h-10 rounded-full bg-[#1B6F5D] text-white shadow-lg hover:bg-red-700"
     aria-label="Scroll to top">
     ↑
   </button>
@@ -870,10 +869,7 @@
       spaceBetween: 20,
       freeMode: true,
       effect: "coverflow",
-      autoplay: {
-        delay: 2000,
 
-      },
 
       loop: true,
       pagination: {

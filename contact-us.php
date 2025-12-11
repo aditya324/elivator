@@ -11,7 +11,7 @@
 
   <style>
     :root {
-      --brand: #c81b1b;
+      --brand: #1B6F5D;
     }
 
     /* brandRed */
@@ -57,8 +57,11 @@
 
   <!-- NAVBAR -->
   <header id="site-header"
-    class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-10 py-4 md:py-6 bg-white/90 backdrop-blur-sm transition-all duration-500">
-    <div id="brand" class="text-xl font-bold">My Brand</div>
+    class="fixed top-0 left-0 w-full mb-5 z-50 flex justify-between items-center px-6 md:px-10 py-4 md:py-6 bg-white/90 backdrop-blur-sm transition-all duration-500">
+     <img
+        src="./images/logo/Logo Source color.png"
+        alt="Brand Logo"
+        class="h-24 w-auto transition-all duration-300 default-logo">
 
     <!-- Desktop nav -->
     <nav id="nav-links" class="hidden md:block">
@@ -154,7 +157,7 @@
   </nav>
 
   <!-- MAIN -->
-  <main class="py-16 mt-8" id="contact">
+  <main class="py-16 mt-28" id="contact">
     <div class="max-w-7xl mx-auto px-6">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <!-- LEFT: Enquiry form (spans 2 columns on desktop) -->
@@ -282,7 +285,7 @@
             <!-- Header -->
             <div class="p-5 border-b">
               <div class="flex items-center gap-3">
-                <img src="https://via.placeholder.com/48x48?text=V" alt="Vertivo" class="h-12 w-12 rounded-md object-cover" />
+                <img src="./images/logo/Logo Source color.png" alt="Vertivo" class="h-full w-40 rounded-md object-cover" />
                 <div>
                   <h2 class="text-base font-semibold">Vertivo Elevators</h2>
                   <p class="text-xs text-gray-500">Production · Installation · Maintenance · Modernisation</p>
