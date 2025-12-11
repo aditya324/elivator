@@ -56,7 +56,22 @@
   <!-- header + responsive mobile menu -->
   <header id="site-header"
     class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-10 py-4 md:py-6 bg-white/90 backdrop-blur-sm transition-all duration-500">
-    <div id="brand" class="text-xl font-bold">My Brand</div>
+<div id="brand" class="flex items-center">
+  <!-- Default Logo -->
+  <img 
+    src="./images/logo/vertivo-logo.png"
+    alt="Brand Logo"
+    class="h-20 w-auto transition-all duration-300 default-logo"
+  >
+
+  <!-- Scroll Logo -->
+  <img 
+    src="./images/logo/vertivo-logo-small.png"
+    alt="Brand Logo Small"
+    class="h-12 w-auto transition-all duration-300 scroll-logo hidden"
+  >
+</div>
+
 
     <!-- Desktop nav -->
     <nav id="nav-links" class="hidden md:block">
@@ -974,7 +989,6 @@
           // const res = await fetch('/api/lead', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) });
           // const result = await res.json();
           // if (!res.ok) throw new Error(result.message || 'Network error');
-
           // Simulated send (replace in production)
           await new Promise(r => setTimeout(r, 900));
 

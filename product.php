@@ -633,7 +633,7 @@
         <!-- RIGHT CARD -->
         <div class="border rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition p-6">
           <img src="./images/banner/5581945_3650.jpg" alt="VertiCASA HYDRA" class="w-full h-56 md:h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-xl font-semibold mb-1">VertiCASA HYDRA Series</h3>
+          <h3 class="text-xl font-semibold mb-1">VertiCASA TRAC-H Series</h3>
           <p class="text-gray-600 mb-2 text-sm">Advanced hydraulic homelift</p>
           <a href="#" class="text-brandRed text-sm font-medium hover:underline block mb-3">Data sheet</a>
           <p class="text-gray-500 mb-4 italic text-sm">Safety beyond measure</p>
