@@ -55,16 +55,16 @@
 
   <!-- Header -->
   <!-- header + responsive mobile menu -->
-  <header id="site-header"
+  <!-- <header id="site-header"
     class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-10 py-4 md:py-6 bg-white/90 backdrop-blur-sm transition-all duration-500">
     <div id="brand" class="flex items-center">
-      <!-- Default Logo -->
+      
       <img
-        src="./images/logo/Logo Source color.png"
+        src="./images/logo/vertivo logo color.jpg"
         alt="Brand Logo"
-        class="h-24 w-auto transition-all duration-300 default-logo">
+        class="h-24 w-auto transition-all duration-300 default-logo rounded-lg">
 
-      <!-- Scroll Logo -->
+
       <img
         src="./images/logo/vertivo-logo-small.png"
         alt="Brand Logo Small"
@@ -72,14 +72,12 @@
     </div>
 
 
-    <!-- Desktop nav -->
+
     <nav id="nav-links" class="hidden md:block">
       <ul class="flex items-center space-x-10 text-lg font-medium">
         <li><a href="./index.php" class="hover:text-brandRed">Home</a></li>
 
-        <!-- Desktop Dropdown -->
-        <li class="relative group"> <!-- ADD 'group' here -->
-          <!-- Use absolute path if relative might be wrong: href="/product.php" -->
+        <li class="relative group"> 
           <a href="./product.php" class="inline-flex items-center gap-2 text-lg hover:text-brandRed focus:outline-none" id="productsTrigger" aria-haspopup="true" aria-expanded="false" tabindex="0">
             Products/Services
             <svg class="w-5 h-5 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
@@ -87,7 +85,6 @@
             </svg>
           </a>
 
-          <!-- dropdown: show on hover (via group) or keyboard focus-within -->
           <ul
             class="absolute left-0  hidden rounded-lg shadow-lg w-56 bg-white text-black z-50
                group-hover:block group-focus:block"
@@ -102,19 +99,88 @@
       </ul>
     </nav>
 
-    <!-- Mobile controls -->
+  
     <div class="md:hidden flex items-center gap-4">
-      <!-- Hamburger button -->
+  
       <button id="mobile-menu-btn"
         aria-controls="mobile-menu"
         aria-expanded="false"
         class="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brandRed">
-        <!-- Icon (3 bars) -->
         <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
           aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
-        <!-- Close icon (hidden by default) -->
+        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+          aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+  </header> -->
+
+
+
+
+  <header
+    id="site-header"
+    class="sticky top-0 z-[9999]
+         w-full flex justify-between items-center
+         px-6 md:px-10 py-4 md:py-6
+         font-bold 
+         bg-white">
+    <div id="brand" class="flex items-center">
+
+      <img
+        src="./images/logo/vertivo logo color.jpg"
+        alt="Brand Logo"
+        class="h-24 w-auto transition-all duration-300 default-logo rounded-lg">
+
+
+      <img
+        src="./images/logo/vertivo-logo-small.png"
+        alt="Brand Logo Small"
+        class="h-12 w-auto transition-all duration-300 scroll-logo hidden">
+    </div>
+
+
+
+    <nav id="nav-links" class="hidden md:block">
+      <ul class="flex items-center space-x-10 text-lg font-medium">
+        <li><a href="./index.php" class="hover:text-brandRed text-[#1A705D]">Home</a></li>
+
+        <li class="relative group">
+          <a href="./product.php" class=" text-[#1A705D] inline-flex items-center gap-2 text-lg hover:text-brandRed focus:outline-none" id="productsTrigger" aria-haspopup="true" aria-expanded="false" tabindex="0">
+            Products/Services
+            <svg class="w-5 h-5 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </a>
+
+          <ul
+            class="absolute left-0  hidden rounded-lg shadow-lg w-56 bg-white  z-50
+               group-hover:block group-focus:block text-[#1A705D]"
+            id="productsDropdown" role="menu" aria-label="Products menu">
+            <li><a href="./product.php#VERTICASA" class="block px-5 py-3 hover:bg-gray-100" role="menuitem">VertiCASA</a></li>
+            <li><a href="./product.php#VERTIPAX" class="block px-5 py-3 hover:bg-gray-100" role="menuitem">VertiPAX</a></li>
+            <li><a href="./product.php#VERTICARE" class="block px-5 py-3 hover:bg-gray-100" role="menuitem">VertiCare</a></li>
+          </ul>
+        </li>
+
+        <li><a href="./contact-us.php" class="hover:text-brandRed text-[#1A705D]">Contact Us</a></li>
+      </ul>
+    </nav>
+
+
+    <div class="md:hidden flex items-center gap-4">
+
+      <button id="mobile-menu-btn"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        class="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brandRed">
+        <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+          aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
         <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
           aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
@@ -122,8 +188,6 @@
       </button>
     </div>
   </header>
-
-  <!-- Mobile menu (off-canvas / slide down) -->
   <nav id="mobile-menu"
     class="md:hidden fixed inset-x-4 top-[72px] z-40 bg-white rounded-xl shadow-lg transform transition-all duration-300 opacity-0 scale-95 pointer-events-none"
     aria-hidden="true">
@@ -131,7 +195,6 @@
       <ul class="space-y-2">
         <li><a href="#" class="block px-4 py-3 rounded-md text-lg hover:bg-gray-100">Home</a></li>
 
-        <!-- Mobile dropdown: collapsible -->
         <li class="relative group">
           <a href="./product.php"
             class="inline-flex items-center gap-2 text-lg hover:text-brandRed focus:outline-none"
@@ -145,7 +208,6 @@
             </svg>
           </a>
 
-          <!-- NOTE: use top-full (no big mt-) so there's no gap when moving mouse -->
           <ul
             class="absolute left-0 top-full mt-0 hidden rounded-lg shadow-lg w-56 bg-white text-black z-50
            group-hover:block group-focus-within:block"
@@ -270,7 +332,7 @@
       <!-- Slide 1 -->
       <div class="swiper-slide relative">
         <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
-        <img src="./images/banner/herosection.jpg" class="h-screen w-full object-cover" />
+        <img src="./images/banner/herobanner3d.png" class="h-screen w-full object-cover" />
         <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
           <h1 class="text-6xl font-extrabold drop-shadow-lg mb-6">Luxury Remodeling Solutions</h1>
           <!-- <a href="#"
@@ -531,7 +593,7 @@
       <div class="swiper-slide">
         <a href="./product.php#VERTICASA" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
           <div class="relative overflow-hidden">
-            <img src="./images/banner/5581945_3650.jpg"
+            <img src="./images/banner/herobanner3d.png"
               alt="Premium Headphones"
               class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute bottom-6 left-6">
@@ -557,7 +619,7 @@
             </div>
           </div>
         </a>
-      </div>
+      </div>  
 
       <!-- Product 3 -->
       <div class="swiper-slide">
