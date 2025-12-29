@@ -56,7 +56,7 @@
 <body class="bg-gray-50 text-gray-800 antialiased ">
 
   <!-- NAVBAR -->
- <header
+  <header
     id="site-header"
     class="sticky top-0 z-[9999]
          w-full flex justify-between items-center
@@ -124,8 +124,7 @@
     </div>
   </header>
   <nav id="mobile-menu"
-    class="md:hidden fixed inset-x-4 top-[72px] z-40 bg-white rounded-xl shadow-lg transform transition-all duration-300 opacity-0 scale-95 pointer-events-none"
-    aria-hidden="true">
+class="md:hidden fixed inset-x-4 top-[72px] z-40 bg-white rounded-xl shadow-lg transform transition-all duration-300 opacity-0 scale-95 pointer-events-none mt-14"    aria-hidden="true">
     <div class="p-4">
       <ul class="space-y-2">
         <li><a href="#" class="block px-4 py-3 rounded-md text-lg hover:bg-gray-100">Home</a></li>
@@ -328,6 +327,29 @@
                   </label>
 
                   <label class="block">
+  <span class="text-xs text-gray-600">City*</span>
+  <select
+    name="city"
+    required
+    class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2">
+    <option value="">Select city</option>
+    <option>Bengaluru</option>
+    <option>Mysuru</option>
+    <option>Mangaluru</option>
+    <option>Hubballi–Dharwad</option>
+    <option>Belagavi</option>
+    <option>Shivamogga</option>
+    <option>Ballari</option>
+    <option>Davangere</option>
+    <option>Kalaburagi</option>
+    <option>Udupi</option>
+    <option>Other</option>
+  </select>
+  <p class="text-xs text-red-600 mt-1 hidden" data-err="city">Please select a city</p>
+</label>
+
+
+                  <label class="block">
                     <span class="text-xs text-gray-600">Floors (stops)*</span>
                     <select name="floors" required class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2">
                       <option value="">Select floors</option>
@@ -402,19 +424,19 @@
               <section>
                 <h3 class="text-sm font-semibold text-gray-700 mb-1">Head Office</h3>
                 <address class="not-italic text-sm text-gray-700 leading-relaxed">
-                  No. 123, MG Road,<br />
-                  Bengaluru, Karnataka 560001, India
+                  2nd Floor, Survey no: 19, Site no 20,<br />
+                  Nagarbhavi 2nd stage,Bangalore-560072
                 </address>
                 <div class="mt-2 text-sm">
-                  <div>Sales: <a class="brand-text underline" href="tel:+9198xxxxxxxx">+91 98xx xxx xxx</a></div>
-                  <div>Email: <a class="underline" href="mailto:sales@vertivo.com">sales@vertivo.com</a></div>
-                  <div class="mt-1">WhatsApp: <a class="underline" href="https://wa.me/9198xxxxxxxx" target="_blank" rel="noopener">Chat with us</a></div>
+                  <div>Sales: <a class="brand-text underline" href="tel:+919036172223">+91 9036172223</a></div>
+                  <div>Email: <a class="underline" href="mailto:info@vertivoelevators.com">info@vertivoelevators.com</a></div>
+                  <div class="mt-1">WhatsApp: <a class="underline" href="https://wa.me/9036172223" target="_blank" rel="noopener">Chat with us</a></div>
                 </div>
               </section>
               <section class="pt-4 border-t">
                 <h3 class="text-sm font-semibold text-gray-700 mb-1">Working Hours</h3>
                 <ul class="text-sm text-gray-700">
-                  <li>Mon – Sat: 9:30 AM – 6:30 PM</li>
+                  <li>Mon – Sat: 10:00 AM – 8:00 PM</li>
                   <li>Sun: Closed</li>
                 </ul>
               </section>
@@ -432,22 +454,21 @@
               <!-- Map -->
               <section class="pt-4 border-t">
                 <h3 class="sr-only">Map</h3>
+
                 <div class="rounded-lg overflow-hidden">
-                  <iframe
-                    title="Vertivo Elevators location"
-                    class="w-full h-56"
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                    src="https://www.google.com/maps?q=MG%20Road%2C%20Bengaluru&output=embed">
-                  </iframe>
+                  <iframe class="h-52" src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3887.8928436546917!2d77.50891192752975!3d12.978705009910405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTDNEpUTHQoQUJMHLrErGJyHg89uy71MyuHF!5e0!3m2!1sen!2sin!4v1766727955765!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
+
                 <a
                   class="mt-2 inline-block text-sm underline"
-                  target="_blank" rel="noopener"
-                  href="https://www.google.com/maps/search/?api=1&query=MG+Road%2C+Bengaluru">
+                  target="_blank"
+                  rel="noopener"
+                  href="https://maps.app.goo.gl/acrqXpiRhr439KNn8">
                   Open in Google Maps
                 </a>
               </section>
+
+
             </div>
           </div>
         </aside>
@@ -514,13 +535,13 @@
         <div>
           <h3 class="text-white font-semibold tracking-wide">Contact</h3>
           <ul class="mt-4 space-y-3 text-sm">
-            <li><span class="text-gray-400">Phone:</span> <a href="tel:+910000000000" class="hover:text-white">+91 00000 00000</a></li>
-            <li><span class="text-gray-400">Email:</span> <a href="mailto:hello@vertivo.in" class="hover:text-white">hello@vertivo.in</a></li>
-            <li><span class="text-gray-400">Address:</span> JP Nagar, Bengaluru, Karnataka</li>
+            <li><span class="text-gray-400">Phone:</span> <a href="tel:+919036172223" class="hover:text-white">+919036172223</a></li>
+            <li><span class="text-gray-400">Email:</span> <a href="mailto:info@vertivoelevators.com" class="hover:text-white">info@vertivoelevators.com</a></li>
+            <li><span class="text-gray-400">Address:</span>2nd Floor, Survey no: 19, Site no 20, Nagarbhavi 2nd stage,Bangalore-560072</li>
           </ul>
 
           <!-- Tiny newsletter (optional) -->
-          
+
         </div>
       </div>
     </div>
@@ -536,13 +557,18 @@
     </div>
   </footer>
 
-  <!-- SCRIPTS -->
+
   <script>
-    // Mobile menu toggle
-    document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+     document.getElementById('mobileMenuBtn').addEventListener('click', function() {
       const menu = document.getElementById('mobileMenu');
       menu.classList.toggle('hidden');
     });
+  </script>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Mobile menu toggle
+   
 
 
     function validateForm(form) {
@@ -560,6 +586,7 @@
       if (phone && phone.value && !/^[0-9+() \-]{6,}$/.test(phone.value)) {
         errors.phone = true;
       }
+      
 
       return {
         ok: Object.keys(errors).length === 0,
@@ -568,76 +595,47 @@
     }
 
     // Submit handler (unchanged)
-    async function handleContactSubmit(e) {
-      e.preventDefault();
-      const form = document.getElementById('contactForm');
-      const submitBtn = document.getElementById('submitBtn');
-      const successMsg = document.getElementById('successMsg');
-      const errorMsg = document.getElementById('errorMsg');
+   async function handleContactSubmit(e) {
+  e.preventDefault();
 
-      form.querySelectorAll('[data-err]').forEach(n => n.classList.add('hidden'));
-      form.querySelectorAll('input,select,textarea').forEach(i => i.classList.remove('ring', 'ring-2'));
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const successMsg = document.getElementById('successMsg');
+  const errorMsg = document.getElementById('errorMsg');
 
-      const check = validateForm(form);
-      if (!check.ok) {
-        Object.keys(check.errors).forEach(name => {
-          const err = form.querySelector(`[data-err="${name}"]`);
-          if (err) err.classList.remove('hidden');
-          const el = form.elements[name];
-          if (el) el.classList.add('ring', 'ring-2');
-        });
-        return;
-      }
+  const payload = Object.fromEntries(new FormData(form).entries());
 
-      const payload = Object.fromEntries(new FormData(form).entries());
-      payload.submittedAt = new Date().toISOString();
-      console.log(payload, "payload")
-      submitBtn.disabled = true;
-      const orig = submitBtn.innerText;
-      submitBtn.innerText = 'Sending...';
+  payload.state_pref = payload.statePref || null;
+  payload.source_page = payload.sourcePage || null;
+  delete payload.statePref;
+  delete payload.sourcePage;
 
-      try {
-        const res = await fetch('/api/send-lead.php', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(payload)
-        });
+  submitBtn.disabled = true;
+  submitBtn.innerText = 'Sending...';
 
-        const json = await res.json();
-        if (!res.ok || !json.ok) {
-          throw new Error(json?.errors ? 'Validation' : 'Failed');
-        }
+  try {
+    const res = await fetch('./api/leads.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
 
-        successMsg.classList.remove('hidden');
-        errorMsg.classList.add('hidden');
-        form.reset();
-      } catch (err) {
-        try {
-          const recipient = 'sales@vertivo.com';
-          const subject = encodeURIComponent('Website enquiry — Vertivo Elevators');
-          const bodyParts = [];
-          for (const [k, v] of Object.entries(payload)) bodyParts.push(`${k}: ${v}`);
-          const body = encodeURIComponent(bodyParts.join('\n'));
-          window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    const json = await res.json();
+    if (!res.ok || !json.ok) throw new Error();
 
-          successMsg.classList.remove('hidden');
-          errorMsg.classList.add('hidden');
-          form.reset();
-        } catch (mailtoErr) {
-          errorMsg.classList.remove('hidden');
-          successMsg.classList.add('hidden');
-        }
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerText = orig;
-        setTimeout(() => {
-          successMsg.classList.add('hidden');
-          errorMsg.classList.add('hidden');
-        }, 5000);
-      }
-    }
+    successMsg.classList.remove('hidden');
+    errorMsg.classList.add('hidden');
+    form.reset();
+
+  } catch {
+    errorMsg.classList.remove('hidden');
+    successMsg.classList.add('hidden');
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.innerText = 'Send Enquiry';
+  }
+}
+
   </script>
 </body>
 

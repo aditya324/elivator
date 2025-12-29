@@ -83,7 +83,7 @@
 
 
 
- <header
+  <header
     id="site-header"
     class="sticky top-0 z-[9999]
          w-full flex justify-between items-center
@@ -151,8 +151,7 @@
     </div>
   </header>
   <nav id="mobile-menu"
-    class="md:hidden fixed inset-x-4 top-[72px] z-40 bg-white rounded-xl shadow-lg transform transition-all duration-300 opacity-0 scale-95 pointer-events-none"
-    aria-hidden="true">
+class="md:hidden fixed inset-x-4 top-[72px] z-40 bg-white rounded-xl shadow-lg transform transition-all duration-300 opacity-0 scale-95 pointer-events-none mt-14"    aria-hidden="true">
     <div class="p-4">
       <ul class="space-y-2">
         <li><a href="#" class="block px-4 py-3 rounded-md text-lg hover:bg-gray-100">Home</a></li>
@@ -368,7 +367,7 @@
 
         <!-- Slide 2: VertiPAX -->
         <div class="swiper-slide relative h-screen">
-          <img src="./images/banner/25.jpg" class="absolute inset-0 w-full h-full object-cover" />
+          <img src="./images/banner/vertipax.jpg" class="absolute inset-0 w-full h-full object-cover" />
           <div class="absolute inset-0 bg-black/45"></div>
 
           <div class="absolute inset-0 flex items-center">
@@ -641,26 +640,25 @@
 
         <!-- LEFT CARD -->
         <div class="border rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition p-6">
-          <img src="./images/banner/25.jpg" alt="VertiCASA B-TRAC" class="w-full h-56 md:h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-xl font-semibold mb-1">VertiCASA B-TRAC Series</h3>
+          <img src="./images/banner/elivating-reality.webp" alt="VertiCASA B-TRAC" class="w-full h-56 md:h-64 object-cover rounded-lg mb-4">
+          <h3 class="text-xl font-semibold mb-1">VertiCASA TracX series</h3>
           <p class="text-gray-600 mb-2 text-sm">Belt driven homelift</p>
-          <a href="#" class="text-brandRed text-sm font-medium hover:underline block mb-3">Data sheet</a>
           <p class="text-gray-500 mb-4 italic text-sm">Paradise in motion</p>
 
-          <button onclick="openForm('btrac')"
+          <button onclick="openForm('TracX')"
             class="bg-brandRed text-white px-4 py-2 rounded-lg font-medium text-sm shadow-sm hover:brightness-105 transition">
-            Get pricelists & catalogues
+            Get Quotation
           </button>
 
           <!-- form (hidden) -->
-          <div id="form-btrac" class="hidden mt-5">
+          <div id="form-TracX" class="hidden mt-5">
             <div class="bg-white border rounded-xl p-5 shadow-sm">
               <div class="flex items-start justify-between">
                 <h4 class="text-lg font-medium">Request pricelist</h4>
-                <button class="text-sm text-gray-500 hover:text-gray-700" onclick="closeForm('btrac')" aria-label="Close form">✕</button>
+                <button class="text-sm text-gray-500 hover:text-gray-700" onclick="closeForm('TracX')" aria-label="Close form">✕</button>
               </div>
 
-              <form class="mt-4 space-y-3" onsubmit="submitProductForm(event,'btrac')">
+              <form class="mt-4 space-y-3" onsubmit="submitProductForm(event,'TracX')">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <label class="block">
                     <span class="text-xs text-gray-600">First name*</span>
@@ -728,36 +726,35 @@
             <li><strong>Stops:</strong> Upto 6 Stops</li>
             <li><strong>Capacity:</strong> 260-450 kg</li>
             <li><strong>Rated speed:</strong> 0.30-0.50 m/s</li>
-            <li><strong>Connection:</strong> 1-phase, 230V, 50/60 Hz</li>
-            <li><strong>Power:</strong> 0.9-1.5 kW</li>
+            <li><strong>Connection:</strong> 1-phase/3-phase, 230V, 50/60 Hz</li>
+            <li><strong>Power:</strong> 0.9-3.3 kW</li>
             <li><strong>Pit:</strong> min 500mm</li>
             <li><strong>Headroom:</strong> min 3000mm</li>
-            <li><strong>Doors:</strong> Telescopic Sliding Auto-Doors</li>
+            <li><strong>Doors:</strong> Telescopic/Sliding Auto-Doors</li>
           </ul>
         </div>
 
         <!-- RIGHT CARD -->
         <div class="border rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition p-6">
-          <img src="./images/banner/5581945_3650.jpg" alt="VertiCASA HYDRA" class="w-full h-56 md:h-64 object-cover rounded-lg mb-4">
-          <h3 class="text-xl font-semibold mb-1">VertiCASA TRAC-H Series</h3>
+          <img src="./images/banner/verticasa (2).png" alt="VertiCASA HYDRA" class="w-full h-56 md:h-64 object-cover rounded-lg mb-4">
+          <h3 class="text-xl font-semibold mb-1">VertiCASA TracX-GS</h3>
           <p class="text-gray-600 mb-2 text-sm">Advanced hydraulic homelift</p>
-          <a href="#" class="text-brandRed text-sm font-medium hover:underline block mb-3">Data sheet</a>
           <p class="text-gray-500 mb-4 italic text-sm">Safety beyond measure</p>
 
-          <button onclick="openForm('hydra')"
+          <button onclick="openForm('TracX-GS')"
             class="bg-brandRed text-white px-4 py-2 rounded-lg font-medium text-sm shadow-sm hover:brightness-105 transition">
-            Get pricelists & catalogues
+            Get Quotation
           </button>
 
           <!-- form -->
-          <div id="form-hydra" class="hidden mt-5">
+          <div id="form-TracX-GS" class="hidden mt-5">
             <div class="bg-white border rounded-xl p-5 shadow-sm">
               <div class="flex items-start justify-between">
                 <h4 class="text-lg font-medium">Request pricelist</h4>
-                <button class="text-sm text-gray-500 hover:text-gray-700" onclick="closeForm('hydra')" aria-label="Close form">✕</button>
+                <button class="text-sm text-gray-500 hover:text-gray-700" onclick="closeForm('TracX-GS')" aria-label="Close form">✕</button>
               </div>
 
-              <form class="mt-4 space-y-3" onsubmit="submitProductForm(event,'hydra')">
+              <form class="mt-4 space-y-3" onsubmit="submitProductForm(event,'TracX-GS')">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <label class="block">
                     <span class="text-xs text-gray-600">First name*</span>
@@ -840,15 +837,14 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
         <!-- LEFT CARD: GeoMet -->
         <div class="border rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition p-6">
-          <img src="./images/banner/5581945_3650.jpg" alt="VertiPAX GeoMet" class="w-full h-56 md:h-64 object-cover rounded-lg mb-4">
+          <img src="./images/banner/25.jpg" alt="VertiPAX GeoMet" class="w-full h-56 md:h-64 object-cover rounded-lg mb-4">
           <h3 class="text-xl font-semibold mb-1">VertiPAX GeoMet Series</h3>
           <p class="text-gray-600 mb-2 text-sm">MRL passenger elevators</p>
-          <a href="#" class="text-brandRed text-sm font-medium hover:underline block mb-3">Data sheet</a>
           <p class="text-gray-500 mb-4 italic text-sm">Refined performance delivered</p>
 
           <button onclick="openForm('geomet')"
             class="bg-brandRed text-white px-4 py-2 rounded-lg font-medium text-sm shadow-sm hover:brightness-105 transition">
-            Get pricelists & catalogues
+            Get Quotation
           </button>
 
           <!-- form (hidden) -->
@@ -926,9 +922,8 @@
             <li><strong>Series:</strong> GeoMet (MRL passenger elevators) &amp; Commer (custom built)</li>
             <li><strong>Use cases:</strong> Passenger — low/mid/high-rise; Goods/Cargo; Hospital lifts; High-speed apps</li>
             <li><strong>Performance:</strong> High-speed vertical flow, heavy-duty &amp; high-frequency operation</li>
-            <li><strong>Design:</strong> Precision engineering for smooth rides and refined performance</li>
-            <li><strong>Downloads:</strong> Data sheets available on each card</li>
-            <li><strong>CTAs:</strong> GeoMet — Get pricelists &amp; catalogues; Commer — Enquire now</li>
+            <li><strong>Design:</strong> Precision engineered MRL rope drive gearless motors with AC3VF</li>
+
           </ul>
         </div>
 
@@ -937,7 +932,6 @@
           <img src="./images/banner/5581945_3650.jpg" alt="VertiPAX Commer" class="w-full h-56 md:h-64 object-cover rounded-lg mb-4">
           <h3 class="text-xl font-semibold mb-1">VertiPAX Commer Series</h3>
           <p class="text-gray-600 mb-2 text-sm">Custom built elevators for specialised applications</p>
-          <a href="#" class="text-brandRed text-sm font-medium hover:underline block mb-3">Data sheet</a>
           <p class="text-gray-500 mb-4 italic text-sm">For Goods/Cargo, Hospital lifts, High-speed applications and more</p>
 
           <button onclick="openForm('commer')"
@@ -949,7 +943,7 @@
           <div id="form-commer" class="hidden mt-5">
             <div class="bg-white border rounded-xl p-5 shadow-sm">
               <div class="flex items-start justify-between">
-                <h4 class="text-lg font-medium">Enquiry</h4>
+                <h4 class="text-lg font-medium"> Get Quotation</h4>
                 <button class="text-sm text-gray-500 hover:text-gray-700" onclick="closeForm('commer')" aria-label="Close form">✕</button>
               </div>
 
@@ -1177,13 +1171,16 @@
 
       try {
         // TODO: Replace simulated delay with your actual API call:
-        // const res = await fetch('/api/leads', {
-        //   method: 'POST',
-        //   headers: { 'Content-Type': 'application/json' },
-        //   body: JSON.stringify(payload)
-        // });
-        // if (!res.ok) throw new Error('Network error');
-        await new Promise(r => setTimeout(r, 600)); // simulate network
+        const res = await fetch('/api/leads.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) throw new Error('Submission failed');
+        // await new Promise(r => setTimeout(r, 600)); 
 
         successEl.classList.remove('hidden');
         failEl.classList.add('hidden');
@@ -1755,141 +1752,7 @@
       })();
     </script>
   </section> -->
-  <section class="py-12 bg-gray-50">
-    <div class="  ">
 
-      <section class="py-12 bg-gray-50">
-        <div class="  ">
-          <!-- Two-column hero: image left / red panel right -->
-          <div class="bg-white rounded-lg overflow-hidden shadow-sm">
-            <div class="flex flex-col md:flex-row">
-
-              <div class="md:w-1/2 w-full">
-                <img
-                  src="/images/banner/customer-obsession.webp"
-                  alt="Elevator digital media"
-                  class="object-cover w-full h-72 md:h-[420px] lg:h-[520px]" />
-              </div>
-
-              <!-- RIGHT: red panel -->
-              <div class="md:w-1/2 w-full bg-[#1B6F5D] text-white flex items-center">
-                <div class="p-8 md:p-12 lg:p-16 max-w-2xl">
-                  <!-- <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4">Digital Media Services</h2> -->
-                  <p class="text-base md:text-xl text-red-100 mb-6 leading-relaxed">
-                    Customer obsession and business integrity remains the focal point of our management policies. We aim to develop and deliver products engineered to the highest quality; keeping user appreciation and comfort at the core of our design </p>
-                  <!-- <a href="#"
-                    class="inline-block bg-white text-red-700 font-semibold px-5 py-3 rounded shadow hover:opacity-95 transition">
-                    Know more
-                  </a> -->
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Spacer -->
-          <div class="mt-10"></div>
-
-          <!-- Existing 'Our Core Values' content (adapted to match look/spacing) -->
-          <!-- <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Core Values</h2>
-        <div class="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          The fundamental principles that guide our organization and define our commitment to excellence in every aspect of our business.
-        </p>
-      </div> -->
-
-          <!-- <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-  
-        <div class="bg-white rounded-lg border border-gray-200 p-8 text-center hover:shadow-lg transition-shadow duration-300">
-          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-       
-            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-4">Customer Obsession</h3>
-          <p class="text-gray-600 text-sm leading-relaxed">Customer needs and satisfaction drive every decision we make across our organization.</p>
-
-        </div>
-        <div class="bg-white rounded-lg border border-gray-200 p-8 text-center hover:shadow-lg transition-shadow duration-300">
-          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-      
-            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-4">Customer Obsession</h3>
-          <p class="text-gray-600 text-sm leading-relaxed">Customer needs and satisfaction drive every decision we make across our organization.</p>
-
-        </div>
-  
-      </div> -->
-
-          <!-- <div class="bg-white border border-gray-200 rounded-lg p-12">
-        <div class="max-w-4xl mx-auto text-center">
-          <h3 class="text-2xl font-semibold text-gray-900 mb-6">Our Commitment</h3>
-          <blockquote class="text-lg text-gray-700 leading-relaxed font-medium">
-            "Customer obsession and business integrity remain the focal point of our management policies. We aim to develop and deliver products engineered to the highest quality; keeping user appreciation and comfort at the core of our design."
-          </blockquote>
-        </div>
-
-      </div> -->
-        </div>
-      </section>
-
-      <!-- Spacer -->
-      <div class="mt-10"></div>
-
-      <!-- Existing 'Our Core Values' content (adapted to match look/spacing) -->
-      <!-- <section class="py-12 bg-gray-50">
-        <div class="max-w-screen-2xl mx-auto px-6">
-          <h2 class="text-3xl font-semibold text-red-600 mb-4">Enhance your elevator</h2>
-
-          <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4">
-
-            <div class="flex flex-col lg:gap-7 gap-5">
-
-              <h2 class="font-bold">Lorem ipsum dolor sit.</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, iste.
-              </p>
-              <a href="#" class="flex text-red-600 text-lg"><span>learn more</span> &rarr;</a>
-
-            </div>
-            <div class="flex flex-col gap-7">
-
-              <h2 class="font-bold">Lorem ipsum dolor sit.</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, iste.
-              </p>
-              <a href="#" class="flex text-red-600 text-lg"><span>learn more</span> &rarr;</a>
-
-            </div>
-            <div class="flex flex-col gap-7">
-
-              <h2 class="font-bold">Lorem ipsum dolor sit.</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, iste.
-              </p>
-              <a href="#" class="flex text-red-600 text-lg"><span>learn more</span> &rarr;</a>
-
-            </div>
-            <div class="flex flex-col gap-7">
-
-              <h2 class="font-bold">Lorem ipsum dolor sit.</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, iste.
-              </p>
-              <a href="#" class="flex text-red-600 text-lg"><span>learn more</span> &rarr;</a>
-
-            </div>
-          </div>
-        </div>
-      </section> -->
-    </div>
-  </section>
 
 
   <div id="toast" role="status" aria-live="polite">
@@ -1904,7 +1767,7 @@
         <!-- Brand / blurb -->
         <div>
           <a href="./index.php" class="inline-flex items-center gap-2">
-            <span class="text-xl font-extrabold tracking-tight text-white">Vertivo Elevators</span>
+            <span class="text-xl font-extrabold tracking-tight text-white">Vertivo Elevators <br>Private Limited</span>
           </a>
           <p class="mt-4 text-sm leading-relaxed text-gray-400">
             Reliable, safe and innovative vertical transportation solutions for homes, apartments and commercial spaces.
@@ -1955,16 +1818,16 @@
         <div>
           <h3 class="text-white font-semibold tracking-wide">Contact</h3>
           <ul class="mt-4 space-y-3 text-sm">
-            <li><span class="text-gray-400">Phone:</span> <a href="tel:+910000000000" class="hover:text-white">+91 00000 00000</a></li>
-            <li><span class="text-gray-400">Email:</span> <a href="mailto:hello@vertivo.in" class="hover:text-white">hello@vertivo.in</a></li>
-            <li><span class="text-gray-400">Address:</span> JP Nagar, Bengaluru, Karnataka</li>
+            <li><span class="text-gray-400">Phone:</span> <a href="tel:+919036172223" class="hover:text-white">+91 9036172223</a></li>
+            <li><span class="text-gray-400">Email:</span> <a href="mailto:info@vertivoelevators.com" class="hover:text-white">info@vertivoelevators.com</a></li>
+            <li><span class="text-gray-400">Address:</span> 2nd Floor, Survey no: 19, Site no 20, Nagarbhavi 2nd stage,Bangalore-560072</li>
           </ul>
 
           <!-- Tiny newsletter (optional) -->
           <!-- <form class="mt-5 flex gap-2" onsubmit="event.preventDefault(); alert('Subscribed!');">
             <input type="email" required placeholder="Your email"
               class="w-full px-3 py-2 rounded-lg bg-gray-800 text-gray-200 placeholder-gray-500 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500" />
-            <button class="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700">Subscribe</button>
+            <button class="px-4 py-2 rounded-lg bg-[#1B6F5D] text-white hover:bg-red-700">Subscribe</button>
           </form> -->
         </div>
       </div>

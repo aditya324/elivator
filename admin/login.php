@@ -8,7 +8,7 @@ $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $u = $_POST['user'] ?? '';
   $p = $_POST['pass'] ?? '';
- 
+
   if (check_login($u, $p)) {
     header('Location: /admin/leads.php');
     exit;

@@ -189,7 +189,7 @@
     </div>
   </header>
   <nav id="mobile-menu"
-    class="md:hidden fixed inset-x-4 top-[72px] z-40 bg-white rounded-xl shadow-lg transform transition-all duration-300 opacity-0 scale-95 pointer-events-none"
+    class="md:hidden fixed inset-x-4 top-[72px] z-40 bg-white rounded-xl shadow-lg transform transition-all duration-300 opacity-0 scale-95 pointer-events-none mt-14"
     aria-hidden="true">
     <div class="p-4">
       <ul class="space-y-2">
@@ -240,7 +240,7 @@
       const hamburgerIcon = document.getElementById('hamburger-icon');
       const closeIcon = document.getElementById('close-icon');
 
-      const prodBtn = document.getElementById('mobile-products-btn');
+
       const prodList = document.getElementById('mobile-products-list');
       const prodIcon = document.getElementById('mobile-products-icon');
 
@@ -295,11 +295,7 @@
       });
       overlay.addEventListener('click', () => closeMenu());
 
-      // products
-      prodBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleProducts();
-      });
+
 
       // close on Escape
       document.addEventListener('keydown', (e) => {
@@ -334,7 +330,7 @@
         <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
         <img src="./images/banner/herobanner3d.png" class="h-screen w-full object-cover" />
         <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
-          <h1 class="text-6xl font-extrabold drop-shadow-lg mb-6">Luxury Remodeling Solutions</h1>
+          <h1 class="text-6xl font-extrabold drop-shadow-lg mb-6">Great Lifts. Made with Passion. Built to Last</h1>
           <!-- <a href="#"
           class="px-8 py-3 border-2 border-white text-white font-semibold rounded-full transition hover:bg-white hover:text-black">
           Get Your Quote
@@ -347,7 +343,8 @@
         <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent"></div>
         <img src="./images/banner/banner2.webp" class="h-screen w-full object-cover" />
         <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
-          <h1 class="text-6xl font-extrabold drop-shadow-lg mb-6">Innovative Modern Designs</h1>
+          <h1 class="text-6xl font-extrabold drop-shadow-lg mb-6">Speak with your consultant today. Design your dream lift</h1>
+
           <!-- <a href="#"
           class="px-8 py-3 border-2 border-white text-white font-semibold rounded-full transition hover:bg-white hover:text-black">
           Discover More
@@ -360,7 +357,8 @@
         <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
         <img src="./images/banner/banner.webp" class="h-screen w-full object-cover" />
         <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-6">
-          <h1 class="text-6xl font-extrabold drop-shadow-lg mb-6">Redefine Your Living Space</h1>
+
+          <h1 class="text-6xl font-extrabold drop-shadow-lg mb-6">Engineered for excellence</h1>
           <!-- <a href="#"
           class="px-8 py-3 border-2 border-white text-white font-semibold rounded-full transition hover:bg-white hover:text-black">
           Start Today
@@ -399,15 +397,15 @@
           With industry defining homelifts and passenger elevator models, Vertivo Elevators are engineered for excellence
           in safety, durability and hassle-free travel experience.
         </p>
-        <a href="#"
+        <a href="./product.php"
           class="inline-block px-6 py-3 bg-[#1B6F5D] text-white font-semibold rounded-lg shadow  transition">View Products</a>
       </div>
 
     </div>
   </section>
-
-  <!-- Polished Elevator Quote Form -->
+  <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center p-5">Let's design your perfect elevator. Get in touch with our consultant</h2> <!-- Polished Elevator Quote Form -->
   <section class="flex items-center justify-center px-6">
+
     <form id="elevatorForm"
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl w-full bg-white rounded-2xl p-8"
       novalidate>
@@ -418,7 +416,7 @@
             class="text-[#1B6F5D]">*</span></label>
         <input id="firstName" name="firstName" type="text" required
           class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#23957c]"
-          placeholder="John" />
+          />
         <p id="err-firstName" class="text-[#1B6F5D] text-sm mt-1 hidden">Please enter your first name.</p>
       </div>
 
@@ -427,16 +425,16 @@
         <label for="lastName" class="mb-2 text-sm font-medium text-gray-700">Last name</label>
         <input id="lastName" name="lastName" type="text"
           class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#23957c]"
-          placeholder="Doe" />
+          />
       </div>
 
       <!-- Contact Number -->
       <div class="flex flex-col">
-        <label for="contactNumber" class="mb-2 text-sm font-medium text-gray-700">Contact number <span
+        <label for="phone" class="mb-2 text-sm font-medium text-gray-700">Contact number <span
             class="text-[#1B6F5D]">*</span></label>
-        <input id="contactNumber" name="contactNumber" inputmode="tel" required
+        <input id="phone" name="phone" inputmode="tel" required
           class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#23957c]"
-          placeholder="98765 43210" />
+          />
         <p id="err-contact" class="text-[#1B6F5D] text-sm mt-1 hidden">Enter a valid phone number (7–15 digits).</p>
       </div>
 
@@ -446,7 +444,7 @@
             class="text-[#1B6F5D]">*</span></label>
         <input id="email" name="email" type="email" required
           class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#23957c]"
-          placeholder="you@example.com" />
+          />
         <p id="err-email" class="text-[#1B6F5D] text-sm mt-1 hidden">Enter a valid email address.</p>
       </div>
 
@@ -478,13 +476,44 @@
           <option>G+6 (7 stops) and above</option>
         </select>
       </div>
-
+      <div class="flex flex-col">
+        <label class="block">
+          <span class="text-xs text-gray-600">City*</span>
+          <select
+            name="city"
+            required
+            onchange="toggleOtherCity(this)"
+            class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2">
+            <option value="">Select city</option>
+            <option>Bengaluru</option>
+            <option>Mysuru</option>
+            <option>Mangaluru</option>
+            <option>Hubballi–Dharwad</option>
+            <option>Belagavi</option>
+            <option>Shivamogga</option>
+            <option>Ballari</option>
+            <option>Davangere</option>
+            <option>Kalaburagi</option>
+            <option>Udupi</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+      </div>
+      <label class="block">
+        <span class="text-xs text-gray-600">Product interested </span>
+        <select name="product" class="mt-1 w-full md:max-w-[371px] border rounded-lg px-3 py-2">
+          <option value="">-- Select product (if any) --</option>
+          <option>VertiCASA (Homelift)</option>
+          <option>VertiPAX (Passenger)</option>
+          <option>VertiCare (Maintenance & AMCs)</option>
+        </select>
+      </label>
       <!-- Message (full width) -->
       <div class="flex flex-col md:col-span-2 lg:col-span-3">
         <label for="message" class="mb-2 text-sm font-medium text-gray-700">Additional details</label>
         <textarea id="message" name="message" rows="3"
           class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#23957c]"
-          placeholder="Any special requirements..."></textarea>
+          ></textarea>
       </div>
 
       <!-- Submit (full width center) -->
@@ -506,6 +535,130 @@
   </section>
 
   <!-- Core Values Section (unchanged) -->
+
+
+
+  <!-- Products Slider Section (unique classes and nav) -->
+  <div class="swiper products-swiper my-12 max-w-7xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center p-5">Products</h2>
+    <div class="swiper-wrapper">
+      <!-- Product 1 -->
+
+
+      <!-- Product 2 -->
+      <div class="swiper-slide">
+        <a href="./product.php#VERTICASA" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+          <div class="relative overflow-hidden">
+            <img src="./images/banner/25.jpg"
+              alt="Smart Laptop"
+              class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute bottom-6 left-6">
+              <div class="bg-[#1B6F5D] text-white px-4 py-3 rounded text-base font-semibold">
+                VertiPAX
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="swiper-slide">
+        <a href="./product.php#VERTICASA" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+          <div class="relative overflow-hidden">
+            <img src="./images/banner/herobanner3d.png"
+              alt="Premium Headphones"
+              class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute bottom-6 left-6">
+              <div class="bg-[#1B6F5D] text-white px-4 py-3 rounded text-base font-semibold">
+                VertiCASA
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Product 3 -->
+      <div class="swiper-slide">
+        <a href="./product.php#VERTIPAX" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+          <div class="relative overflow-hiden">
+            <img src="./images/banner/6610172_3993.jpg" alt="Smartwatch Pro"
+              class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute bottom-6 left-6">
+              <div class="bg-[#1B6F5D] text-white px-4 py-3 rounded text-base font-semibold">
+                VertiCare
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Product 2 -->
+      <div class="swiper-slide">
+        <a href="./product.php#VERTICASA" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+          <div class="relative overflow-hidden">
+            <img src="./images/banner/25.jpg"
+              alt="Smart Laptop"
+              class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute bottom-6 left-6">
+              <div class="bg-[#1B6F5D] text-white px-4 py-3 rounded text-base font-semibold">
+                VertiPAX
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="swiper-slide">
+        <a href="./product.php#VERTICASA" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+          <div class="relative overflow-hidden">
+            <img src="./images/banner/herobanner3d.png"
+              alt="Premium Headphones"
+              class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute bottom-6 left-6">
+              <div class="bg-[#1B6F5D] text-white px-4 py-3 rounded text-base font-semibold">
+                VertiCASA
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Product 3 -->
+      <div class="swiper-slide">
+        <a href="./product.php#VERTIPAX" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+          <div class="relative overflow-hiden">
+            <img src="./images/banner/6610172_3993.jpg" alt="Smartwatch Pro"
+              class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute bottom-6 left-6">
+              <div class="bg-[#1B6F5D] text-white px-4 py-3 rounded text-base font-semibold">
+                VertiCare
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- Product 4 -->
+
+
+      <!-- Product 5 -->
+
+
+      <!-- Product 6 - Extra for better carousel effect -->
+      <!-- <div class="swiper-slide">
+        <a href="/products/tablet-pro" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&h=600&fit=crop&crop=center"
+              alt="Tablet Pro"
+              class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute bottom-6 left-6">
+              <div class="bg-[#1B6F5D] text-white px-4 py-3 rounded text-base font-semibold">
+                Tablet Pro
+              </div>
+            </div>
+          </div>
+        </a>
+      </div> -->
+    </div>
+
+    <!-- Product-specific controls -->
+    <div class="swiper-pagination products-pagination"></div>
+    <div class="swiper-button-next products-next"></div>
+    <div class="swiper-button-prev products-prev"></div>
+  </div>
   <section class="py-12 bg-gray-50">
     <div class="  ">
       <!-- Two-column hero: image left / red panel right -->
@@ -583,112 +736,6 @@
       </div> -->
     </div>
   </section>
-
-
-  <!-- Products Slider Section (unique classes and nav) -->
-  <div class="swiper products-swiper my-12 max-w-7xl mx-auto">
-    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center p-5">Products</h2>
-    <div class="swiper-wrapper">
-      <!-- Product 1 -->
-      <div class="swiper-slide">
-        <a href="./product.php#VERTICASA" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
-          <div class="relative overflow-hidden">
-            <img src="./images/banner/herobanner3d.png"
-              alt="Premium Headphones"
-              class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
-            <div class="absolute bottom-6 left-6">
-              <div class="bg-[#1B6F5D] text-white px-4 py-3 rounded text-base font-semibold">
-                VertiCASA B-TRAC Series
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Product 2 -->
-      <div class="swiper-slide">
-        <a href="./product.php#VERTICASA" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
-          <div class="relative overflow-hidden">
-            <img src="./images/banner/25.jpg"
-              alt="Smart Laptop"
-              class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
-            <div class="absolute bottom-6 left-6">
-              <div class="bg-[#1B6F5D] text-white px-4 py-3 rounded text-base font-semibold">
-                VertiCASA HYDRA Series
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>  
-
-      <!-- Product 3 -->
-      <div class="swiper-slide">
-        <a href="./product.php#VERTIPAX" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
-          <div class="relative overflow-hidden">
-            <img src="./images/banner/6610172_3993.jpg" alt="Smartwatch Pro"
-              class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
-            <div class="absolute bottom-6 left-6">
-              <div class="bg-[#1B6F5D] text-white px-4 py-3 rounded text-base font-semibold">
-                VertiPAX GeoMet Series
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Product 4 -->
-      <div class="swiper-slide">
-        <a href="./product.php#VERTIPAX" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
-          <div class="relative overflow-hidden">
-            <img src="./images/banner/8548770_2474.jpg" alt="Wireless Speaker"
-              class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
-            <div class="absolute bottom-6 left-6">
-              <div class="bg-[#1B6F5D] text-white px-4 py-3 rounded text-base font-semibold">
-                VertiPAX Commer Series
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Product 5 -->
-      <div class="swiper-slide">
-        <a href="./product.php#VERTICARE" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
-          <div class="relative overflow-hidden">
-            <img src="./images/banner/8548770_2474.jpg" alt="Gaming Console"
-              class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
-            <div class="absolute bottom-6 left-6">
-              <div class="bg-[#1B6F5D] text-white px-4 py-3 rounded text-base font-semibold">
-                VertiCare
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Product 6 - Extra for better carousel effect -->
-      <!-- <div class="swiper-slide">
-        <a href="/products/tablet-pro" class="block bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
-          <div class="relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&h=600&fit=crop&crop=center"
-              alt="Tablet Pro"
-              class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300">
-            <div class="absolute bottom-6 left-6">
-              <div class="bg-[#1B6F5D] text-white px-4 py-3 rounded text-base font-semibold">
-                Tablet Pro
-              </div>
-            </div>
-          </div>
-        </a>
-      </div> -->
-    </div>
-
-    <!-- Product-specific controls -->
-    <div class="swiper-pagination products-pagination"></div>
-    <div class="swiper-button-next products-next"></div>
-    <div class="swiper-button-prev products-prev"></div>
-  </div>
-
   <section class="py-16 bg-gray-50">
     <div class="max-w-7xl mx-auto px-6">
       <!-- Section Header -->
@@ -748,6 +795,9 @@
     </div>
   </section>
 
+
+
+
   <!-- ======== Footer ======== -->
   <footer class="bg-gray-900 text-gray-300 mt-16">
     <!-- top -->
@@ -756,7 +806,7 @@
         <!-- Brand / blurb -->
         <div>
           <a href="./index.php" class="inline-flex items-center gap-2">
-            <span class="text-xl font-extrabold tracking-tight text-white">Vertivo Elevators</span>
+            <span class="text-xl font-extrabold tracking-tight text-white">Vertivo Elevators <br>Private Limited</span>
           </a>
           <p class="mt-4 text-sm leading-relaxed text-gray-400">
             Reliable, safe and innovative vertical transportation solutions for homes, apartments and commercial spaces.
@@ -807,9 +857,9 @@
         <div>
           <h3 class="text-white font-semibold tracking-wide">Contact</h3>
           <ul class="mt-4 space-y-3 text-sm">
-            <li><span class="text-gray-400">Phone:</span> <a href="tel:+910000000000" class="hover:text-white">+91 00000 00000</a></li>
-            <li><span class="text-gray-400">Email:</span> <a href="mailto:hello@vertivo.in" class="hover:text-white">hello@vertivo.in</a></li>
-            <li><span class="text-gray-400">Address:</span> JP Nagar, Bengaluru, Karnataka</li>
+            <li><span class="text-gray-400">Phone:</span> <a href="tel:+919036172223" class="hover:text-white">+91 9036172223</a></li>
+            <li><span class="text-gray-400">Email:</span> <a href="mailto:info@vertivoelevators.com" class="hover:text-white">info@vertivoelevators.com</a></li>
+            <li><span class="text-gray-400">Address:</span> 2nd Floor, Survey no: 19, Site no 20, Nagarbhavi 2nd stage,Bangalore-560072</li>
           </ul>
 
           <!-- Tiny newsletter (optional) -->
@@ -931,7 +981,10 @@
       spaceBetween: 20,
       freeMode: true,
       effect: "coverflow",
-
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: true,
+      },
 
       loop: true,
       pagination: {
@@ -996,11 +1049,12 @@
       }
 
       function validatePhone(num) {
+        if (!num) return false;
         return /^\d{7,15}$/.test(num.replace(/\s+/g, ''));
       }
 
       // phone autoformat
-      const phoneInput = document.getElementById('contactNumber');
+      const phoneInput = document.getElementById('phone');
       phoneInput.addEventListener('input', (e) => {
         const raw = e.target.value.replace(/[^\d]/g, '').slice(0, 15);
         e.target.value = raw.length > 5 ? raw.slice(0, 5) + ' ' + raw.slice(5) : raw;
@@ -1015,9 +1069,11 @@
         const data = {
           firstName: form.firstName.value.trim(),
           lastName: form.lastName.value.trim(),
-          contactNumber: form.contactNumber.value.replace(/\s+/g, ''),
+          phone: form.phone.value.replace(/\s+/g, ''),
           email: form.email.value.trim(),
           elevatorFor: form.elevatorFor.value,
+          city: form.phone.value.trim(),
+          product: form.product.value.trim(),
           floors: form.floors.value,
           message: form.message.value.trim(),
         };
@@ -1028,9 +1084,9 @@
           document.getElementById('firstName').focus();
           return;
         }
-        if (!validatePhone(data.contactNumber)) {
+        if (!validatePhone(data.phone)) {
           document.getElementById('err-contact').classList.remove('hidden');
-          document.getElementById('contactNumber').focus();
+          document.getElementById('phone').focus();
           return;
         }
         if (!validateEmail(data.email)) {
@@ -1044,11 +1100,16 @@
 
         try {
           // TODO: replace with your backend endpoint
-          // const res = await fetch('/api/lead', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) });
-          // const result = await res.json();
-          // if (!res.ok) throw new Error(result.message || 'Network error');
-          // Simulated send (replace in production)
-          await new Promise(r => setTimeout(r, 900));
+          const res = await fetch('/api/leads.php', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          });
+          const result = await res.json();
+          if (!res.ok) throw new Error(result.message || 'Network error');
+
 
           showToast('Thank you — we received your request. Our elevator consultant will get in touch with you for further assistance.', true);
           status.textContent = '';

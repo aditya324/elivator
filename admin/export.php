@@ -17,7 +17,7 @@ if ($q !== '') {
   $params[':q'] = "%{$q}%";
 }
 
-$sql = "SELECT id, first_name, last_name, phone, email, application, floors, product, state_pref, source_page, submitted_at, created_at
+$sql = "SELECT id, first_name, last_name, phone, email, application, floors, product, state_pref, source_page, submitted_at
         FROM leads {$where} ORDER BY id DESC";
 $st = $pdo->prepare($sql);
 foreach ($params as $k => $v) $st->bindValue($k, $v, PDO::PARAM_STR);
@@ -27,8 +27,9 @@ header('Content-Type: text/csv; charset=utf-8');
 header('Content-Disposition: attachment; filename=leads.csv');
 
 $out = fopen('php://output', 'w');
-fputcsv($out, ['id','first_name','last_name','phone','email','application','floors','product','state_pref','source_page','submitted_at','created_at']);
+fputcsv($out, ['id','first_name','last_name','phone','email','application','floors','product','state_pref','source_page','submitted_at'], ',', '"', '\\');
+
 while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-  fputcsv($out, $row);
+  fputcsv($out, $row, ',', '"', '\\');
 }
 fclose($out);
